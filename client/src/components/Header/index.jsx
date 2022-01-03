@@ -1,7 +1,9 @@
+import * as HeaderStyles from "../../styles/Header.styled";
+
 export const Header = () => {
   return (
-    <div>
-      <h1>Gym Logger</h1>
-    </div>
+    <HeaderStyles.Container>
+      <HeaderStyles.Title>Gym Logger</HeaderStyles.Title>
+    </HeaderStyles.Container>
   );
 };
