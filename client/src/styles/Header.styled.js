@@ -8,8 +8,4 @@ export const Container = styled.header`
 export const Title = styled.h1`
   font-size: var(--font-size-large);
   text-align: center;
-
-  @media (max-width: 768px) {
-    font-size: var(--font-size-medium);
-  }
 `;

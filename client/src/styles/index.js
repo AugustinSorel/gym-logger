@@ -16,12 +16,19 @@ const GlobalStyle = createGlobalStyle`
         --font-size-small: ${({ theme }) => theme.fontSizes.small};
 
         --border-height: ${({ theme }) => theme.sizes.borderHeight};
+
+        
+        @media (max-width: 768px) {
+            --font-size-large: ${({ theme }) => theme.fontSizes.medium};
+            --font-size-medium: ${({ theme }) => theme.fontSizes.small};
+        }
     }
 
     body{
         background-color: var(--primary);
         color: var(--text-color);
         font-family: 'Nunito', sans-serif;
+        -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     }   
 
     #root{
