@@ -23,6 +23,12 @@ const GlobalStyle = createGlobalStyle`
         color: var(--text-color);
         font-family: 'Nunito', sans-serif;
     }   
+
+    #root{
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
     
     ::selection{
         background-color: var(--text-color);
