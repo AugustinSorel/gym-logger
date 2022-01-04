@@ -4,26 +4,43 @@ import {
   whileTapScale,
 } from "../../framer-motion/whileVariants";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 const hoverVariants = {
   hoverStart: {
     rotate: 180,
-    fill: "#b3b3b3",
+    fill: "#fff",
   },
 
   hoverEnd: {
     rotate: 0,
-    fill: "#fff",
+    fill: "#b3b3b3",
   },
 };
 
 const listContainerVariants = {
-  enter: {
+  hoverStart: {
     opacity: 1,
+    display: "block",
+    backdropFilter: "blur(4px)",
+    transition: { staggerChildren: 0.07 },
   },
-  exit: {
+  hoverEnd: {
     opacity: 0,
+    backdropFilter: "blur(0px)",
+    transitionEnd: {
+      display: "none",
+    },
+    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+  },
+};
+
+const listItemsVariants = {
+  hoverStart: {
+    x: 0,
+  },
+  hoverEnd: {
+    x: 100,
   },
 };
 
@@ -37,20 +54,26 @@ export const DropDownMenu = () => {
       onHoverStart={() => setIsHover(true)}
       onHoverEnd={() => setIsHover(false)}
     >
-      <DropDownMenuStyle.ListContainer
-        initial="exit"
-        animate={isHover ? "enter" : "exit"}
-        variants={listContainerVariants}
-      >
-        <h1>Hello World 1</h1>
-        <h1>Hello World 2</h1>
-        <h1>Hello World 3</h1>
-      </DropDownMenuStyle.ListContainer>
+      <AnimatePresence exitBeforeEnter>
+        <DropDownMenuStyle.ListContainer
+          variants={listContainerVariants}
+          animate={isHover ? "hoverStart" : "hoverEnd"}
+          initial="hoverEnd"
+        >
+          {["Bench Press", "Squat", "Biceps Curl", "lorem"].map(
+            (item, index) => (
+              <motion.li variants={listItemsVariants} key={index}>
+                <h1>{item}</h1>
+              </motion.li>
+            )
+          )}
+        </DropDownMenuStyle.ListContainer>
+      </AnimatePresence>
 
       <DropDownMenuStyle.Title>Bench Press</DropDownMenuStyle.Title>
       <motion.svg
         variants={hoverVariants}
-        animate={isHover ? "hoverEnd" : "hoverStart"}
+        animate={isHover ? "hoverStart" : "hoverEnd"}
         fill="#b3b3b3"
         width="24"
         height="24"

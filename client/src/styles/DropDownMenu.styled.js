@@ -18,7 +18,7 @@ export const Title = styled.h2`
   font-size: var(--font-size-medium);
 `;
 
-export const ListContainer = styled(motion.div)`
+export const ListContainer = styled(motion.ul)`
   position: absolute;
   bottom: 100%;
   width: 100%;
@@ -28,6 +28,4 @@ export const ListContainer = styled(motion.div)`
   border-color: var(--text-color);
   border: var(--border-height) solid;
   border-radius: 24px;
-
-  backdrop-filter: blur(4px);
 `;
