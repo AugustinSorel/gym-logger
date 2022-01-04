@@ -4,7 +4,7 @@ import {
   whileTapScale,
 } from "../../framer-motion/whileVariants";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const hoverVariants = {
   hoverStart: {
@@ -37,10 +37,12 @@ const listContainerVariants = {
 
 const listItemsVariants = {
   hoverStart: {
+    opacity: 1,
     x: 0,
   },
   hoverEnd: {
-    x: 100,
+    opacity: 0,
+    x: -20,
   },
 };
 
@@ -54,21 +56,17 @@ export const DropDownMenu = () => {
       onHoverStart={() => setIsHover(true)}
       onHoverEnd={() => setIsHover(false)}
     >
-      <AnimatePresence exitBeforeEnter>
-        <DropDownMenuStyle.ListContainer
-          variants={listContainerVariants}
-          animate={isHover ? "hoverStart" : "hoverEnd"}
-          initial="hoverEnd"
-        >
-          {["Bench Press", "Squat", "Biceps Curl", "lorem"].map(
-            (item, index) => (
-              <motion.li variants={listItemsVariants} key={index}>
-                <h1>{item}</h1>
-              </motion.li>
-            )
-          )}
-        </DropDownMenuStyle.ListContainer>
-      </AnimatePresence>
+      <DropDownMenuStyle.ListContainer
+        variants={listContainerVariants}
+        animate={isHover ? "hoverStart" : "hoverEnd"}
+        initial="hoverEnd"
+      >
+        {["Bench Press", "Squat", "Biceps Curl", "lorem"].map((item, index) => (
+          <motion.li variants={listItemsVariants} key={index}>
+            <h1>{item}</h1>
+          </motion.li>
+        ))}
+      </DropDownMenuStyle.ListContainer>
 
       <DropDownMenuStyle.Title>Bench Press</DropDownMenuStyle.Title>
       <motion.svg
