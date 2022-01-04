@@ -9,12 +9,12 @@ import { motion } from "framer-motion";
 const hoverVariants = {
   hoverStart: {
     rotate: 180,
-    fill: "#fff",
+    stroke: "#fff",
   },
 
   hoverEnd: {
     rotate: 0,
-    fill: "#b3b3b3",
+    stroke: "#b3b3b3",
   },
 };
 
@@ -73,7 +73,8 @@ export const DropDownMenu = () => {
       <motion.svg
         variants={hoverVariants}
         animate={isHover ? "hoverStart" : "hoverEnd"}
-        fill="#b3b3b3"
+        stroke="#b3b3b3"
+        strokeWidth={2}
         width="24"
         height="24"
         xmlns="http://www.w3.org/2000/svg"
