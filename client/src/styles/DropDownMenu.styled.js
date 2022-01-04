@@ -10,8 +10,22 @@ export const Container = styled(motion.div)`
   border-color: var(--text-color);
   border: 3px solid;
   padding: 1rem 2rem;
+  overflow: visible;
 `;
 
 export const Title = styled.h2`
   font-size: var(--font-size-medium);
+`;
+
+export const ListContainer = styled(motion.div)`
+  position: absolute;
+  bottom: 100%;
+  width: 100%;
+  left: 0;
+  padding: 1rem;
+  border-color: var(--text-color);
+  border: var(--border-height) solid;
+  border-radius: 24px;
+
+  backdrop-filter: blur(4px);
 `;
