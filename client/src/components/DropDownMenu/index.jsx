@@ -1,41 +1,57 @@
 import * as DropDownMenuStyle from "../../styles/DropDownMenu.styled";
-import { ReactComponent as UpArrowSvg } from "../../assets/upArrow.svg";
 import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
 import { useState } from "react";
-import { motion, useAnimation } from "framer-motion";
+import { motion } from "framer-motion";
+
+const hoverVariants = {
+  hoverStart: {
+    rotate: 180,
+    fill: "#b3b3b3",
+  },
+
+  hoverEnd: {
+    rotate: 0,
+    fill: "#fff",
+  },
+};
+
+const listContainerVariants = {
+  enter: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+};
 
 export const DropDownMenu = () => {
-  const [show, setShow] = useState(false);
-
-  const control = useAnimation();
+  const [isHover, setIsHover] = useState(false);
 
   return (
     <DropDownMenuStyle.Container
       whileHover={whileHoverScale}
       whileTap={whileTapScale}
-      onHoverStart={() => {
-        setShow(true);
-        control.start({ rotate: 180 });
-      }}
-      onHoverEnd={() => {
-        setShow(false);
-        control.start({ rotate: 0 });
-      }}
+      onHoverStart={() => setIsHover(true)}
+      onHoverEnd={() => setIsHover(false)}
     >
-      {show && (
-        <DropDownMenuStyle.ListContainer>
-          <h1>Hello World 1</h1>
-          <h1>Hello World 2</h1>
-          <h1>Hello World 3</h1>
-        </DropDownMenuStyle.ListContainer>
-      )}
+      <DropDownMenuStyle.ListContainer
+        initial="exit"
+        animate={isHover ? "enter" : "exit"}
+        variants={listContainerVariants}
+      >
+        <h1>Hello World 1</h1>
+        <h1>Hello World 2</h1>
+        <h1>Hello World 3</h1>
+      </DropDownMenuStyle.ListContainer>
+
       <DropDownMenuStyle.Title>Bench Press</DropDownMenuStyle.Title>
       <motion.svg
-        animate={control}
-        fill="#fff"
+        variants={hoverVariants}
+        animate={isHover ? "hoverEnd" : "hoverStart"}
+        fill="#b3b3b3"
         width="24"
         height="24"
         xmlns="http://www.w3.org/2000/svg"

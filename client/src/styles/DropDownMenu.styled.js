@@ -10,7 +10,8 @@ export const Container = styled(motion.div)`
   border-color: var(--text-color);
   border: 3px solid;
   padding: 1rem 2rem;
-  overflow: visible;
+
+  position: relative;
 `;
 
 export const Title = styled.h2`
@@ -22,6 +23,7 @@ export const ListContainer = styled(motion.div)`
   bottom: 100%;
   width: 100%;
   left: 0;
+
   padding: 1rem;
   border-color: var(--text-color);
   border: var(--border-height) solid;
