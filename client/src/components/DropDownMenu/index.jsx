@@ -53,6 +53,7 @@ export const DropDownMenu = () => {
     <DropDownMenuStyle.Container
       whileHover={whileHoverScale}
       whileTap={whileTapScale}
+      onClick={() => setIsHover(!isHover)}
       onHoverStart={() => setIsHover(true)}
       onHoverEnd={() => setIsHover(false)}
     >
