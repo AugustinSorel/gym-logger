@@ -4,12 +4,9 @@ import {
   whileTapScale,
 } from "../../framer-motion/whileVariants";
 import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  listContainerVariants,
-  listItemsVariants,
-} from "../../framer-motion/dropDownVariants";
+import { listContainerVariants } from "../../framer-motion/dropDownVariants";
 import { UpArrowSvg } from "../UpArrowSvg";
+import { DropDownChildren } from "../DropDownChildren";
 
 export const DropDownMenu = () => {
   const [isHover, setIsHover] = useState(false);
@@ -28,14 +25,7 @@ export const DropDownMenu = () => {
         initial="hoverEnd"
       >
         {["Bench Press", "Squat", "Biceps Curl", "lorem"].map((item, index) => (
-          <motion.li variants={listItemsVariants} key={index}>
-            <DropDownMenuStyle.ListItemTitle
-              whileHover={whileHoverScale}
-              whileTap={whileTapScale}
-            >
-              {item}
-            </DropDownMenuStyle.ListItemTitle>
-          </motion.li>
+          <DropDownChildren key={index} children={item} />
         ))}
       </DropDownMenuStyle.ListContainer>
 

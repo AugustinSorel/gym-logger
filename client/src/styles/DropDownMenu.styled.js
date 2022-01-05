@@ -33,8 +33,3 @@ export const ListContainer = styled(motion.ul)`
   gap: 1rem;
   flex-direction: column;
 `;
-
-export const ListItemTitle = styled(motion.h3)`
-  font-size: var(--font-size-small);
-  text-align: center;
-`;
