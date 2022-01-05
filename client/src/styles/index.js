@@ -14,9 +14,9 @@ const GlobalStyle = createGlobalStyle`
         --font-size-large: ${({ theme }) => theme.fontSizes.large};
         --font-size-medium: ${({ theme }) => theme.fontSizes.medium};
         --font-size-small: ${({ theme }) => theme.fontSizes.small};
-
+        
         --border-height: ${({ theme }) => theme.sizes.borderHeight};
-
+        
         
         @media (max-width: 768px) {
             --font-size-large: ${({ theme }) => theme.fontSizes.medium};
@@ -30,13 +30,6 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Nunito', sans-serif;
         -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
     }   
-
-    #root{
-        /* height: 100vh;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden; */
-    }
     
     ::selection{
         background-color: var(--text-color);
