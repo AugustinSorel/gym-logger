@@ -12,7 +12,6 @@ export const Container = styled(motion.div)`
   padding: 1rem 2rem;
 
   position: relative;
-  backdrop-filter: blur(4px);
 `;
 
 export const Title = styled.h2`
@@ -29,4 +28,13 @@ export const ListContainer = styled(motion.ul)`
   border-color: var(--text-color);
   border: var(--border-height) solid;
   border-radius: 24px;
+  list-style: none;
+
+  gap: 1rem;
+  flex-direction: column;
+`;
+
+export const ListItemTitle = styled(motion.h3)`
+  font-size: var(--font-size-small);
+  text-align: center;
 `;

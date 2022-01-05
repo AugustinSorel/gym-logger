@@ -22,9 +22,9 @@ const listContainerVariants = {
   hoverStart: {
     y: 0,
     opacity: 1,
-    display: "block",
+    display: "flex",
     backdropFilter: "blur(4px)",
-    transition: { staggerChildren: 0.07 },
+    transition: { staggerChildren: 0.07, delayChildren: 0.3 },
   },
   hoverEnd: {
     y: "100%",
@@ -33,7 +33,7 @@ const listContainerVariants = {
     transitionEnd: {
       display: "none",
     },
-    transition: { staggerChildren: 0.05, staggerDirection: -1 },
+    transition: { staggerChildren: 0.05, staggerDirection: -1, delay: 0.5 },
   },
 };
 
@@ -49,7 +49,7 @@ const listItemsVariants = {
 };
 
 export const DropDownMenu = () => {
-  const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(true);
 
   return (
     <DropDownMenuStyle.Container
@@ -66,7 +66,12 @@ export const DropDownMenu = () => {
       >
         {["Bench Press", "Squat", "Biceps Curl", "lorem"].map((item, index) => (
           <motion.li variants={listItemsVariants} key={index}>
-            <h3>{item}</h3>
+            <DropDownMenuStyle.ListItemTitle
+              whileHover={whileHoverScale}
+              whileTap={whileTapScale}
+            >
+              {item}
+            </DropDownMenuStyle.ListItemTitle>
           </motion.li>
         ))}
       </DropDownMenuStyle.ListContainer>
