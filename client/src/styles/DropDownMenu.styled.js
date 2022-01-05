@@ -12,6 +12,7 @@ export const Container = styled(motion.div)`
   padding: 1rem 2rem;
 
   position: relative;
+  backdrop-filter: blur(4px);
 `;
 
 export const Title = styled.h2`

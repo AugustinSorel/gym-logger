@@ -20,12 +20,14 @@ const hoverVariants = {
 
 const listContainerVariants = {
   hoverStart: {
+    y: 0,
     opacity: 1,
     display: "block",
     backdropFilter: "blur(4px)",
     transition: { staggerChildren: 0.07 },
   },
   hoverEnd: {
+    y: "100%",
     opacity: 0,
     backdropFilter: "blur(0px)",
     transitionEnd: {
@@ -64,7 +66,7 @@ export const DropDownMenu = () => {
       >
         {["Bench Press", "Squat", "Biceps Curl", "lorem"].map((item, index) => (
           <motion.li variants={listItemsVariants} key={index}>
-            <h1>{item}</h1>
+            <h3>{item}</h3>
           </motion.li>
         ))}
       </DropDownMenuStyle.ListContainer>
