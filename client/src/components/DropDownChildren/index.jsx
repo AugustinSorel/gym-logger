@@ -6,8 +6,15 @@ import {
 import * as DropDownChildrenStyled from "../../styles/DropDownChildren.styled";
 
 export const DropDownChildren = ({ children }) => {
+  const handleClick = (e) => {
+    console.log("e");
+  };
+
   return (
-    <DropDownChildrenStyled.Container variants={listItemsVariants}>
+    <DropDownChildrenStyled.Container
+      variants={listItemsVariants}
+      onClick={handleClick}
+    >
       <DropDownChildrenStyled.Title
         whileHover={whileHoverScale}
         whileTap={whileTapScale}

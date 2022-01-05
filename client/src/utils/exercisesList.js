@@ -1,3 +1,3 @@
-const data = ["Bench Press", "Squat", "Biceps curl"];
+const exercisesList = ["Bench Press", "Squat", "Biceps curl"];
 
-export default data;
+export default exercisesList;
