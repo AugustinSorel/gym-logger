@@ -10,7 +10,7 @@ export const Container = styled(motion.div)`
   border-color: var(--text-color);
   border: 3px solid;
   padding: 1rem 2rem;
-  width: 300px;
+  width: 400px;
 
   position: relative;
   display: flex;

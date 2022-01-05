@@ -29,7 +29,17 @@ const GlobalStyle = createGlobalStyle`
         color: var(--text-color);
         font-family: 'Nunito', sans-serif;
         -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
-    }   
+    } 
+
+    html, body { height: 100%; }
+
+    #root{
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        
+        overflow: hidden;
+    }
     
     ::selection{
         background-color: var(--text-color);

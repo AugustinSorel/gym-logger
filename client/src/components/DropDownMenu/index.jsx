@@ -12,9 +12,9 @@ export const DropDownMenu = () => {
 
   return (
     <DropDownMenuStyle.Container
-      onClick={() => setIsHover(!isHover)}
       onHoverStart={() => setIsHover(true)}
       onHoverEnd={() => setIsHover(false)}
+      onClick={() => setIsHover(!isHover)}
     >
       <DropDownMenuStyle.ListContainer
         variants={listContainerVariants}
