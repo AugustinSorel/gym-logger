@@ -10,11 +10,14 @@ export const Container = styled(motion.div)`
   border-color: var(--text-color);
   border: 3px solid;
   padding: 1rem 2rem;
+  width: 300px;
 
   position: relative;
-  width: 400px;
-
   display: flex;
+
+  @media (max-width: 768px) {
+    width: 225px;
+  }
 `;
 
 export const Title = styled.h2`

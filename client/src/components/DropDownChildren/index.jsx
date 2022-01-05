@@ -8,7 +8,7 @@ import * as DropDownChildrenStyled from "../../styles/DropDownChildren.styled";
 
 export const DropDownChildren = ({ children }) => {
   const setExercise = useExercise((state) => state.setExercise);
-  const handleClick = (e) => {
+  const handleClick = () => {
     setExercise(children);
   };
 

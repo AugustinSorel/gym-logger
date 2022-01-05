@@ -4,7 +4,7 @@ export const listContainerVariants = {
     opacity: 1,
     display: "flex",
     backdropFilter: "blur(4px)",
-    transition: { staggerChildren: 0.07, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.07, delayChildren: 0.1 },
   },
 
   hoverEnd: {
@@ -14,7 +14,7 @@ export const listContainerVariants = {
     transitionEnd: {
       display: "none",
     },
-    transition: { staggerChildren: 0.05, staggerDirection: -1, delay: 0.5 },
+    transition: { staggerChildren: 0.05, staggerDirection: -1, delay: 0.3 },
   },
 };
 
