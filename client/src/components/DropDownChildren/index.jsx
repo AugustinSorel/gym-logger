@@ -3,11 +3,13 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
+import useExercise from "../../store/useExercise";
 import * as DropDownChildrenStyled from "../../styles/DropDownChildren.styled";
 
 export const DropDownChildren = ({ children }) => {
+  const setExercise = useExercise((state) => state.setExercise);
   const handleClick = (e) => {
-    console.log("e");
+    setExercise(children);
   };
 
   return (

@@ -12,10 +12,14 @@ export const Container = styled(motion.div)`
   padding: 1rem 2rem;
 
   position: relative;
+  width: 400px;
+
+  display: flex;
 `;
 
 export const Title = styled.h2`
   font-size: var(--font-size-medium);
+  flex: 1;
 `;
 
 export const ListContainer = styled(motion.ul)`

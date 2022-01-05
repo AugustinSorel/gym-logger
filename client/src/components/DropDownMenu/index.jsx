@@ -4,9 +4,11 @@ import { listContainerVariants } from "../../framer-motion/dropDownVariants";
 import { UpArrowSvg } from "../UpArrowSvg";
 import { DropDownChildren } from "../DropDownChildren";
 import exercisesList from "../../utils/exercisesList";
+import useExercise from "../../store/useExercise";
 
 export const DropDownMenu = () => {
   const [isHover, setIsHover] = useState(false);
+  const exercise = useExercise((state) => state.exercise);
 
   return (
     <DropDownMenuStyle.Container
@@ -24,7 +26,7 @@ export const DropDownMenu = () => {
         ))}
       </DropDownMenuStyle.ListContainer>
 
-      <DropDownMenuStyle.Title>Bench Press</DropDownMenuStyle.Title>
+      <DropDownMenuStyle.Title>{exercise}</DropDownMenuStyle.Title>
       <UpArrowSvg isHover={isHover} />
     </DropDownMenuStyle.Container>
   );
