@@ -2,7 +2,7 @@ import * as DropDownMenuStyle from "../../styles/DropDownMenu.styled";
 import { useState } from "react";
 import { listContainerVariants } from "../../framer-motion/dropDownVariants";
 import { UpArrowSvg } from "../UpArrowSvg";
-import { DropDownChildren } from "../DropDownChildren";
+import { DropDownItem } from "../DropDownItem";
 import exercisesList from "../../utils/exercisesList";
 import useExercise from "../../store/useExercise";
 
@@ -14,7 +14,7 @@ export const DropDownMenu = () => {
     <DropDownMenuStyle.Container
       onHoverStart={() => setIsHover(true)}
       onHoverEnd={() => setIsHover(false)}
-      onClick={() => setIsHover(!isHover)}
+      onTap={() => setIsHover(!isHover)}
     >
       <DropDownMenuStyle.ListContainer
         variants={listContainerVariants}
@@ -22,7 +22,7 @@ export const DropDownMenu = () => {
         initial="hoverEnd"
       >
         {exercisesList.map((item, index) => (
-          <DropDownChildren key={index} children={item} />
+          <DropDownItem key={index} children={item} />
         ))}
       </DropDownMenuStyle.ListContainer>
 

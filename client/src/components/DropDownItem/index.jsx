@@ -6,7 +6,7 @@ import {
 import useExercise from "../../store/useExercise";
 import * as DropDownChildrenStyled from "../../styles/DropDownChildren.styled";
 
-export const DropDownChildren = ({ children }) => {
+export const DropDownItem = ({ children }) => {
   const setExercise = useExercise((state) => state.setExercise);
   const handleClick = () => {
     setExercise(children);
