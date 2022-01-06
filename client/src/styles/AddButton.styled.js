@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 export const Button = styled(motion.button)`
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 20px;
+  right: 20px;
   height: 75px;
   width: 75px;
   font-size: var(--font-size-large);

@@ -4,7 +4,7 @@ import {
   whileTapScale,
 } from "../../framer-motion/whileVariants";
 import useExercise from "../../store/useExercise";
-import * as DropDownChildrenStyled from "../../styles/DropDownChildren.styled";
+import * as DropDownItemStyle from "../../styles/DropDownItem.styled";
 
 export const DropDownItem = ({ children }) => {
   const setExercise = useExercise((state) => state.setExercise);
@@ -13,16 +13,16 @@ export const DropDownItem = ({ children }) => {
   };
 
   return (
-    <DropDownChildrenStyled.Container
+    <DropDownItemStyle.Container
       variants={listItemsVariants}
       onClick={handleClick}
     >
-      <DropDownChildrenStyled.Title
+      <DropDownItemStyle.Title
         whileHover={whileHoverScale}
         whileTap={whileTapScale}
       >
         {children}
-      </DropDownChildrenStyled.Title>
-    </DropDownChildrenStyled.Container>
+      </DropDownItemStyle.Title>
+    </DropDownItemStyle.Container>
   );
 };
