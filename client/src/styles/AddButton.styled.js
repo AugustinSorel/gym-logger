@@ -13,4 +13,6 @@ export const Button = styled(motion.button)`
   border: 3px solid;
   border-radius: 50%;
   user-select: none;
+  backdrop-filter: blur(4px);
+  cursor: pointer;
 `;
