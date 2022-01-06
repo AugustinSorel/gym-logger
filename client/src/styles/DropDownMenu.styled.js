@@ -23,6 +23,7 @@ export const Container = styled(motion.div)`
 export const Title = styled.h2`
   font-size: var(--font-size-medium);
   flex: 1;
+  user-select: none;
 `;
 
 export const ListContainer = styled(motion.ul)`

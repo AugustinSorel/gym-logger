@@ -7,4 +7,5 @@ export const Title = styled(motion.h3)`
   font-size: var(--font-size-small);
   text-align: center;
   position: relative;
+  user-select: none;
 `;
