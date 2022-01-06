@@ -1,4 +1,8 @@
 import {
+  backdropVariants,
+  dropInVariants,
+} from "../../framer-motion/backDropVariants";
+import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
@@ -6,50 +10,19 @@ import useExercise from "../../store/useExercise";
 import useModal from "../../store/useModal";
 import * as AddValuesModalStyle from "../../styles/AddValuesModal.styled";
 
-const variants = {
-  initial: {
-    opacity: 0,
-    backdropFilter: "blur(0px)",
-  },
-
-  animate: {
-    opacity: 1,
-    backdropFilter: "blur(4px)",
-  },
-
-  exit: {
-    opacity: 0,
-    backdropFilter: "blur(0px)",
-  },
-};
-
-const variants2 = {
-  initial: {
-    y: "-100vh",
-  },
-
-  animate: {
-    y: 0,
-  },
-
-  exit: {
-    y: "100vh",
-  },
-};
-
 export const AddValuesModal = () => {
   const closeModal = useModal((state) => state.closeModal);
   const exercise = useExercise((state) => state.exercise);
   return (
     <AddValuesModalStyle.BackDrop
       onClick={() => closeModal()}
-      variants={variants}
+      variants={backdropVariants}
       initial="initial"
       animate="animate"
       exit="exit"
     >
       <AddValuesModalStyle.Form
-        variants={variants2}
+        variants={dropInVariants}
         onClick={(e) => e.stopPropagation()}
       >
         <AddValuesModalStyle.Title>{exercise}</AddValuesModalStyle.Title>
@@ -60,18 +33,21 @@ export const AddValuesModal = () => {
             whileHover={whileHoverScale}
             whileTap={whileTapScale}
             whileFocus={whileHoverScale}
+            type="number"
           />
           <AddValuesModalStyle.Input
             placeholder="Set 2"
             whileHover={whileHoverScale}
             whileTap={whileTapScale}
             whileFocus={whileHoverScale}
+            type="number"
           />
           <AddValuesModalStyle.Input
             placeholder="Set 3"
             whileHover={whileHoverScale}
             whileTap={whileTapScale}
             whileFocus={whileHoverScale}
+            type="number"
           />
         </AddValuesModalStyle.InputsContainer>
 
