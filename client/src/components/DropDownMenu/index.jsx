@@ -12,6 +12,8 @@ export const DropDownMenu = () => {
 
   return (
     <DropDownMenuStyle.Container
+      whileHover={{ color: "#fff", scale: 1.02 }}
+      whileTap={{ color: "#fff", scale: 0.98 }}
       onHoverStart={() => setIsHover(true)}
       onHoverEnd={() => setIsHover(false)}
       onTap={() => setIsHover(!isHover)}
