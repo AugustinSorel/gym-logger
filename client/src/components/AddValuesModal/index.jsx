@@ -9,10 +9,20 @@ import {
 import useExercise from "../../store/useExercise";
 import useModal from "../../store/useModal";
 import * as AddValuesModalStyle from "../../styles/AddValuesModal.styled";
+import { useAnimation } from "framer-motion";
+import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 
 export const AddValuesModal = () => {
   const closeModal = useModal((state) => state.closeModal);
   const exercise = useExercise((state) => state.exercise);
+
+  const invalidInputAnimation = useAnimation();
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    invalidInputAnimation.start("animate");
+  };
+
   return (
     <AddValuesModalStyle.BackDrop
       onClick={() => closeModal()}
@@ -34,6 +44,8 @@ export const AddValuesModal = () => {
             </AddValuesModalStyle.InputTitle>
             <AddValuesModalStyle.Input
               placeholder="10"
+              variants={invalidInputVariants}
+              animate={invalidInputAnimation}
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
               whileFocus={whileHoverScale}
@@ -47,6 +59,8 @@ export const AddValuesModal = () => {
             </AddValuesModalStyle.InputTitle>
             <AddValuesModalStyle.Input
               placeholder="50"
+              variants={invalidInputVariants}
+              animate={invalidInputAnimation}
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
               whileFocus={whileHoverScale}
@@ -59,6 +73,7 @@ export const AddValuesModal = () => {
           whileHover={{ backgroundColor: "#fff", scale: 1.1 }}
           whileTap={{ scale: 0.9, backgroundColor: "#fff" }}
           whileFocus={{ backgroundColor: "#fff", scale: 1.1 }}
+          onClick={handleClick}
         >
           Save
         </AddValuesModalStyle.Button>
