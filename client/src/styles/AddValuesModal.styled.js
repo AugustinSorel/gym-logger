@@ -32,6 +32,18 @@ export const InputsContainer = styled.div`
   gap: 1rem;
 `;
 
+export const InputDetailsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+`;
+
+export const InputTitle = styled.h2`
+  font-size: var(--font-size-medium);
+  flex: 1;
+`;
+
 export const Input = styled(motion.input)`
   font-size: var(--font-size-medium);
   background-color: transparent;
@@ -41,6 +53,7 @@ export const Input = styled(motion.input)`
   color: inherit;
   outline: none;
   border-radius: 24px;
+  width: 150px;
 `;
 
 export const Button = styled(motion.button)`

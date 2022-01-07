@@ -28,27 +28,31 @@ export const AddValuesModal = () => {
         <AddValuesModalStyle.Title>{exercise}</AddValuesModalStyle.Title>
 
         <AddValuesModalStyle.InputsContainer>
-          <AddValuesModalStyle.Input
-            placeholder="Set 1"
-            whileHover={whileHoverScale}
-            whileTap={whileTapScale}
-            whileFocus={whileHoverScale}
-            type="number"
-          />
-          <AddValuesModalStyle.Input
-            placeholder="Set 2"
-            whileHover={whileHoverScale}
-            whileTap={whileTapScale}
-            whileFocus={whileHoverScale}
-            type="number"
-          />
-          <AddValuesModalStyle.Input
-            placeholder="Set 3"
-            whileHover={whileHoverScale}
-            whileTap={whileTapScale}
-            whileFocus={whileHoverScale}
-            type="number"
-          />
+          <AddValuesModalStyle.InputDetailsContainer>
+            <AddValuesModalStyle.InputTitle>
+              Number of repetitions:
+            </AddValuesModalStyle.InputTitle>
+            <AddValuesModalStyle.Input
+              placeholder="10"
+              whileHover={whileHoverScale}
+              whileTap={whileTapScale}
+              whileFocus={whileHoverScale}
+              type="number"
+            />
+          </AddValuesModalStyle.InputDetailsContainer>
+
+          <AddValuesModalStyle.InputDetailsContainer>
+            <AddValuesModalStyle.InputTitle>
+              Weight:
+            </AddValuesModalStyle.InputTitle>
+            <AddValuesModalStyle.Input
+              placeholder="50"
+              whileHover={whileHoverScale}
+              whileTap={whileTapScale}
+              whileFocus={whileHoverScale}
+              type="number"
+            />
+          </AddValuesModalStyle.InputDetailsContainer>
         </AddValuesModalStyle.InputsContainer>
 
         <AddValuesModalStyle.Button
