@@ -11,16 +11,34 @@ import useModal from "../../store/useModal";
 import * as AddValuesModalStyle from "../../styles/AddValuesModal.styled";
 import { useAnimation } from "framer-motion";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
+import { useState } from "react";
+
+const defaultUserInputs = {
+  numberOfRepetitions: "",
+  weight: "",
+};
 
 export const AddValuesModal = () => {
   const closeModal = useModal((state) => state.closeModal);
   const exercise = useExercise((state) => state.exercise);
 
-  const invalidInputAnimation = useAnimation();
+  const numberOfRepetitionsAnimation = useAnimation();
+  const weightAnimation = useAnimation();
+
+  const [userInputs, setUserInputs] = useState(defaultUserInputs);
+
+  const handleChange = (e) => {
+    setUserInputs({
+      ...userInputs,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
-    invalidInputAnimation.start("animate");
+    console.log(userInputs);
+    // numberOfRepetitionsAnimation.start("animate");
+    e.currentTarget.blur();
   };
 
   return (
@@ -45,11 +63,13 @@ export const AddValuesModal = () => {
             <AddValuesModalStyle.Input
               placeholder="10"
               variants={invalidInputVariants}
-              animate={invalidInputAnimation}
+              animate={numberOfRepetitionsAnimation}
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
               whileFocus={whileHoverScale}
               type="number"
+              name="numberOfRepetitions"
+              onChange={handleChange}
             />
           </AddValuesModalStyle.InputDetailsContainer>
 
@@ -60,11 +80,13 @@ export const AddValuesModal = () => {
             <AddValuesModalStyle.Input
               placeholder="50"
               variants={invalidInputVariants}
-              animate={invalidInputAnimation}
+              animate={weightAnimation}
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
               whileFocus={whileHoverScale}
               type="number"
+              name="weight"
+              onChange={handleChange}
             />
           </AddValuesModalStyle.InputDetailsContainer>
         </AddValuesModalStyle.InputsContainer>
