@@ -4,8 +4,6 @@ const API_URI = process.env.REACT_APP_BACKEND_URI || "http://localhost:5000";
 
 const userApi = axios.create({
   baseURL: API_URI + "/api/user",
-  // baseURL: "http://localhost:5000/api/user",
-  // baseURL: "https://gym-logger-mern.herokuapp.com/api/user",
 });
 
 export const addValue = async ({ userId, exerciseId, value }) => {
