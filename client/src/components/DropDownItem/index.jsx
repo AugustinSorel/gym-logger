@@ -6,9 +6,14 @@ import {
 import useExercise from "../../store/useExercise";
 import * as DropDownItemStyle from "../../styles/DropDownItem.styled";
 
-export const DropDownItem = ({ children }) => {
+export const DropDownItem = ({ children, isHover }) => {
   const setExercise = useExercise((state) => state.setExercise);
+
   const handleClick = () => {
+    if (isHover) {
+      return;
+    }
+
     setExercise(children);
   };
 

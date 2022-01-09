@@ -28,6 +28,7 @@ export const Title = styled.h2`
 
 export const ListContainer = styled(motion.ul)`
   position: absolute;
+  z-index: 100;
   bottom: 100%;
   width: 100%;
   left: 0;

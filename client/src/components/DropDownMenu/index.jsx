@@ -24,7 +24,7 @@ export const DropDownMenu = () => {
         initial="hoverEnd"
       >
         {exercisesList.map((item, index) => (
-          <DropDownItem key={index} children={item} />
+          <DropDownItem key={index} children={item} isHover={isHover} />
         ))}
       </DropDownMenuStyle.ListContainer>
 
