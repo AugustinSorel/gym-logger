@@ -51,8 +51,7 @@ export const AddValuesModal = () => {
   const handleClick = (e) => {
     e.preventDefault();
     console.log(userInputs);
-    // numberOfRepetitionsAnimation.start("animate");
-    mutate({ userId: 12, exerciseId: "benchPress", value: userInputs });
+    mutate({ userId: 12, exerciseId: exercise, value: userInputs });
     e.currentTarget.blur();
   };
 
