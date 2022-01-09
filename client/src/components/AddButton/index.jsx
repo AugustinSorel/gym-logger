@@ -7,6 +7,7 @@ import useModal from "../../store/useModal";
 
 export const AddButton = () => {
   const openModal = useModal((state) => state.openModal);
+
   return (
     <AddButtonStyle.Button
       whileTap={whileTapScale}
