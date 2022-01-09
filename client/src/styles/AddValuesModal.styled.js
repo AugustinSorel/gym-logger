@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { InputShare } from "./share/input.styled";
 
 export const BackDrop = styled(motion.div)`
   position: fixed;
@@ -45,26 +46,19 @@ export const InputTitle = styled.h2`
 `;
 
 export const Input = styled(motion.input)`
-  font-size: var(--font-size-medium);
-  background-color: transparent;
-  padding: 1rem;
-  border-color: var(--text-color);
-  border: var(--border-height) solid;
-  color: inherit;
-  outline: none;
-  border-radius: 24px;
+  ${InputShare}
   width: 150px;
+
+  &::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 `;
 
 export const Button = styled(motion.button)`
-  font-size: var(--font-size-medium);
-  background-color: var(--text-color);
-  padding: 1rem;
-  border-color: var(--text-color);
-  border: var(--border-height) solid;
-  color: inherit;
-  outline: none;
+  ${InputShare}
   color: var(--primary);
-  border-radius: 24px;
+  background-color: var(--text-color);
   cursor: pointer;
 `;
