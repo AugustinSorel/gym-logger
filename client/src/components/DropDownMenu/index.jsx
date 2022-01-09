@@ -7,7 +7,7 @@ import exercisesList from "../../utils/exercisesList";
 import useExercise from "../../store/useExercise";
 
 export const DropDownMenu = () => {
-  const [isHover, setIsHover] = useState(false);
+  const [isHover, setIsHover] = useState(true);
   const exercise = useExercise((state) => state.exercise);
 
   return (

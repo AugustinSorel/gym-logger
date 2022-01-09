@@ -25,6 +25,9 @@ export const Form = styled(motion.form)`
 export const Title = styled.h1`
   font-size: var(--font-size-large);
   text-align: center;
+  padding: 1rem;
+  border-color: var(--text-color);
+  border-bottom: var(--border-height) solid;
 `;
 
 export const InputsContainer = styled.div`
