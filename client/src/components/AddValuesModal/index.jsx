@@ -12,6 +12,8 @@ import * as AddValuesModalStyle from "../../styles/AddValuesModal.styled";
 import { useAnimation } from "framer-motion";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useState } from "react";
+import { useMutation } from "react-query";
+import { addValue } from "../../api/userApi";
 
 const defaultUserInputs = {
   numberOfRepetitions: "",
@@ -27,6 +29,18 @@ export const AddValuesModal = () => {
 
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
 
+  const { mutate } = useMutation(addValue, {
+    onSuccess: (data) => {
+      // closeModal();
+      // setUserInputs(defaultUserInputs);
+      console.log(data);
+    },
+
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   const handleChange = (e) => {
     setUserInputs({
       ...userInputs,
@@ -38,6 +52,7 @@ export const AddValuesModal = () => {
     e.preventDefault();
     console.log(userInputs);
     // numberOfRepetitionsAnimation.start("animate");
+    mutate({ userId: 12, exerciseId: "benchPress", value: userInputs });
     e.currentTarget.blur();
   };
 
