@@ -9,7 +9,7 @@ const userApi = axios.create({
 });
 
 export const addValue = async ({ userId, exerciseId, value }) => {
-  console.log(process.env.BACKEND_URI);
+  console.log(API_URI);
   const res = await userApi.post(`/${userId}/${exerciseId}`, { value });
 
   return res.data;
