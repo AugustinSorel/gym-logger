@@ -10,6 +10,11 @@ export const whileTapScale = {
   color: theme.colors.hoverColor,
 };
 
+export const whileFocusScale = {
+  scale: 0.9,
+  color: theme.colors.hoverColor,
+};
+
 export const whileHoverButton = {
   scale: 1.1,
   color: "#000",
@@ -23,6 +28,7 @@ export const whileTapButton = {
 };
 
 export const whileFocusButton = {
+  scale: 0.95,
   color: "#000",
   backgroundColor: theme.colors.hoverColor,
 };

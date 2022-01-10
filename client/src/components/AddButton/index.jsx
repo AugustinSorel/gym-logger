@@ -1,5 +1,6 @@
 import * as AddButtonStyle from "../../styles/AddButton.styled";
 import {
+  whileFocusScale,
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
@@ -12,6 +13,7 @@ export const AddButton = () => {
     <AddButtonStyle.Button
       whileTap={whileTapScale}
       whileHover={whileHoverScale}
+      whileFocus={whileFocusScale}
       onClick={() => openModal()}
     >
       +

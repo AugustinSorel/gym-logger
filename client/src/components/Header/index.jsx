@@ -1,4 +1,5 @@
 import {
+  whileFocusScale,
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
@@ -11,6 +12,7 @@ export const Header = () => {
         to={"/"}
         whileHover={whileHoverScale}
         whileTap={whileTapScale}
+        whileFocus={whileFocusScale}
       >
         Gym Logger
       </HeaderStyles.Title>

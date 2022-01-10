@@ -4,6 +4,7 @@ import { InputShare } from "./share/input.styled";
 
 export const Container = styled(motion.button)`
   ${InputShare}
+  border: none;
   font-size: var(--font-size-medium);
   color: var(--primary);
   background-color: var(--text-color);

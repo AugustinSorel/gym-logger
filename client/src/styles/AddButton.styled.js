@@ -15,4 +15,5 @@ export const Button = styled(motion.button)`
   user-select: none;
   backdrop-filter: blur(4px);
   cursor: pointer;
+  outline: none;
 `;

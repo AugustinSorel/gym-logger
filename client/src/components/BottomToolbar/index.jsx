@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   whileFocusButton,
   whileHoverButton,
@@ -6,13 +5,14 @@ import {
 } from "../../framer-motion/whileVariants";
 import * as FooterStyled from "../../styles/BottomToolbar.styled";
 import { DropDownMenu } from "../DropDownMenu";
+import useUser from "../../store/useUser";
 
 export const BottomToolbar = () => {
-  const [isAuthenticated] = useState(false);
+  const user = useUser((state) => state.user);
 
   return (
-    <FooterStyled.Container isAuthenticated={isAuthenticated}>
-      {isAuthenticated ? (
+    <FooterStyled.Container isAuthenticated={user}>
+      {user ? (
         <DropDownMenu />
       ) : (
         <>
