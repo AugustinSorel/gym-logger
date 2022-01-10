@@ -13,7 +13,7 @@ export const Title = styled(motion(Link))`
   font-size: var(--font-size-large);
   color: inherit;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: bold;
 
   grid-column-start: 2;
 `;

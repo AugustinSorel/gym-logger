@@ -8,7 +8,7 @@ import * as FooterStyled from "../../styles/Footer.styled";
 import { DropDownMenu } from "../DropDownMenu";
 
 export const Footer = () => {
-  const [isAuthenticated] = useState(false);
+  const [isAuthenticated] = useState(true);
 
   return (
     <FooterStyled.Container isAuthenticated={isAuthenticated}>
@@ -19,7 +19,7 @@ export const Footer = () => {
           <FooterStyled.LinkContainer
             to={"/login"}
             whileHover={whileHoverButton}
-            whileTap={{ backgroundColor: "#fff", scale: 1 }}
+            whileTap={whileTapButton}
             whileFocus={whileFocusButton}
           >
             Login
