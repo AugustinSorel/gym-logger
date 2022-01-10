@@ -1,7 +1,11 @@
 import { useState } from "react";
+import {
+  whileFocusButton,
+  whileHoverButton,
+  whileTapButton,
+} from "../../framer-motion/whileVariants";
 import * as FooterStyled from "../../styles/Footer.styled";
 import { DropDownMenu } from "../DropDownMenu";
-import { PillButton } from "../PillButton";
 
 export const Footer = () => {
   const [isAuthenticated] = useState(false);
@@ -12,8 +16,22 @@ export const Footer = () => {
         <DropDownMenu />
       ) : (
         <>
-          <PillButton text="Login" />
-          <PillButton text="Sign Up" />
+          <FooterStyled.LinkContainer
+            to={"/login"}
+            whileHover={whileHoverButton}
+            whileTap={{ backgroundColor: "#fff", scale: 1 }}
+            whileFocus={whileFocusButton}
+          >
+            Login
+          </FooterStyled.LinkContainer>
+          <FooterStyled.LinkContainer
+            to={"/sign-up"}
+            whileHover={whileHoverButton}
+            whileTap={whileTapButton}
+            whileFocus={whileFocusButton}
+          >
+            Sign Up
+          </FooterStyled.LinkContainer>
         </>
       )}
     </FooterStyled.Container>
