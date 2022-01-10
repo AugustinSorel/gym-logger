@@ -1,11 +1,12 @@
+import { pageTransition } from "../../framer-motion/transition";
 import { motion } from "framer-motion";
 
 export const Signup = () => {
   return (
     <motion.main
-      initial={{ x: "100vw" }}
-      animate={{ x: 0 }}
-      exit={{ x: "100vw" }}
+      initial={pageTransition.transitionLeftToRight.initial}
+      animate={pageTransition.transitionLeftToRight.animate}
+      exit={pageTransition.transitionLeftToRight.exit}
     >
       <h1>this is the Sign Up page</h1>
     </motion.main>
