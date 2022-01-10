@@ -5,7 +5,6 @@ import { Footer } from "../../components/Footer";
 export const Home = () => {
   return (
     <>
-      <Header text={"Gym Logger"} />
       <Main />
       <Footer />
     </>

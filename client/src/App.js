@@ -6,11 +6,13 @@ import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 
 import { Routes, Route } from "react-router-dom";
+import { Header } from "./components/Header";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <Header />
 
       <Routes>
         <Route path="/" element={<Home />} />
