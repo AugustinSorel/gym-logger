@@ -19,7 +19,9 @@ export const LinkContainer = styled(motion(Link))`
   font-size: var(--font-size-medium);
   color: var(--primary);
   background-color: var(--text-color);
-  padding: 1rem 2rem;
+  padding: 1rem;
   cursor: pointer;
   text-decoration: none;
+  width: max(100px, 30%);
+  text-align: center;
 `;

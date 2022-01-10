@@ -1,7 +1,13 @@
+import { motion } from "framer-motion";
+
 export const Signup = () => {
   return (
-    <div>
-      <h1>this is the sign up page</h1>
-    </div>
+    <motion.main
+      initial={{ x: "100vw" }}
+      animate={{ x: 0 }}
+      exit={{ x: "100vw" }}
+    >
+      <h1>this is the Sign Up page</h1>
+    </motion.main>
   );
 };

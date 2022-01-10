@@ -8,7 +8,7 @@ import * as FooterStyled from "../../styles/Footer.styled";
 import { DropDownMenu } from "../DropDownMenu";
 
 export const Footer = () => {
-  const [isAuthenticated] = useState(true);
+  const [isAuthenticated] = useState(false);
 
   return (
     <FooterStyled.Container isAuthenticated={isAuthenticated}>

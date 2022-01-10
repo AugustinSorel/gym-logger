@@ -1,17 +1,17 @@
 import { Main } from "../../components/Main";
 import { Footer } from "../../components/Footer";
-import { motion } from "framer-motion";
+import { homeTransition } from "../../framer-motion/transition";
+import * as HomeStyle from "../../styles/Home.styled";
 
 export const Home = () => {
   return (
-    <motion.main
-      initial={{ x: "-100vw" }}
-      animate={{ x: 0 }}
-      exit={{ x: "-100vw" }}
-      style={{ flex: 1, display: "flex", flexDirection: "column" }}
+    <HomeStyle.Container
+      initial={homeTransition.initial}
+      animate={homeTransition.animate}
+      exit={homeTransition.exit}
     >
       <Main />
       <Footer />
-    </motion.main>
+    </HomeStyle.Container>
   );
 };
