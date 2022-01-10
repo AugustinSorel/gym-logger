@@ -58,10 +58,3 @@ export const Input = styled(motion.input)`
     margin: 0;
   }
 `;
-
-export const Button = styled(motion.button)`
-  ${InputShare}
-  color: var(--primary);
-  background-color: var(--text-color);
-  cursor: pointer;
-`;

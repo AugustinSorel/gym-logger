@@ -14,6 +14,7 @@ import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useState } from "react";
 import { useMutation } from "react-query";
 import { addValue } from "../../api/userApi";
+import { PillButton } from "../PillButton";
 
 const defaultUserInputs = {
   numberOfRepetitions: "",
@@ -105,14 +106,7 @@ export const AddValuesModal = () => {
           </AddValuesModalStyle.InputDetailsContainer>
         </AddValuesModalStyle.InputsContainer>
 
-        <AddValuesModalStyle.Button
-          whileHover={{ backgroundColor: "#fff", scale: 1.1 }}
-          whileTap={{ scale: 0.9, backgroundColor: "#fff" }}
-          whileFocus={{ backgroundColor: "#fff", scale: 1.1 }}
-          onClick={handleClick}
-        >
-          Save
-        </AddValuesModalStyle.Button>
+        <PillButton text="Save" onClick={handleClick} />
       </AddValuesModalStyle.Form>
     </AddValuesModalStyle.BackDrop>
   );

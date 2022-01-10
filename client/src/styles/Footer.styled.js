@@ -6,6 +6,7 @@ export const Container = styled.footer`
   border-top: var(--border-height) solid var(--text-color);
 
   display: flex;
-  justify-content: center;
+  justify-content: ${(props) =>
+    props.isAuthenticated ? "center" : "space-around"};
   align-items: center;
 `;
