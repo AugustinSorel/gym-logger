@@ -1,5 +1,5 @@
-import { Main } from "../../components/Main";
-import { Footer } from "../../components/Footer";
+import { BottomToolbar } from "../../components/BottomToolbar";
+import { GraphSection } from "../../components/GraphSection";
 import { homeTransition } from "../../framer-motion/transition";
 import * as HomeStyle from "../../styles/Home.styled";
 
@@ -10,8 +10,8 @@ export const Home = () => {
       animate={homeTransition.animate}
       exit={homeTransition.exit}
     >
-      <Main />
-      <Footer />
+      <GraphSection />
+      <BottomToolbar />
     </HomeStyle.Container>
   );
 };

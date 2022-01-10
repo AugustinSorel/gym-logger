@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { InputShare } from "./share/input.styled";
 
-export const Container = styled.footer`
+export const Container = styled.section`
   background-color: transparent;
   padding: 1rem;
   border-top: var(--border-height) solid var(--text-color);

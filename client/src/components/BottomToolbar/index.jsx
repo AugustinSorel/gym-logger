@@ -4,10 +4,10 @@ import {
   whileHoverButton,
   whileTapButton,
 } from "../../framer-motion/whileVariants";
-import * as FooterStyled from "../../styles/Footer.styled";
+import * as FooterStyled from "../../styles/BottomToolbar.styled";
 import { DropDownMenu } from "../DropDownMenu";
 
-export const Footer = () => {
+export const BottomToolbar = () => {
   const [isAuthenticated] = useState(false);
 
   return (

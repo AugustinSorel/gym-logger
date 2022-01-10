@@ -1,10 +1,10 @@
 import useModal from "../../store/useModal";
-import * as MainStyled from "../../styles/Main.styled";
+import * as MainStyled from "../../styles/GraphSection3.styled";
 import { AddButton } from "../AddButton";
 import { AddValuesModal } from "../AddValuesModal";
 import { AnimatePresence } from "framer-motion";
 
-export const Main = () => {
+export const GraphSection = () => {
   const isOpen = useModal((state) => state.isOpen);
   return (
     <MainStyled.Container>
