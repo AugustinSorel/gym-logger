@@ -1,19 +1,9 @@
-import {
-  whileHoverScale,
-  whileTapScale,
-} from "../../framer-motion/whileVariants";
 import * as HeaderStyles from "../../styles/Header.styled";
 
-export const Header = () => {
+export const Header = ({ text }) => {
   return (
     <HeaderStyles.Container>
-      <HeaderStyles.Title
-        to={"/"}
-        whileHover={whileHoverScale}
-        whileTap={whileTapScale}
-      >
-        Gym Logger
-      </HeaderStyles.Title>
+      <HeaderStyles.Title>{text}</HeaderStyles.Title>
     </HeaderStyles.Container>
   );
 };

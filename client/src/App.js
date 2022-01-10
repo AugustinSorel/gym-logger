@@ -1,12 +1,12 @@
 import GlobalStyle from "./styles";
 import { ThemeProvider } from "styled-components";
 import theme from "./utils/theme";
-import { Home } from "./pages/Home";
+import { Dashboard } from "./pages/Dashboard";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Header } from "./components/Header";
 import { AnimatePresence } from "framer-motion";
+import { Welcome } from "./pages/Welcome";
 
 function App() {
   const location = useLocation();
@@ -14,13 +14,13 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header />
 
       <AnimatePresence exitBeforeEnter initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<Signup />} />
+          <Route path="/welcome" element={<Welcome />} />
         </Routes>
       </AnimatePresence>
     </ThemeProvider>
