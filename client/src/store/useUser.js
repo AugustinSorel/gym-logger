@@ -1,7 +1,7 @@
 import create from "zustand";
 
 const useUser = create((set) => ({
-  user: false,
+  user: true,
   setUser: (user) => set(() => ({ user: user })),
 }));
 
