@@ -1,11 +1,9 @@
 import { Header } from "../../components/Header";
 import * as HomeStyle from "../../styles/Home.styled";
 import transition from "../../framer-motion/transition";
-import { ReactComponent as ProgressSvg } from "../../assets/progress.svg";
 import {
   whileFocusButton,
   whileHoverButton,
-  whileHoverScale,
   whileTapButton,
 } from "../../framer-motion/whileVariants";
 
