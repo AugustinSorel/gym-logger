@@ -6,12 +6,29 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
+import { useState } from "react";
+import invalidInputVariants from "../../framer-motion/invalidInputVariants";
+import { useAnimation } from "framer-motion";
+
+const defaultUserInputs = {
+  email: "",
+  password: "",
+};
 
 export const Login = () => {
+  const [userInputs, setUserInputs] = useState(defaultUserInputs);
+
+  const emailAnimation = useAnimation();
+  const passwordAnimation = useAnimation();
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
+    console.log(userInputs);
     e.currentTarget.elements[2].blur();
+  };
+
+  const handleChange = (e) => {
+    setUserInputs({ ...userInputs, [e.target.name]: e.target.value });
   };
 
   return (
@@ -23,29 +40,29 @@ export const Login = () => {
       <Header text={"Login"} />
       <LoginStyle.Form onSubmit={handleFormSubmit}>
         <LoginStyle.Input
-          name="emailInput"
+          name="email"
           type="text"
           placeholder="test@google.com"
-          // variants={invalidInputVariants}
-          // animate={numberOfRepetitionsAnimation}
+          variants={invalidInputVariants}
+          animate={emailAnimation}
           whileHover={whileHoverScale}
           whileTap={whileTapScale}
           whileFocus={whileHoverScale}
           autoComplete="no"
-          // onChange={handleChange}
+          onChange={handleChange}
         />
 
         <LoginStyle.Input
-          name="passwordInput"
+          name="password"
           placeholder="password"
           type="password"
-          // variants={invalidInputVariants}
-          // animate={numberOfRepetitionsAnimation}
+          variants={invalidInputVariants}
+          animate={passwordAnimation}
           whileHover={whileHoverScale}
           whileTap={whileTapScale}
           whileFocus={whileHoverScale}
           autoComplete="no"
-          // onChange={handleChange}
+          onChange={handleChange}
         />
         <PillButton text={"Login"} />
         <LoginStyle.BottomText>
