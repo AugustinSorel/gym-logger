@@ -9,6 +9,7 @@ import {
 import { useState } from "react";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useAnimation } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const defaultUserInputs = {
   email: "",
@@ -67,7 +68,14 @@ export const Login = () => {
         <PillButton text={"Login"} />
         <LoginStyle.BottomText>
           Dont have an account yet?{"   "}
-          <LoginStyle.LinkStyle to={"/sign-up"}>Sign up</LoginStyle.LinkStyle>
+          <LoginStyle.LinkStyle
+            to={{
+              pathname: "/sign-up",
+              state: { from: "/login" }, // or any property you like to add
+            }}
+          >
+            Sign up
+          </LoginStyle.LinkStyle>
         </LoginStyle.BottomText>
       </LoginStyle.Form>
     </LoginStyle.Container>
