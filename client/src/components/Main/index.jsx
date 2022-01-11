@@ -1,5 +1,5 @@
 import useModal from "../../store/useModal";
-import * as MainStyled from "../../styles/Main'";
+import * as MainStyled from "../../styles/Main.styled";
 import { AddButton } from "../AddButton";
 import { AddValuesModal } from "../AddValuesModal";
 import { AnimatePresence } from "framer-motion";
