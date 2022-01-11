@@ -1,13 +1,45 @@
-import { Link } from "react-router-dom";
 import { Header } from "../../components/Header";
 import * as HomeStyle from "../../styles/Home.styled";
+import transition from "../../framer-motion/transition";
+import { ReactComponent as ProgressSvg } from "../../assets/progress.svg";
+import {
+  whileFocusButton,
+  whileHoverButton,
+  whileHoverScale,
+  whileTapButton,
+} from "../../framer-motion/whileVariants";
 
 export const Welcome = () => {
   return (
-    <HomeStyle.Container>
+    <HomeStyle.Container
+      initial={transition.initial}
+      animate={transition.animate}
+      exit={transition.exit}
+    >
       <Header text="Welcome" />
-      <Link to={"/login"}>Login</Link>
-      <Link to={"/sign-up"}>Sign Up</Link>
+      <HomeStyle.ContentContainer>
+        <HomeStyle.TitlesContainer>
+          <HomeStyle.Title>Track your progress at the gym</HomeStyle.Title>
+        </HomeStyle.TitlesContainer>
+        <HomeStyle.LinksContainer>
+          <HomeStyle.LinkStyled
+            to={"/login"}
+            whileHover={whileHoverButton}
+            whileTap={whileTapButton}
+            whileFocus={whileFocusButton}
+          >
+            Login
+          </HomeStyle.LinkStyled>
+          <HomeStyle.LinkStyled
+            to={"/sign-up"}
+            whileHover={whileHoverButton}
+            whileTap={whileTapButton}
+            whileFocus={whileFocusButton}
+          >
+            Sign Up
+          </HomeStyle.LinkStyled>
+        </HomeStyle.LinksContainer>
+      </HomeStyle.ContentContainer>
     </HomeStyle.Container>
   );
 };
