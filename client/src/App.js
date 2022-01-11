@@ -6,6 +6,7 @@ import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { Header } from "./components/Header";
 
 function App() {
   const location = useLocation();
@@ -13,6 +14,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
+      <Header />
 
       <AnimatePresence exitBeforeEnter initial={false}>
         <Routes location={location} key={location.pathname}>

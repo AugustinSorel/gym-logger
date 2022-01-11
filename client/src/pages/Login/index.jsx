@@ -1,4 +1,3 @@
-import { Header } from "../../components/Header";
 import fadeTransition from "../../framer-motion/transition";
 import * as LoginStyle from "../../styles/Login.styled";
 import { PillButton } from "../../components/PillButton";
@@ -32,49 +31,47 @@ export const Login = () => {
   };
 
   return (
-    <LoginStyle.Container
+    <LoginStyle.Form
       initial={fadeTransition.initial}
       animate={fadeTransition.animate}
       exit={fadeTransition.exit}
+      onSubmit={handleFormSubmit}
     >
-      <Header />
-      <LoginStyle.Form onSubmit={handleFormSubmit}>
-        <LoginStyle.Title>Login</LoginStyle.Title>
+      <LoginStyle.Title>Login</LoginStyle.Title>
 
-        <LoginStyle.InputsContainer>
-          <LoginStyle.Input
-            name="email"
-            type="text"
-            placeholder="test@google.com"
-            variants={invalidInputVariants}
-            animate={emailAnimation}
-            whileHover={whileHoverScale}
-            whileTap={whileTapScale}
-            whileFocus={whileHoverScale}
-            autoComplete="no"
-            onChange={handleChange}
-          />
+      <LoginStyle.InputsContainer>
+        <LoginStyle.Input
+          name="email"
+          type="text"
+          placeholder="test@google.com"
+          variants={invalidInputVariants}
+          animate={emailAnimation}
+          whileHover={whileHoverScale}
+          whileTap={whileTapScale}
+          whileFocus={whileHoverScale}
+          autoComplete="no"
+          onChange={handleChange}
+        />
 
-          <LoginStyle.Input
-            name="password"
-            placeholder="password"
-            type="password"
-            variants={invalidInputVariants}
-            animate={passwordAnimation}
-            whileHover={whileHoverScale}
-            whileTap={whileTapScale}
-            whileFocus={whileHoverScale}
-            autoComplete="no"
-            onChange={handleChange}
-          />
-          <PillButton text={"Login"} />
-        </LoginStyle.InputsContainer>
+        <LoginStyle.Input
+          name="password"
+          placeholder="password"
+          type="password"
+          variants={invalidInputVariants}
+          animate={passwordAnimation}
+          whileHover={whileHoverScale}
+          whileTap={whileTapScale}
+          whileFocus={whileHoverScale}
+          autoComplete="no"
+          onChange={handleChange}
+        />
+        <PillButton text={"Login"} />
+      </LoginStyle.InputsContainer>
 
-        <LoginStyle.BottomText>
-          Dont have an account yet?{"   "}
-          <LoginStyle.LinkStyle to="/sign-up">Sign up</LoginStyle.LinkStyle>
-        </LoginStyle.BottomText>
-      </LoginStyle.Form>
-    </LoginStyle.Container>
+      <LoginStyle.BottomText>
+        Dont have an account yet?{"   "}
+        <LoginStyle.LinkStyle to="/sign-up">Sign up</LoginStyle.LinkStyle>
+      </LoginStyle.BottomText>
+    </LoginStyle.Form>
   );
 };

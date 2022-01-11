@@ -3,14 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { InputShare } from "./share/input.styled";
 
-export const Container = styled(motion.div)`
-  flex: 1;
-
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Form = styled.form`
+export const Form = styled(motion.form)`
   flex: 1;
   display: flex;
   align-items: center;
