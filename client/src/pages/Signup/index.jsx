@@ -39,49 +39,54 @@ export const Signup = () => {
       animate={fadeTransition.animate}
       exit={fadeTransition.exit}
     >
-      <Header text={"Sign Up"} />
+      <Header />
 
       <SignupStyled.Form onSubmit={handleFormSubmit}>
-        <SignupStyled.Input
-          name="name"
-          placeholder="name"
-          type="text"
-          variants={invalidInputVariants}
-          animate={nameAnimation}
-          whileHover={whileHoverScale}
-          whileTap={whileTapScale}
-          whileFocus={whileHoverScale}
-          autoComplete="no"
-          onChange={handleChange}
-        />
+        <SignupStyled.Title>Sign Up</SignupStyled.Title>
 
-        <SignupStyled.Input
-          name="email"
-          type="text"
-          placeholder="test@google.com"
-          variants={invalidInputVariants}
-          animate={emailAnimation}
-          whileHover={whileHoverScale}
-          whileTap={whileTapScale}
-          whileFocus={whileHoverScale}
-          autoComplete="no"
-          onChange={handleChange}
-        />
+        <SignupStyled.InputsContainer>
+          <SignupStyled.Input
+            name="name"
+            placeholder="name"
+            type="text"
+            variants={invalidInputVariants}
+            animate={nameAnimation}
+            whileHover={whileHoverScale}
+            whileTap={whileTapScale}
+            whileFocus={whileHoverScale}
+            autoComplete="no"
+            onChange={handleChange}
+          />
 
-        <SignupStyled.Input
-          name="password"
-          placeholder="password"
-          type="password"
-          variants={invalidInputVariants}
-          animate={passwordAnimation}
-          whileHover={whileHoverScale}
-          whileTap={whileTapScale}
-          whileFocus={whileHoverScale}
-          autoComplete="no"
-          onChange={handleChange}
-        />
+          <SignupStyled.Input
+            name="email"
+            type="text"
+            placeholder="test@google.com"
+            variants={invalidInputVariants}
+            animate={emailAnimation}
+            whileHover={whileHoverScale}
+            whileTap={whileTapScale}
+            whileFocus={whileHoverScale}
+            autoComplete="no"
+            onChange={handleChange}
+          />
 
-        <PillButton text={"Sign Up"} />
+          <SignupStyled.Input
+            name="password"
+            placeholder="password"
+            type="password"
+            variants={invalidInputVariants}
+            animate={passwordAnimation}
+            whileHover={whileHoverScale}
+            whileTap={whileTapScale}
+            whileFocus={whileHoverScale}
+            autoComplete="no"
+            onChange={handleChange}
+          />
+
+          <PillButton text={"Sign Up"} />
+        </SignupStyled.InputsContainer>
+
         <SignupStyled.BottomText>
           All ready have an account?{"   "}
           <SignupStyled.LinkStyle to={"/login"}>Login</SignupStyled.LinkStyle>
