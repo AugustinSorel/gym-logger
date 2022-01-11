@@ -1,6 +1,5 @@
 import * as HeaderStyles from "../../styles/Header.styled";
 import {
-  whileFocusScale,
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";

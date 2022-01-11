@@ -37,44 +37,42 @@ export const Login = () => {
       animate={fadeTransition.animate}
       exit={fadeTransition.exit}
     >
-      <Header text={"Login"} />
+      <Header />
       <LoginStyle.Form onSubmit={handleFormSubmit}>
-        <LoginStyle.Input
-          name="email"
-          type="text"
-          placeholder="test@google.com"
-          variants={invalidInputVariants}
-          animate={emailAnimation}
-          whileHover={whileHoverScale}
-          whileTap={whileTapScale}
-          whileFocus={whileHoverScale}
-          autoComplete="no"
-          onChange={handleChange}
-        />
+        <LoginStyle.Title>Login</LoginStyle.Title>
 
-        <LoginStyle.Input
-          name="password"
-          placeholder="password"
-          type="password"
-          variants={invalidInputVariants}
-          animate={passwordAnimation}
-          whileHover={whileHoverScale}
-          whileTap={whileTapScale}
-          whileFocus={whileHoverScale}
-          autoComplete="no"
-          onChange={handleChange}
-        />
-        <PillButton text={"Login"} />
+        <LoginStyle.InputsContainer>
+          <LoginStyle.Input
+            name="email"
+            type="text"
+            placeholder="test@google.com"
+            variants={invalidInputVariants}
+            animate={emailAnimation}
+            whileHover={whileHoverScale}
+            whileTap={whileTapScale}
+            whileFocus={whileHoverScale}
+            autoComplete="no"
+            onChange={handleChange}
+          />
+
+          <LoginStyle.Input
+            name="password"
+            placeholder="password"
+            type="password"
+            variants={invalidInputVariants}
+            animate={passwordAnimation}
+            whileHover={whileHoverScale}
+            whileTap={whileTapScale}
+            whileFocus={whileHoverScale}
+            autoComplete="no"
+            onChange={handleChange}
+          />
+          <PillButton text={"Login"} />
+        </LoginStyle.InputsContainer>
+
         <LoginStyle.BottomText>
           Dont have an account yet?{"   "}
-          <LoginStyle.LinkStyle
-            to={{
-              pathname: "/sign-up",
-              state: { from: "/login" }, // or any property you like to add
-            }}
-          >
-            Sign up
-          </LoginStyle.LinkStyle>
+          <LoginStyle.LinkStyle to="/sign-up">Sign up</LoginStyle.LinkStyle>
         </LoginStyle.BottomText>
       </LoginStyle.Form>
     </LoginStyle.Container>

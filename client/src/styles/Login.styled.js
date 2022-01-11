@@ -3,17 +3,32 @@ import styled from "styled-components";
 import { InputShare } from "./share/input.styled";
 import { Link } from "react-router-dom";
 
-export const Container = styled(motion.main)`
+export const Container = styled(motion.div)`
   flex: 1;
+
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Form = styled.form`
-  height: 100%;
-  display: grid;
-  place-content: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
   gap: 1rem;
   flex-direction: column;
   padding: 1rem;
+`;
+
+export const InputsContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+`;
+
+export const Title = styled.h2`
+  font-size: var(--font-size-large);
+  text-align: center;
 `;
 
 export const Input = styled(motion.input)`
