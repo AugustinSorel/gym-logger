@@ -1,11 +1,7 @@
 import { Header } from "../../components/Header";
 import * as HomeStyle from "../../styles/Home.styled";
 import transition from "../../framer-motion/transition";
-import {
-  whileFocusButton,
-  whileHoverButton,
-  whileTapButton,
-} from "../../framer-motion/whileVariants";
+import { LinkButton } from "../../components/LinkButton";
 
 export const Welcome = () => {
   return (
@@ -20,22 +16,8 @@ export const Welcome = () => {
           <HomeStyle.Title>Track your progress at the gym</HomeStyle.Title>
         </HomeStyle.TitlesContainer>
         <HomeStyle.LinksContainer>
-          <HomeStyle.LinkStyled
-            to={"/login"}
-            whileHover={whileHoverButton}
-            whileTap={whileTapButton}
-            whileFocus={whileFocusButton}
-          >
-            Login
-          </HomeStyle.LinkStyled>
-          <HomeStyle.LinkStyled
-            to={"/sign-up"}
-            whileHover={whileHoverButton}
-            whileTap={whileTapButton}
-            whileFocus={whileFocusButton}
-          >
-            Sign Up
-          </HomeStyle.LinkStyled>
+          <LinkButton text={"Login"} to={"/login"} />
+          <LinkButton text={"Sign Up"} to={"/sign-up"} />
         </HomeStyle.LinksContainer>
       </HomeStyle.ContentContainer>
     </HomeStyle.Container>
