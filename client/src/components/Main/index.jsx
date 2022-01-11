@@ -4,6 +4,7 @@ import { AddButton } from "../AddButton";
 import { AddValuesModal } from "../AddValuesModal";
 import { AnimatePresence } from "framer-motion";
 import useUser from "../../store/useUser";
+import { ReactComponent as WarningSvg } from "../../assets/warning.svg";
 
 export const Main = () => {
   const isOpen = useModal((state) => state.isOpen);
@@ -22,7 +23,12 @@ export const Main = () => {
   };
 
   const NotAuthenticatedSection = () => {
-    return <h1>Not logged in</h1>;
+    return (
+      <>
+        {/* <WarningSvg /> */}
+        <h1>Not logged in</h1>
+      </>
+    );
   };
 
   return (
