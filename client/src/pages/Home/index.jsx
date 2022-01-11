@@ -4,7 +4,7 @@ import { Header } from "../../components/Header";
 import fadeTransition from "../../framer-motion/transition";
 import * as HomeStyle from "../../styles/Dashboard.styled";
 
-export const Dashboard = () => {
+export const Home = () => {
   return (
     <HomeStyle.Container
       initial={fadeTransition.initial}
