@@ -11,15 +11,7 @@ export const Main = () => {
   const user = useUser((state) => state.user);
 
   const GraphSection = () => {
-    return (
-      <>
-        <h1>This is the main</h1>
-        <AddButton />
-        <AnimatePresence exitBeforeEnter>
-          {isOpen && <AddValuesModal />}
-        </AnimatePresence>
-      </>
-    );
+    return <div></div>;
   };
 
   const NotAuthenticatedSection = () => {
@@ -31,9 +23,20 @@ export const Main = () => {
     );
   };
 
+  // bug here, modal doesn't close properly on exit
   return (
     <MainStyled.Container>
-      {user ? <GraphSection /> : <NotAuthenticatedSection />}
+      {user ? (
+        <>
+          <h1>This is the main</h1>
+          <AddButton />
+          <AnimatePresence exitBeforeEnter>
+            {isOpen && <AddValuesModal />}
+          </AnimatePresence>
+        </>
+      ) : (
+        <NotAuthenticatedSection />
+      )}
     </MainStyled.Container>
   );
 };
