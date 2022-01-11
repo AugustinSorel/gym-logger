@@ -48,7 +48,10 @@ export const Login = () => {
           // onChange={handleChange}
         />
         <PillButton text={"Login"} />
-        <LoginStyle.LinkStyle to={"/sign-up"}>hello</LoginStyle.LinkStyle>
+        <LoginStyle.BottomText>
+          Dont have an account yet?{"   "}
+          <LoginStyle.LinkStyle to={"/sign-up"}>Sign up</LoginStyle.LinkStyle>
+        </LoginStyle.BottomText>
       </LoginStyle.Form>
     </LoginStyle.Container>
   );

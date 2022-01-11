@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
     :root {
         --primary: ${({ theme }) => theme.colors.primary};
         --text-color: ${({ theme }) => theme.colors.textColor};
+        --hover-color: ${({ theme }) => theme.colors.hoverColor};
         
         --font-size-large: ${({ theme }) => theme.fontSizes.large};
         --font-size-medium: ${({ theme }) => theme.fontSizes.medium};
