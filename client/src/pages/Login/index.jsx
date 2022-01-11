@@ -8,6 +8,7 @@ import {
 import { useState } from "react";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useAnimation } from "framer-motion";
+import useUser from "../../store/useUser";
 
 const defaultUserInputs = {
   email: "",
@@ -17,6 +18,8 @@ const defaultUserInputs = {
 export const Login = () => {
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
 
+  const setUser = useUser((state) => state.setUser);
+
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
 
@@ -24,6 +27,7 @@ export const Login = () => {
     e.preventDefault();
     console.log(userInputs);
     e.currentTarget.elements[2].blur();
+    setUser(true);
   };
 
   const handleChange = (e) => {
