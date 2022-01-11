@@ -9,7 +9,6 @@ import {
 import { useState } from "react";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useAnimation } from "framer-motion";
-import { useLocation } from "react-router-dom";
 
 const defaultUserInputs = {
   email: "",
