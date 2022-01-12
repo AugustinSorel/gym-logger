@@ -5,13 +5,11 @@ import { AnimatePresence } from "framer-motion";
 import useUser from "../../store/useUser";
 import { Warning } from "../Warning";
 import { AccountIcon } from "../AccountIcon";
-import { RoundedButton } from "../RoundedButton";
 import { AddValueButton } from "../AddValueButton";
 
 export const Main = () => {
   const isOpen = useModal((state) => state.isOpen);
   const userToken = useUser((state) => state.userToken);
-  const openModal = useModal((state) => state.openModal);
 
   if (userToken) {
     return (
