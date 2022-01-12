@@ -3,11 +3,11 @@ import useModal from "../../store/useModal";
 import { RoundedButton } from "../RoundedButton";
 
 export const AddValueButton = () => {
-  const openModal = useModal((state) => state.openModal);
+  const openAddValuesModal = useModal((state) => state.openAddValuesModal);
 
   return (
     <AddValueButtonStyle.Container>
-      <RoundedButton text={"+"} onClick={openModal} />
+      <RoundedButton text={"+"} onClick={openAddValuesModal} />
     </AddValueButtonStyle.Container>
   );
 };

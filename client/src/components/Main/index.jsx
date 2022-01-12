@@ -6,9 +6,11 @@ import useUser from "../../store/useUser";
 import { Warning } from "../Warning";
 import { AccountIcon } from "../AccountIcon";
 import { AddValueButton } from "../AddValueButton";
+import { AccountModal } from "../AccountModal";
 
 export const Main = () => {
-  const isOpen = useModal((state) => state.isOpen);
+  const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
+  const isAccountModalOpen = useModal((state) => state.isAccountModalOpen);
   const userToken = useUser((state) => state.userToken);
 
   if (userToken) {
@@ -18,7 +20,8 @@ export const Main = () => {
         <AccountIcon />
         <AddValueButton />
         <AnimatePresence exitBeforeEnter>
-          {isOpen && <AddValuesModal />}
+          {isAddValuesModalOpen && <AddValuesModal />}
+          {isAccountModalOpen && <AccountModal />}
         </AnimatePresence>
       </MainStyled.Container>
     );

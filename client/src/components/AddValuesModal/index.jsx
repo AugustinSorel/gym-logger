@@ -1,7 +1,4 @@
-import {
-  backdropVariants,
-  dropInVariants,
-} from "../../framer-motion/backDropVariants";
+import { dropInVariants } from "../../framer-motion/backDropVariants";
 import {
   whileHoverScale,
   whileTapScale,
@@ -23,7 +20,7 @@ const defaultUserInputs = {
 };
 
 export const AddValuesModal = () => {
-  const closeModal = useModal((state) => state.closeModal);
+  const closeAddValuesModal = useModal((state) => state.closeAddValuesModal);
   const exercise = useExercise((state) => state.exercise);
 
   const numberOfRepetitionsAnimation = useAnimation();
@@ -58,7 +55,7 @@ export const AddValuesModal = () => {
   };
 
   return (
-    <BackDrop closeModal={closeModal}>
+    <BackDrop closeModal={closeAddValuesModal}>
       <AddValuesModalStyle.Form
         variants={dropInVariants}
         onClick={(e) => e.stopPropagation()}
