@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useMutation } from "react-query";
 import { getUserById } from "../../api/userApi";
 import useModal from "../../store/useModal";
@@ -10,6 +11,7 @@ import { RoundedButton } from "../RoundedButton";
 export const AccountIcon = () => {
   const user = useUser((state) => state.user);
   const setUser = useUser((state) => state.setUser);
+  const setUserToken = useUser((state) => state.setUserToken);
   const openAccountModal = useModal((state) => state.openAccountModal);
 
   const { mutate } = useMutation(getUserById, {
@@ -18,14 +20,17 @@ export const AccountIcon = () => {
     },
     onError: (error) => {
       console.log(error);
+      setUserToken(null);
     },
   });
 
-  if (!user) {
-    const token = loadCookie("jwt");
-    const { id } = verifyToken(token);
-    mutate(id);
-  }
+  useEffect(() => {
+    if (!user) {
+      const token = loadCookie("jwt");
+      const { id } = verifyToken(token);
+      mutate(id);
+    }
+  }, [user, mutate]);
 
   return (
     <AccountIconStyle.Container>

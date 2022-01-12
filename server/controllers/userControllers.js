@@ -30,6 +30,11 @@ export const getUserById = async (req, res) => {
   try {
     const { userId } = req.params;
     const user = await UserModel.findById(userId);
+
+    if (!user) {
+      throw "user not found";
+    }
+
     console.log("USER FOUND", user);
     res.status(200).json(user);
   } catch (error) {

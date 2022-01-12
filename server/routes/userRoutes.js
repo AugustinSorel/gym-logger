@@ -8,6 +8,7 @@ import {
 import checkEmail from "../middlewares/userMiddlewares/checkEmail.js";
 import checkName from "../middlewares/userMiddlewares/checkName.js";
 import checkPassword from "../middlewares/userMiddlewares/checkPassword.js";
+import { checkToken } from "../middlewares/userMiddlewares/checkToken.js";
 import checkValidEmailAndPassword from "../middlewares/userMiddlewares/checkValidEmailAndPassword.js";
 
 const Router = express.Router();
