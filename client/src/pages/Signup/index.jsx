@@ -38,6 +38,7 @@ export const Signup = () => {
     onSuccess: (userToken) => {
       setUserToken(userToken);
       navigate("/");
+      setUserInputs(defaultUserInputs);
     },
 
     onError: (error) => {
