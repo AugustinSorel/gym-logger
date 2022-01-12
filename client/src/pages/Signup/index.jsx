@@ -8,6 +8,8 @@ import {
 } from "../../framer-motion/whileVariants";
 import { useAnimation } from "framer-motion";
 import { PillButton } from "../../components/PillButton";
+import { useMutation } from "react-query";
+import { userSignUp } from "../../api/userApi";
 
 const defaultUserInputs = {
   name: "",
@@ -18,13 +20,23 @@ const defaultUserInputs = {
 export const Signup = () => {
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
 
+  const { mutate } = useMutation(userSignUp, {
+    onSuccess: (data) => {
+      console.log(data);
+    },
+
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   const nameAnimation = useAnimation();
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(userInputs);
+    mutate(userInputs);
     e.currentTarget.elements[2].blur();
   };
 
