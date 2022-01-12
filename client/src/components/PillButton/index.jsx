@@ -1,5 +1,4 @@
 import {
-  whileFocusButton,
   whileHoverButton,
   whileTapButton,
 } from "../../framer-motion/whileVariants";
@@ -10,7 +9,6 @@ export const PillButton = ({ text, onClick }) => {
     <ButtonStyle.Container
       whileHover={whileHoverButton}
       whileTap={whileTapButton}
-      whileFocus={whileFocusButton}
       onClick={onClick}
     >
       {text}

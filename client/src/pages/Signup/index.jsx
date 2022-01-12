@@ -26,7 +26,7 @@ export const Signup = () => {
   const passwordAnimation = useAnimation();
   const navigate = useNavigate();
 
-  const { mutate: signUpMutate } = useMutation(userSignUp, {
+  const { mutate: signUpMutate, isLoading } = useMutation(userSignUp, {
     onSuccess: (data) => {
       console.log(data);
       navigate("/");
@@ -107,7 +107,7 @@ export const Signup = () => {
           onChange={handleChange}
         />
 
-        <PillButton text={"Sign Up"} />
+        <PillButton text={isLoading ? "Loading..." : "Sign Up"} />
       </SignupStyled.InputsContainer>
 
       <SignupStyled.BottomText>
