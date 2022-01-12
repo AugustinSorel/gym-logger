@@ -10,11 +10,6 @@ export const Main = () => {
   const isOpen = useModal((state) => state.isOpen);
   const user = useUser((state) => state.user);
 
-  const GraphSection = () => {
-    return <div></div>;
-  };
-
-  // bug here, modal doesn't close properly on exit
   if (user) {
     return (
       <MainStyled.Container>

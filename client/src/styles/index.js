@@ -46,6 +46,10 @@ const GlobalStyle = createGlobalStyle`
         background-color: var(--text-color);
         color: var(--primary);
     }
+
+    ::-ms-reveal {
+        filter: invert(100%);
+    }
 `;
 
 export default GlobalStyle;
