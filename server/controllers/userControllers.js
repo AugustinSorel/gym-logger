@@ -5,6 +5,7 @@ export const userSignUp = async (req, res) => {
     // const { name, email, password } = req.body;
     // const user = await UserModel.create({ name, email, password });
     // console.log(user);
+    console.log("USER STORED");
     res.status(200).json({});
   } catch (error) {
     console.log("ERROR in userSignUp:", error);
