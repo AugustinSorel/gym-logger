@@ -8,9 +8,9 @@ import { Warning } from "../Warning";
 
 export const Main = () => {
   const isOpen = useModal((state) => state.isOpen);
-  const user = useUser((state) => state.user);
+  const userToken = useUser((state) => state.userToken);
 
-  if (user) {
+  if (userToken) {
     return (
       <MainStyled.Container>
         <h1>This is the main</h1>

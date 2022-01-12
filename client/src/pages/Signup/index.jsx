@@ -28,16 +28,16 @@ export const Signup = () => {
   const passwordAnimation = useAnimation();
 
   const navigate = useNavigate();
-  const setUser = useUser((state) => state.setUser);
+  const setUserToken = useUser((state) => state.setUserToken);
 
   const {
     mutate: signUpMutate,
     isLoading,
     isError,
   } = useMutation(userSignUp, {
-    onSuccess: (user) => {
-      setUser(user);
-      // navigate("/");
+    onSuccess: (userToken) => {
+      setUserToken(userToken);
+      navigate("/");
     },
 
     onError: (error) => {

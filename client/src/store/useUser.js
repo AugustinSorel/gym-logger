@@ -3,10 +3,10 @@ import loadCookie from "../utils/loadCookie";
 import storeCookie from "../utils/storeCookie";
 
 const useUser = create((set) => ({
-  user: loadCookie("jwt"),
-  setUser: (user) => {
-    set(() => ({ user: user }));
-    storeCookie("jwt", user);
+  userToken: loadCookie("jwt"),
+  setUserToken: (userToken) => {
+    set(() => ({ userToken: userToken }));
+    storeCookie("jwt", userToken);
   },
 }));
 

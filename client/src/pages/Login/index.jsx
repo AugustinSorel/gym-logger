@@ -18,7 +18,7 @@ const defaultUserInputs = {
 export const Login = () => {
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
 
-  const setUser = useUser((state) => state.setUser);
+  const setUserToken = useUser((state) => state.setUserToken);
 
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
@@ -27,7 +27,7 @@ export const Login = () => {
     e.preventDefault();
     console.log(userInputs);
     e.currentTarget.elements[2].blur();
-    setUser(true);
+    setUserToken(true);
   };
 
   const handleChange = (e) => {

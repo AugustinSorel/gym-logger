@@ -4,7 +4,7 @@ import { DropDownMenu } from "../DropDownMenu";
 import { LinkButton } from "../LinkButton";
 
 export const BottomToolbar = () => {
-  const user = useUser((state) => state.user);
+  const userToken = useUser((state) => state.userToken);
 
   const AuthenticationButtons = () => {
     return (
@@ -17,7 +17,7 @@ export const BottomToolbar = () => {
 
   return (
     <FooterStyled.Container>
-      {user ? <DropDownMenu /> : <AuthenticationButtons />}
+      {userToken ? <DropDownMenu /> : <AuthenticationButtons />}
     </FooterStyled.Container>
   );
 };
