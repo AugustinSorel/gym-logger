@@ -71,7 +71,7 @@ export const Signup = () => {
     }
 
     if (isError) {
-      return errorMessage;
+      return errorMessage || "Sign Up";
     }
 
     return "Sign Up";
