@@ -2,10 +2,10 @@ import UserModel from "../models/UserModel.js";
 
 export const userSignUp = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
-    const user = await UserModel.create({ name, email, password });
-    console.log(user);
-    res.status(200).json(user);
+    // const { name, email, password } = req.body;
+    // const user = await UserModel.create({ name, email, password });
+    // console.log(user);
+    res.status(200).json({});
   } catch (error) {
     console.log("ERROR in userSignUp:", error);
     res.sendStatus(400);
