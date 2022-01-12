@@ -28,6 +28,7 @@ export const Login = () => {
   const passwordAnimation = useAnimation();
 
   const setUserToken = useUser((state) => state.setUserToken);
+  const setUser = useUser((state) => state.setUser);
 
   const {
     mutate: loginMutate,
@@ -35,8 +36,9 @@ export const Login = () => {
     isError,
   } = useMutation(userLogin, {
     onSuccess: ({ token, user }) => {
-      console.log(token);
       setUserToken(token);
+      setUser(user);
+
       navigate("/");
       setUserInputs(defaultUserInputs);
     },

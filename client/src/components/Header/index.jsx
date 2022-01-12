@@ -3,7 +3,6 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
-import { AccountIcon } from "../AccountIcon";
 
 export const Header = () => {
   return (
@@ -15,7 +14,6 @@ export const Header = () => {
       >
         Gym Logger
       </HeaderStyles.Title>
-      <AccountIcon />
     </HeaderStyles.Container>
   );
 };
