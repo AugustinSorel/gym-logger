@@ -5,7 +5,9 @@ import { RoundedButton } from "../RoundedButton";
 export const AccountIcon = () => {
   const user = useUser((state) => state.user);
 
-  //if (!user) return null;
+  if (!user) {
+    console.log("FETCH THE USER");
+  }
 
   return (
     <AccountIconStyle.Container>

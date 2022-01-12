@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Button = styled(motion.button)`
-  font-weight: 100;
   height: 75px;
   width: 75px;
   font-size: var(--font-size-large);

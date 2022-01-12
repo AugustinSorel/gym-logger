@@ -8,7 +8,7 @@ export const Container = styled.main`
   align-items: center;
 
   & > svg {
-    width: max(300px, 20vw);
+    width: 200px;
     fill: var(--text-color);
   }
 `;
