@@ -4,7 +4,7 @@ import { AddButton } from "../AddButton";
 import { AddValuesModal } from "../AddValuesModal";
 import { AnimatePresence } from "framer-motion";
 import useUser from "../../store/useUser";
-import { ReactComponent as WarningSvg } from "../../assets/warning.svg";
+import { Warning } from "../Warning";
 
 export const Main = () => {
   const isOpen = useModal((state) => state.isOpen);
@@ -14,29 +14,18 @@ export const Main = () => {
     return <div></div>;
   };
 
-  const NotAuthenticatedSection = () => {
-    return (
-      <>
-        {/* <WarningSvg /> */}
-        <h1>Not logged in</h1>
-      </>
-    );
-  };
-
   // bug here, modal doesn't close properly on exit
-  return (
-    <MainStyled.Container>
-      {user ? (
-        <>
-          <h1>This is the main</h1>
-          <AddButton />
-          <AnimatePresence exitBeforeEnter>
-            {isOpen && <AddValuesModal />}
-          </AnimatePresence>
-        </>
-      ) : (
-        <NotAuthenticatedSection />
-      )}
-    </MainStyled.Container>
-  );
+  if (user) {
+    return (
+      <MainStyled.Container>
+        <h1>This is the main</h1>
+        <AddButton />
+        <AnimatePresence exitBeforeEnter>
+          {isOpen && <AddValuesModal />}
+        </AnimatePresence>
+      </MainStyled.Container>
+    );
+  }
+
+  return <Warning text={"Your session has expired"} />;
 };
