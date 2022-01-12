@@ -6,9 +6,17 @@ export const Container = styled.div`
   width: 75px;
   height: 75px;
   margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  @media (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-  }
+  position: absolute;
+  top: 20px;
+  right: 20px;
+`;
+
+export const Title = styled.h2`
+  font-size: var(--font-size-large);
+  font-weight: 200;
+  user-select: none;
 `;

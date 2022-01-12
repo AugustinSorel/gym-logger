@@ -4,7 +4,11 @@ import * as AccountIconStyle from "../../styles/AccountIcon.styled";
 export const AccountIcon = () => {
   const user = useUser((state) => state.user);
 
-  // if (!user) return null;
+  //if (!user) return null;
 
-  return <AccountIconStyle.Container></AccountIconStyle.Container>;
+  return (
+    <AccountIconStyle.Container>
+      <AccountIconStyle.Title>A</AccountIconStyle.Title>
+    </AccountIconStyle.Container>
+  );
 };

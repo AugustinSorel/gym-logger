@@ -5,6 +5,7 @@ import { AddValuesModal } from "../AddValuesModal";
 import { AnimatePresence } from "framer-motion";
 import useUser from "../../store/useUser";
 import { Warning } from "../Warning";
+import { AccountIcon } from "../AccountIcon";
 
 export const Main = () => {
   const isOpen = useModal((state) => state.isOpen);
@@ -15,6 +16,7 @@ export const Main = () => {
       <MainStyled.Container>
         <h1>This is the main</h1>
         <AddButton />
+        <AccountIcon />
         <AnimatePresence exitBeforeEnter>
           {isOpen && <AddValuesModal />}
         </AnimatePresence>
