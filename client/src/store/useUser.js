@@ -15,6 +15,9 @@ const useUser = create((set) => ({
     set(() => ({ userToken: userToken }));
     storeCookie("jwt", userToken);
   },
+
+  user: null,
+  setUser: (user) => set(() => ({ user: user })),
 }));
 
 export default useUser;

@@ -35,8 +35,8 @@ export const Signup = () => {
     isLoading,
     isError,
   } = useMutation(userSignUp, {
-    onSuccess: (userToken) => {
-      setUserToken(userToken);
+    onSuccess: ({ token, user }) => {
+      setUserToken(token);
       navigate("/");
       setUserInputs(defaultUserInputs);
     },
