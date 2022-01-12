@@ -8,12 +8,12 @@ export const Container = styled.main`
   align-items: center;
 
   & > svg {
-    height: 50%;
-    width: 50%;
+    width: max(300px, 20vw);
     fill: var(--text-color);
   }
 `;
 
 export const Title = styled.h2`
   font-size: var(--font-size-large);
+  text-align: center;
 `;

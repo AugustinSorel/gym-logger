@@ -25,6 +25,7 @@ export const Signup = () => {
   const nameAnimation = useAnimation();
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
+
   const navigate = useNavigate();
 
   const {
