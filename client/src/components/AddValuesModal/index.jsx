@@ -15,6 +15,7 @@ import { useState } from "react";
 import { useMutation } from "react-query";
 import { addValue } from "../../api/userApi";
 import { PillButton } from "../PillButton";
+import { BackDrop } from "../BackDrop";
 
 const defaultUserInputs = {
   numberOfRepetitions: "",
@@ -57,13 +58,7 @@ export const AddValuesModal = () => {
   };
 
   return (
-    <AddValuesModalStyle.BackDrop
-      onClick={() => closeModal()}
-      variants={backdropVariants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-    >
+    <BackDrop closeModal={closeModal}>
       <AddValuesModalStyle.Form
         variants={dropInVariants}
         onClick={(e) => e.stopPropagation()}
@@ -108,6 +103,6 @@ export const AddValuesModal = () => {
 
         <PillButton text="Save" onClick={handleClick} />
       </AddValuesModalStyle.Form>
-    </AddValuesModalStyle.BackDrop>
+    </BackDrop>
   );
 };
