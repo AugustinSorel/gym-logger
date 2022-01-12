@@ -2,7 +2,12 @@ import jwt_decode from "jwt-decode";
 
 const verifyToken = (token) => {
   try {
-    return jwt_decode(token);
+    const decoded = jwt_decode(token);
+    if (decoded.hasOwnProperty("id")) {
+      return decoded;
+    }
+
+    return null;
   } catch (error) {
     return null;
   }

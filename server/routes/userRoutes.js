@@ -1,6 +1,7 @@
 import express from "express";
 import {
   addValue,
+  getUserById,
   userLogin,
   userSignUp,
 } from "../controllers/userControllers.js";
@@ -13,6 +14,9 @@ const Router = express.Router();
 
 Router.post("/sign-up", checkName, checkEmail, checkPassword, userSignUp);
 Router.post("/login", checkValidEmailAndPassword, userLogin);
+
+Router.get("/:userId", getUserById);
+
 Router.post("/:userId/:exerciseId", addValue);
 
 export default Router;

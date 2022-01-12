@@ -13,4 +13,5 @@ export const Button = styled(motion.button)`
   backdrop-filter: blur(4px);
   cursor: pointer;
   outline: none;
+  text-transform: capitalize;
 `;
