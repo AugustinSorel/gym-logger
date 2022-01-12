@@ -9,6 +9,9 @@ import { useState } from "react";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useAnimation } from "framer-motion";
 import useUser from "../../store/useUser";
+import { useMutation } from "react-query";
+import { userLogin } from "../../api/userApi";
+import { useNavigate } from "react-router-dom";
 
 const defaultUserInputs = {
   email: "",
@@ -17,21 +20,59 @@ const defaultUserInputs = {
 
 export const Login = () => {
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const setUserToken = useUser((state) => state.setUserToken);
+  const navigate = useNavigate();
 
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
 
+  const setUserToken = useUser((state) => state.setUserToken);
+
+  const {
+    mutate: loginMutate,
+    isLoading,
+    isError,
+  } = useMutation(userLogin, {
+    onSuccess: (userToken) => {
+      setUserToken(userToken);
+      navigate("/");
+      setUserInputs(defaultUserInputs);
+    },
+    onError: (error) => {
+      console.log(error.response.data);
+      setErrorMessage(error.response.data.error);
+
+      if (error.response.data.errorField === "email") {
+        emailAnimation.start("animate");
+      }
+
+      if (error.response.data.errorField === "password") {
+        passwordAnimation.start("animate");
+      }
+    },
+  });
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(userInputs);
+    loginMutate(userInputs);
     e.currentTarget.elements[2].blur();
-    setUserToken(true);
   };
 
   const handleChange = (e) => {
     setUserInputs({ ...userInputs, [e.target.name]: e.target.value });
+  };
+
+  const getText = () => {
+    if (isLoading) {
+      return "Loading...";
+    }
+
+    if (isError) {
+      return errorMessage || "Login";
+    }
+
+    return "Login";
   };
 
   return (
@@ -69,7 +110,7 @@ export const Login = () => {
           autoComplete="no"
           onChange={handleChange}
         />
-        <PillButton text={"Login"} />
+        <PillButton text={getText()} />
       </LoginStyle.InputsContainer>
 
       <LoginStyle.BottomText>

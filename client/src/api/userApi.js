@@ -12,8 +12,13 @@ export const userSignUp = async ({ name, email, password }) => {
   return response.data;
 };
 
+export const userLogin = async ({ email, password }) => {
+  const response = await userApi.post("/login", { email, password });
+
+  return response.data;
+};
+
 export const addValue = async ({ userId, exerciseId, value }) => {
-  console.log(API_URI);
   const res = await userApi.post(`/${userId}/${exerciseId}`, { value });
 
   return res.data;
