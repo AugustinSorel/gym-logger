@@ -1,10 +1,14 @@
 import UserModel from "../models/UserModel.js";
+import jwt from "jsonwebtoken";
 
 export const userSignUp = async (req, res) => {
   try {
     const { name, email, password } = req.body;
     const user = await UserModel.create({ name, email, password });
-    res.status(200).json(user);
+
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+
+    res.status(200).json(token);
   } catch (error) {
     console.log("ERROR in userSignUp:", error);
     res.sendStatus(400);

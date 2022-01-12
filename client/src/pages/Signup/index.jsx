@@ -11,6 +11,7 @@ import { PillButton } from "../../components/PillButton";
 import { useMutation } from "react-query";
 import { userSignUp } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
+import useUser from "../../store/useUser";
 
 const defaultUserInputs = {
   name: "",
@@ -27,15 +28,16 @@ export const Signup = () => {
   const passwordAnimation = useAnimation();
 
   const navigate = useNavigate();
+  const setUser = useUser((state) => state.setUser);
 
   const {
     mutate: signUpMutate,
     isLoading,
     isError,
   } = useMutation(userSignUp, {
-    onSuccess: (data) => {
-      console.log(data);
-      navigate("/");
+    onSuccess: (user) => {
+      setUser(user);
+      // navigate("/");
     },
 
     onError: (error) => {
