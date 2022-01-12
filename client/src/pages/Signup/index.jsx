@@ -20,13 +20,18 @@ const defaultUserInputs = {
 
 export const Signup = () => {
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const nameAnimation = useAnimation();
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
   const navigate = useNavigate();
 
-  const { mutate: signUpMutate, isLoading } = useMutation(userSignUp, {
+  const {
+    mutate: signUpMutate,
+    isLoading,
+    isError,
+  } = useMutation(userSignUp, {
     onSuccess: (data) => {
       console.log(data);
       navigate("/");
@@ -34,6 +39,7 @@ export const Signup = () => {
 
     onError: (error) => {
       console.log(error.response.data);
+      setErrorMessage(error.response.data.error);
       if (error.response.data.errorField === "name") {
         nameAnimation.start("animate");
       }
@@ -56,6 +62,18 @@ export const Signup = () => {
 
   const handleChange = (e) => {
     setUserInputs({ ...userInputs, [e.target.name]: e.target.value });
+  };
+
+  const getText = () => {
+    if (isLoading) {
+      return "Loading...";
+    }
+
+    if (isError) {
+      return errorMessage;
+    }
+
+    return "Sign Up";
   };
 
   return (
@@ -107,7 +125,7 @@ export const Signup = () => {
           onChange={handleChange}
         />
 
-        <PillButton text={isLoading ? "Loading..." : "Sign Up"} />
+        <PillButton text={getText()} />
       </SignupStyled.InputsContainer>
 
       <SignupStyled.BottomText>
