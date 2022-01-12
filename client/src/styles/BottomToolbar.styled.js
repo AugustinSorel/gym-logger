@@ -3,14 +3,27 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { InputShare } from "./share/input.styled";
 
-export const Container = styled.footer`
+export const AuthenticationButtonsContainer = styled.footer`
   background-color: transparent;
   padding: 1rem;
   border-top: var(--border-height) solid var(--text-color);
 
   display: flex;
-  justify-content: ${(props) =>
-    props.isAuthenticated ? "center" : "space-around"};
+  justify-content: space-around;
+
+  align-items: center;
+`;
+
+export const ToolBarContainer = styled.footer`
+  background-color: transparent;
+  padding: 1rem;
+  border-top: var(--border-height) solid var(--text-color);
+
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+
+  justify-content: space-around;
+
   align-items: center;
 `;
 

@@ -1,4 +1,4 @@
-import { BottomToolbar } from "../../components/BottomToolbar";
+import { Footer } from "../../components/BottomToolbar";
 import { Main } from "../../components/Main";
 import fadeTransition from "../../framer-motion/transition";
 import * as HomeStyle from "../../styles/Home.styled";
@@ -11,7 +11,7 @@ export const Home = () => {
       exit={fadeTransition.exit}
     >
       <Main />
-      <BottomToolbar />
+      <Footer />
     </HomeStyle.Container>
   );
 };

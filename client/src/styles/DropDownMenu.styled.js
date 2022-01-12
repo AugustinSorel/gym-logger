@@ -12,6 +12,8 @@ export const Container = styled(motion.div)`
   padding: 1rem 2rem;
   width: 400px;
 
+  grid-column-start: 2;
+
   position: relative;
   display: flex;
 

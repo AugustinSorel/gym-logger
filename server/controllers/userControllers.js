@@ -19,7 +19,6 @@ export const userLogin = async (req, res) => {
   try {
     const user = res.locals.user;
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    console.log(token);
     res.status(200).json({ token: token, user: user });
   } catch (error) {
     console.log("ERROR in userLogin:", error);
