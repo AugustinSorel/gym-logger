@@ -1,21 +1,23 @@
 import useModal from "../../store/useModal";
 import * as MainStyled from "../../styles/Main.styled";
-import { AddButton } from "../AddButton";
 import { AddValuesModal } from "../AddValuesModal";
 import { AnimatePresence } from "framer-motion";
 import useUser from "../../store/useUser";
 import { Warning } from "../Warning";
 import { AccountIcon } from "../AccountIcon";
+import { RoundedButton } from "../RoundedButton";
+import { AddValueButton } from "../AddValueButton";
 
 export const Main = () => {
   const isOpen = useModal((state) => state.isOpen);
   const userToken = useUser((state) => state.userToken);
+  const openModal = useModal((state) => state.openModal);
 
   if (userToken) {
     return (
       <MainStyled.Container>
         <h1>This is the main</h1>
-        <AddButton />
+        <AddValueButton />
         <AccountIcon />
         <AnimatePresence exitBeforeEnter>
           {isOpen && <AddValuesModal />}
