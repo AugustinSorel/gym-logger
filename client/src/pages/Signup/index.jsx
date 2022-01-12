@@ -10,6 +10,7 @@ import { useAnimation } from "framer-motion";
 import { PillButton } from "../../components/PillButton";
 import { useMutation } from "react-query";
 import { userSignUp } from "../../api/userApi";
+import { useNavigate } from "react-router-dom";
 
 const defaultUserInputs = {
   name: "",
@@ -20,23 +21,36 @@ const defaultUserInputs = {
 export const Signup = () => {
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
 
-  const { mutate } = useMutation(userSignUp, {
-    onSuccess: (data) => {
-      console.log(data);
-    },
-
-    onError: (error) => {
-      console.log(error);
-    },
-  });
-
   const nameAnimation = useAnimation();
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
+  const navigate = useNavigate();
+
+  const { mutate: signUpMutate } = useMutation(userSignUp, {
+    onSuccess: (data) => {
+      console.log(data);
+      navigate("/");
+    },
+
+    onError: (error) => {
+      console.log(error.response.data);
+      if (error.response.data.errorField === "name") {
+        nameAnimation.start("animate");
+      }
+
+      if (error.response.data.errorField === "email") {
+        emailAnimation.start("animate");
+      }
+
+      if (error.response.data.errorField === "password") {
+        passwordAnimation.start("animate");
+      }
+    },
+  });
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    mutate(userInputs);
+    signUpMutate(userInputs);
     e.currentTarget.elements[2].blur();
   };
 
