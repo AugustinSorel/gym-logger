@@ -10,6 +10,15 @@ export const userSignUp = async (req, res) => {
 
     res.status(200).json({ token: token, user: user });
   } catch (error) {
+    if (error.code === 11000) {
+      const errorField = Object.keys(error.keyValue)[0];
+
+      return res.status(400).json({
+        errorField: errorField,
+        error: `${errorField} already exist`,
+      });
+    }
+
     console.log("ERROR in userSignUp:", error);
     res.sendStatus(400);
   }
@@ -70,7 +79,15 @@ export const updateUserById = async (req, res) => {
     console.log("USER UPDATED", user);
     res.status(200).json(user);
   } catch (error) {
-    console.log("ERROR in updateUserById:", error);
+    if (error.code === 11000) {
+      const errorField = Object.keys(error.keyValue)[0];
+
+      return res.status(400).json({
+        errorField: errorField,
+        error: `${errorField} already exist`,
+      });
+    }
+
     res.sendStatus(400);
   }
 };

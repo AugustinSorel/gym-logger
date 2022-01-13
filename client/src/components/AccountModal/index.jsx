@@ -42,7 +42,14 @@ export const AccountModal = () => {
     },
 
     onError: (error) => {
-      console.log(error);
+      console.log(error.response.data);
+      if (error.response.data.errorField === "name") {
+        nameAnimation.start("animate");
+      }
+
+      if (error.response.data.errorField === "email") {
+        emailAnimation.start("animate");
+      }
     },
   });
 

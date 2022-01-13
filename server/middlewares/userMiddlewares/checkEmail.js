@@ -1,5 +1,3 @@
-import UserModel from "../../models/UserModel.js";
-
 const checkEmail = async (req, res, next) => {
   const { email } = req.body;
 
@@ -16,15 +14,6 @@ const checkEmail = async (req, res, next) => {
     return res.status(400).json({
       errorField: "email",
       error: "Invalid email format",
-    });
-  }
-
-  const user = await UserModel.findOne({ email });
-  if (user) {
-    console.log("email already exist");
-    return res.status(400).json({
-      errorField: "email",
-      error: "email already exist",
     });
   }
 
