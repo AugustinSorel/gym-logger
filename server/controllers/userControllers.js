@@ -100,11 +100,18 @@ export const addValue = async (req, res) => {
 
     console.log(userId, exerciseId, numberOfRepetitions, weight);
 
-    const obj = { authorId: userId, message: exerciseId };
-
     const user = await UserModel.findByIdAndUpdate(
       { _id: userId },
-      { $push: { messages: obj } }
+      {
+        $push: {
+          data: {
+            [exerciseId]: {
+              date: new Date(),
+              numberOfRepetitions,
+            },
+          },
+        },
+      }
     );
 
     console.log("USER2 UPDATED", user);

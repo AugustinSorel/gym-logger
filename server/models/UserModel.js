@@ -19,12 +19,7 @@ const UserSchema = new mongoose.Schema({
     required: true,
   },
 
-  messages: [
-    {
-      authorId: String,
-      message: String,
-    },
-  ],
+  data: [],
 });
 
 UserSchema.pre("save", async function (next) {
