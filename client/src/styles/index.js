@@ -11,6 +11,7 @@ const GlobalStyle = createGlobalStyle`
         --primary: ${({ theme }) => theme.colors.primary};
         --text-color: ${({ theme }) => theme.colors.textColor};
         --hover-color: ${({ theme }) => theme.colors.hoverColor};
+        --invalid-input-color: ${({ theme }) => theme.colors.InvalidInputColor};
         
         --font-size-large: ${({ theme }) => theme.fontSizes.large};
         --font-size-medium: ${({ theme }) => theme.fontSizes.medium};
