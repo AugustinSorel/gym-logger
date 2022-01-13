@@ -8,7 +8,7 @@ import {
   whileTapScale,
 } from "../../framer-motion/whileVariants";
 import useUser from "../../store/useUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAnimation } from "framer-motion";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { deleteUserById, updateUserById } from "../../api/userApi";
@@ -26,6 +26,11 @@ export const AccountModal = () => {
   const setUserToken = useUser((state) => state.setUserToken);
 
   const [userInputs, setUserInputs] = useState(user);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    setUserInputs(user);
+  }, [user]);
 
   const { mutate: deleteMutate } = useMutation(deleteUserById, {
     onSuccess: () => {
@@ -36,13 +41,18 @@ export const AccountModal = () => {
     },
   });
 
-  const { mutate: updateMutate } = useMutation(updateUserById, {
+  const {
+    mutate: updateMutate,
+    isError,
+    isLoading,
+  } = useMutation(updateUserById, {
     onSuccess: (updatedUser) => {
       setUser(updatedUser);
+      closeAccountModal();
     },
 
     onError: (error) => {
-      console.log(error.response.data);
+      setErrorMessage(error.response.data.error);
       if (error.response.data.errorField === "name") {
         nameAnimation.start("animate");
       }
@@ -52,6 +62,18 @@ export const AccountModal = () => {
       }
     },
   });
+
+  const getText = () => {
+    if (isLoading) {
+      return "Loading...";
+    }
+
+    if (isError) {
+      return errorMessage || "Save";
+    }
+
+    return "Save";
+  };
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -131,7 +153,6 @@ export const AccountModal = () => {
               whileFocus={whileHoverScale}
               type="text"
               name="password"
-              readOnly
               value={userInputs.password}
               onChange={handleChange}
             />
@@ -162,7 +183,7 @@ export const AccountModal = () => {
           </AccountModalStyle.InputDetailsContainer>
         </AccountModalStyle.InputsContainer>
 
-        <PillButton text="Save" onClick={handleClick} />
+        <PillButton text={getText()} onClick={handleClick} />
       </AccountModalStyle.Form>
     </BackDrop>
   );

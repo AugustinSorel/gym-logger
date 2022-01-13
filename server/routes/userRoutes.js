@@ -18,7 +18,7 @@ Router.post("/sign-up", checkName, checkEmail, checkPassword, userSignUp);
 Router.post("/login", checkValidEmailAndPassword, userLogin);
 
 Router.get("/:userId", getUserById);
-Router.patch("/:userId", checkName, checkEmail, updateUserById);
+Router.patch("/:userId", checkName, checkEmail, checkPassword, updateUserById);
 Router.delete("/:userId", deleteUserById);
 
 Router.post("/:userId/:exerciseId", addValue);

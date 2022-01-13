@@ -68,11 +68,11 @@ export const deleteUserById = async (req, res) => {
 export const updateUserById = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { name, email, password } = req.body;
+    const { name, email } = req.body;
 
     const user = await UserModel.findByIdAndUpdate(
       userId,
-      { name, email, password },
+      { name, email },
       { new: true }
     );
 
