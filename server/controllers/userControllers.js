@@ -1,5 +1,6 @@
 import UserModel from "../models/UserModel.js";
 import jwt from "jsonwebtoken";
+import getOneRepMax from "../utils/getOneRepMax.js";
 
 export const userSignUp = async (req, res) => {
   try {
@@ -94,29 +95,12 @@ export const updateUserById = async (req, res) => {
 
 export const addValue = async (req, res) => {
   try {
-    const userId = req.params.userId;
-    const exerciseId = req.params.exerciseId;
+    const { userId, exerciseId } = req.params;
     const { numberOfRepetitions, weight } = req.body;
 
-    console.log(userId, exerciseId, numberOfRepetitions, weight);
+    const oneRepMax = getOneRepMax(weight, numberOfRepetitions);
 
-    const user = await UserModel.findByIdAndUpdate(
-      { _id: userId },
-      {
-        $push: {
-          data: {
-            [exerciseId]: {
-              date: new Date(),
-              numberOfRepetitions,
-            },
-          },
-        },
-      }
-    );
-
-    console.log("USER2 UPDATED", user);
-
-    res.status(200).json(user);
+    res.status(200).json([]);
   } catch (error) {
     console.log("ERROR in addValue:", error);
     res.sendStatus(400);

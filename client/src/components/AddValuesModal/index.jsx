@@ -30,11 +30,11 @@ export const AddValuesModal = () => {
 
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
 
-  const { mutate } = useMutation(addValue, {
+  const { mutate: addValueMutate } = useMutation(addValue, {
     onSuccess: (data) => {
-      // closeModal();
-      // setUserInputs(defaultUserInputs);
-      console.log(data);
+      // closeAddValuesModal();
+      console.log("data", data);
+      setUserInputs(defaultUserInputs);
     },
 
     onError: (error) => {
@@ -51,8 +51,11 @@ export const AddValuesModal = () => {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(userInputs);
-    mutate({ userId: user._id, exerciseId: exercise, value: userInputs });
+    addValueMutate({
+      userId: user._id,
+      exerciseId: exercise,
+      value: userInputs,
+    });
     e.currentTarget.blur();
   };
 
