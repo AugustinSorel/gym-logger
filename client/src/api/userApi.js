@@ -24,6 +24,12 @@ export const getUserById = async (userId) => {
   return response.data;
 };
 
+export const deleteUserById = async (userId) => {
+  const response = await userApi.delete(`/${userId}`);
+
+  return response.data;
+};
+
 export const addValue = async ({ userId, exerciseId, value }) => {
   const res = await userApi.post(`/${userId}/${exerciseId}`, { value });
 

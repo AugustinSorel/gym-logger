@@ -43,6 +43,19 @@ export const getUserById = async (req, res) => {
   }
 };
 
+export const deleteUserById = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const user = await UserModel.findByIdAndDelete(userId);
+
+    console.log("USER DELETED", user);
+    res.status(200).json(user);
+  } catch (error) {
+    console.log("ERROR in deleteUserById:", error);
+    res.sendStatus(400);
+  }
+};
+
 export const addValue = (req, res) => {
   console.log("userId:", req.params.userId);
   console.log("exerciseId:", req.params.exerciseId);
