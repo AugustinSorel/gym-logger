@@ -3,6 +3,7 @@ import {
   addValue,
   deleteUserById,
   getUserById,
+  updateUserById,
   userLogin,
   userSignUp,
 } from "../controllers/userControllers.js";
@@ -17,6 +18,7 @@ Router.post("/sign-up", checkName, checkEmail, checkPassword, userSignUp);
 Router.post("/login", checkValidEmailAndPassword, userLogin);
 
 Router.get("/:userId", getUserById);
+Router.patch("/:userId", updateUserById);
 Router.delete("/:userId", deleteUserById);
 
 Router.post("/:userId/:exerciseId", addValue);

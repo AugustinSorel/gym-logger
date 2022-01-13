@@ -30,6 +30,13 @@ export const deleteUserById = async (userId) => {
   return response.data;
 };
 
+export const updateUserById = async ({ userId, userInputs }) => {
+  const { name, email } = userInputs;
+  const response = await userApi.patch(`/${userId}`, { name, email });
+
+  return response.data;
+};
+
 export const addValue = async ({ userId, exerciseId, value }) => {
   const res = await userApi.post(`/${userId}/${exerciseId}`, { value });
 

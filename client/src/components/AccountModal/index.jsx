@@ -11,7 +11,7 @@ import useUser from "../../store/useUser";
 import { useState } from "react";
 import { useAnimation } from "framer-motion";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
-import { deleteUserById } from "../../api/userApi";
+import { deleteUserById, updateUserById } from "../../api/userApi";
 import { useMutation } from "react-query";
 
 export const AccountModal = () => {
@@ -28,7 +28,7 @@ export const AccountModal = () => {
   const [userInputs, setUserInputs] = useState(user);
 
   const { mutate: deleteMutate } = useMutation(deleteUserById, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       handleLogout();
     },
     onError: (error) => {
@@ -36,9 +36,19 @@ export const AccountModal = () => {
     },
   });
 
+  const { mutate: updateMutate } = useMutation(updateUserById, {
+    onSuccess: (updatedUser) => {
+      setUser(updatedUser);
+    },
+
+    onError: (error) => {
+      console.log(error);
+    },
+  });
+
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(userInputs);
+    updateMutate({ userId: user._id, userInputs });
   };
 
   const handleDelete = () => {

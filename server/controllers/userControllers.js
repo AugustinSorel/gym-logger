@@ -56,6 +56,25 @@ export const deleteUserById = async (req, res) => {
   }
 };
 
+export const updateUserById = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { name, email, password } = req.body;
+
+    const user = await UserModel.findByIdAndUpdate(
+      userId,
+      { name, email, password },
+      { new: true }
+    );
+
+    console.log("USER UPDATED", user);
+    res.status(200).json(user);
+  } catch (error) {
+    console.log("ERROR in updateUserById:", error);
+    res.sendStatus(400);
+  }
+};
+
 export const addValue = (req, res) => {
   console.log("userId:", req.params.userId);
   console.log("exerciseId:", req.params.exerciseId);
