@@ -13,6 +13,7 @@ import { useMutation } from "react-query";
 import { addValue } from "../../api/userApi";
 import { PillButton } from "../PillButton";
 import { BackDrop } from "../BackDrop";
+import useUser from "../../store/useUser";
 
 const defaultUserInputs = {
   numberOfRepetitions: "",
@@ -21,6 +22,7 @@ const defaultUserInputs = {
 
 export const AddValuesModal = () => {
   const closeAddValuesModal = useModal((state) => state.closeAddValuesModal);
+  const user = useUser((state) => state.user);
   const exercise = useExercise((state) => state.exercise);
 
   const numberOfRepetitionsAnimation = useAnimation();
@@ -50,7 +52,7 @@ export const AddValuesModal = () => {
   const handleClick = (e) => {
     e.preventDefault();
     console.log(userInputs);
-    mutate({ userId: 12, exerciseId: exercise, value: userInputs });
+    mutate({ userId: user._id, exerciseId: exercise, value: userInputs });
     e.currentTarget.blur();
   };
 

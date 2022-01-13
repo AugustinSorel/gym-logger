@@ -18,6 +18,13 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+
+  messages: [
+    {
+      authorId: String,
+      message: String,
+    },
+  ],
 });
 
 UserSchema.pre("save", async function (next) {

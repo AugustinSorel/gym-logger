@@ -92,9 +92,26 @@ export const updateUserById = async (req, res) => {
   }
 };
 
-export const addValue = (req, res) => {
-  console.log("userId:", req.params.userId);
-  console.log("exerciseId:", req.params.exerciseId);
-  console.log("value:", req.body.value);
-  res.sendStatus(200);
+export const addValue = async (req, res) => {
+  try {
+    const userId = req.params.userId;
+    const exerciseId = req.params.exerciseId;
+    const { numberOfRepetitions, weight } = req.body;
+
+    console.log(userId, exerciseId, numberOfRepetitions, weight);
+
+    const obj = { authorId: userId, message: exerciseId };
+
+    const user = await UserModel.findByIdAndUpdate(
+      { _id: userId },
+      { $push: { messages: obj } }
+    );
+
+    console.log("USER2 UPDATED", user);
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.log("ERROR in addValue:", error);
+    res.sendStatus(400);
+  }
 };
