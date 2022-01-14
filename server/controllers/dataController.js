@@ -10,19 +10,46 @@ export const addValue = async (req, res) => {
     const obj = { date: new Date(), oneRepMax };
     console.log("oneRepMax", oneRepMax);
 
-    const data = await DataModel.findByIdAndUpdate(
-      { _id: userId },
-      {
-        $push: {
-          [exerciseId]: obj,
-        },
-      },
-      {
-        returnOriginal: false,
-      }
+    // check if user has data for this exercise
+    const data = await DataModel.findOne({ _id: userId });
+    const exercise = data[exerciseId];
+
+    const dataWhereDateIsToday = exercise.find(
+      (obj) => obj.date.toDateString() === new Date().toDateString()
     );
 
-    console.log("data", data);
+    console.log("dataWhereDateIsToday", dataWhereDateIsToday);
+
+    if (dataWhereDateIsToday) {
+      //   const newData = await DataModel.findByIdAndUpdate(
+      //     { _id: userId },
+      //     {
+      //       [exerciseId]: {
+      //         $set: { "$[el].oneRepMax": oneRepMax },
+      //       },
+      //     },
+      //     {
+      //       returnOriginal: false,
+      //       arrayFilters: [{ "el._id": dataWhereDateIsToday._id }],
+      //       new: true,
+      //     }
+      //   );
+      //   console.log("newData", newData);
+    } else {
+      await DataModel.findByIdAndUpdate(
+        { _id: userId },
+        {
+          $push: {
+            [exerciseId]: obj,
+          },
+        },
+        {
+          returnOriginal: false,
+        }
+      );
+    }
+
+    // console.log("data", data);
 
     res.status(200).json(data);
   } catch (error) {

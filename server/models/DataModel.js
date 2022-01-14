@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 
 const arr = [
   {
-    _id: false,
     oneRepMax: Number,
     date: Date,
   },

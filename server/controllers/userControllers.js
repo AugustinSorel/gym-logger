@@ -59,6 +59,7 @@ export const deleteUserById = async (req, res) => {
   try {
     const { userId } = req.params;
     const user = await UserModel.findByIdAndDelete(userId);
+    await DataModel.findByIdAndDelete(userId);
 
     console.log("USER DELETED", user);
     res.status(200).json(user);
