@@ -11,13 +11,8 @@ import { useQuery } from "react-query";
 import { getValue } from "../../api/dataApi";
 import useExercise from "../../store/useExercise";
 import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  Label,
   Line,
   LineChart,
-  Pie,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -29,7 +24,6 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
-import { useState } from "react";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
@@ -38,11 +32,10 @@ export const Main = () => {
   const user = useUser((state) => state.user);
   const setTime = useExercise((state) => state.setTime);
   const time = useExercise((state) => state.time);
-  const [titleValue, setTitleValue] = useState("0");
 
   const exercise = useExercise((state) => state.exercise);
 
-  const { data, isLoading } = useQuery(
+  const { data } = useQuery(
     ["exerciseData", exercise, time],
     () => getValue({ userId: user._id, exerciseId: exercise, timeId: time }),
     {
@@ -57,10 +50,6 @@ export const Main = () => {
       },
     }
   );
-
-  if (isLoading) {
-    return <div style={{ flex: 1 }}>Loading...</div>;
-  }
 
   if (!userToken) {
     return <Warning text={"Your session has expired"} />;
@@ -83,9 +72,10 @@ export const Main = () => {
                 <XAxis dataKey="date" axisLine={false} tick={false} />
                 <YAxis
                   dataKey="oneRepMax"
-                  axisLine={true}
+                  axisLine={false}
                   tick={false}
                   domain={["dataMin", "dataMax"]}
+                  width={10}
                 />
 
                 <Tooltip
