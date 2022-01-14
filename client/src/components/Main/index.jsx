@@ -7,7 +7,7 @@ import { Warning } from "../Warning";
 import { AccountIcon } from "../AccountIcon";
 import { AddValueButton } from "../AddValueButton";
 import { AccountModal } from "../AccountModal";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
 import { getValue } from "../../api/dataApi";
 import useExercise from "../../store/useExercise";
 import {
@@ -25,7 +25,6 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
-import { useEffect, useState } from "react";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
@@ -87,11 +86,17 @@ export const Main = () => {
                   dataKey="oneRepMax"
                   stroke={theme.colors.textColor}
                   fill="url(#color)"
+                  dot={{
+                    r: 4,
+                    fillOpacity: 1,
+                    fill: theme.colors.hoverColor,
+                  }}
                 />
 
                 <XAxis
                   dataKey="date"
                   axisLine={false}
+                  tickCount={5}
                   // tickLine={false}
                 />
 
@@ -103,7 +108,11 @@ export const Main = () => {
                   // tickFormatter={(number) => `${number} kg`}
                 />
 
-                {/* <Tooltip content={<CustomTooltip />} /> */}
+                <Tooltip
+                  isAnimationActive={false}
+                  content={<CustomTooltip />}
+                  position={{ y: -10 }}
+                />
 
                 <CartesianGrid opacity={0.1} vertical={false} />
               </AreaChart>
