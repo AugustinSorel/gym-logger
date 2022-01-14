@@ -81,7 +81,12 @@ export const Main = () => {
                 />
 
                 <XAxis dataKey="date" axisLine={false} tick={false} />
-                {/* <YAxis dataKey="oneRepMax" /> */}
+                <YAxis
+                  dataKey="oneRepMax"
+                  axisLine={false}
+                  tick={false}
+                  domain={["dataMin", "dataMax"]}
+                />
 
                 <Tooltip
                   isAnimationActive={false}
