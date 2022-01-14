@@ -11,3 +11,9 @@ export const addValue = async ({ userId, exerciseId, value }) => {
 
   return res.data;
 };
+
+export const getValue = async ({ userId, exerciseId }) => {
+  const res = await dataApi.get(`/${userId}/${exerciseId}`);
+
+  return res.data;
+};

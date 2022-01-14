@@ -1,8 +1,9 @@
 import express from "express";
-import { addValue } from "../controllers/dataController.js";
+import { addValue, getValue } from "../controllers/dataController.js";
 
 const Router = express.Router();
 
 Router.post("/:userId/:exerciseId", addValue);
+Router.get("/:userId/:exerciseId", getValue);
 
 export default Router;

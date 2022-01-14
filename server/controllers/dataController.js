@@ -30,3 +30,27 @@ export const addValue = async (req, res) => {
     res.sendStatus(400);
   }
 };
+
+export const getValue = async (req, res) => {
+  try {
+    const { userId, exerciseId } = req.params;
+
+    var start = new Date(new Date().getTime() - 7 * 60 * 60 * 24 * 1000); // get date of last week
+    const data = await DataModel.findById({
+      _id: userId,
+    });
+
+    console.log("data:", data[exerciseId]);
+
+    const filteredData = data[exerciseId].filter((obj) => {
+      return obj.date >= start.getTime();
+    });
+
+    console.log("filteredData:", filteredData);
+
+    res.status(200).json(filteredData);
+  } catch (error) {
+    console.log("ERROR in getValue:", error);
+    res.sendStatus(400);
+  }
+};
