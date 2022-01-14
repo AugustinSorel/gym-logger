@@ -10,7 +10,17 @@ import { AccountModal } from "../AccountModal";
 import { useQuery } from "react-query";
 import { getValue } from "../../api/dataApi";
 import useExercise from "../../store/useExercise";
-import { useEffect } from "react";
+import {
+  Area,
+  AreaChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import theme from "../../utils/theme";
+import { CustomTooltip } from "../CustomTooltip";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
@@ -27,7 +37,7 @@ export const Main = () => {
       enabled: Boolean(user),
 
       onSuccess: (data) => {
-        console.log("data", data);
+        console.log(data);
       },
 
       onError: (error) => {
@@ -39,9 +49,63 @@ export const Main = () => {
   if (userToken) {
     return (
       <MainStyled.Container>
-        <h1>This is the main</h1>
+        {data.length > 0 ? (
+          <MainStyled.GraphContainer>
+            <ResponsiveContainer>
+              <AreaChart data={data}>
+                <defs>
+                  <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                    <stop
+                      offset="0%"
+                      stopColor={theme.colors.textColor}
+                      stopOpacity={0.4}
+                    />
+                    <stop
+                      offset="75%"
+                      stopColor={theme.colors.textColor}
+                      stopOpacity={0.05}
+                    />
+                  </linearGradient>
+                </defs>
+
+                <Area
+                  dataKey="oneRepMax"
+                  stroke={theme.colors.textColor}
+                  fill="url(#color)"
+                />
+
+                <XAxis
+                  dataKey="date"
+                  axisLine={false}
+                  tickLine={false}
+                  // tickFormatter={(str) => {}}
+                />
+
+                <YAxis
+                  dataKey={"oneRepMax"}
+                  axisLine={false}
+                  tickLine={false}
+                  tickCount={10}
+                  // tickFormatter={(number) => `${number} kg`}
+                />
+
+                {/* <Tooltip
+                  content={<CustomTooltip />}
+                  position={{ x: 0, y: -100 }}
+                  active={false}
+                /> */}
+
+                <CartesianGrid opacity={0.1} vertical={false} />
+              </AreaChart>
+            </ResponsiveContainer>
+          </MainStyled.GraphContainer>
+        ) : (
+          <h1>No Data</h1>
+        )}
+
         <AccountIcon />
         <AddValueButton />
+
         <AnimatePresence exitBeforeEnter>
           {isAddValuesModalOpen && <AddValuesModal />}
           {isAccountModalOpen && <AccountModal />}

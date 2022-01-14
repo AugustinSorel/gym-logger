@@ -73,9 +73,18 @@ export const getValue = async (req, res) => {
       return obj.date >= start.getTime();
     });
 
-    console.log("filteredData:", filteredData);
+    // console.log("filteredData:", filteredData);
 
-    res.status(200).json(filteredData);
+    const cleanData = filteredData.map((obj) => {
+      return {
+        date: obj.date.toISOString().split("T")[0].slice(-2),
+        oneRepMax: obj.oneRepMax,
+      };
+    });
+
+    console.log("cleanData:", cleanData);
+
+    res.status(200).json(cleanData);
   } catch (error) {
     console.log("ERROR in getValue:", error);
     res.sendStatus(400);
