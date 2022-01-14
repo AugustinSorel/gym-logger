@@ -51,6 +51,21 @@ const GlobalStyle = createGlobalStyle`
     ::-ms-reveal {
         filter: invert(100%);
     }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+       background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+       background: var(--hover-color);
+       border-radius: 24px;
+    }
 `;
 
 export default GlobalStyle;

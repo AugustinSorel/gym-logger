@@ -87,7 +87,7 @@ export const Main = () => {
                   stroke={theme.colors.textColor}
                   fill="url(#color)"
                   dot={{
-                    r: 4,
+                    r: 2,
                     fillOpacity: 1,
                     fill: theme.colors.hoverColor,
                   }}
