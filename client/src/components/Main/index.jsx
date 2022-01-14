@@ -14,6 +14,10 @@ import {
   Area,
   AreaChart,
   CartesianGrid,
+  Label,
+  Line,
+  LineChart,
+  Pie,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -25,6 +29,7 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
+import { useState } from "react";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
@@ -33,6 +38,7 @@ export const Main = () => {
   const user = useUser((state) => state.user);
   const setTime = useExercise((state) => state.setTime);
   const time = useExercise((state) => state.time);
+  const [titleValue, setTitleValue] = useState("0");
 
   const exercise = useExercise((state) => state.exercise);
 
@@ -66,56 +72,24 @@ export const Main = () => {
         <>
           <MainStyled.GraphContainer>
             <ResponsiveContainer>
-              <AreaChart data={data}>
-                <defs>
-                  <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
-                    <stop
-                      offset="0%"
-                      stopColor={theme.colors.textColor}
-                      stopOpacity={0.4}
-                    />
-                    <stop
-                      offset="75%"
-                      stopColor={theme.colors.textColor}
-                      stopOpacity={0.05}
-                    />
-                  </linearGradient>
-                </defs>
-
-                <Area
+              <LineChart data={data}>
+                <Line
+                  type="monotone"
                   dataKey="oneRepMax"
                   stroke={theme.colors.textColor}
-                  fill="url(#color)"
-                  dot={{
-                    r: 2,
-                    fillOpacity: 1,
-                    fill: theme.colors.hoverColor,
-                  }}
+                  dot={{ r: 2 }}
                 />
 
-                <XAxis
-                  dataKey="date"
-                  axisLine={false}
-                  tickCount={5}
-                  // tickLine={false}
-                />
-
-                <YAxis
-                  dataKey={"oneRepMax"}
-                  axisLine={false}
-                  tickLine={false}
-                  tickCount={10}
-                  // tickFormatter={(number) => `${number} kg`}
-                />
+                <XAxis dataKey="date" axisLine={false} tick={false} />
+                {/* <YAxis dataKey="oneRepMax" /> */}
 
                 <Tooltip
                   isAnimationActive={false}
                   content={<CustomTooltip />}
-                  position={{ y: -10 }}
+                  position={{ x: 0, y: 0 }}
+                  cursor={{ display: "none" }}
                 />
-
-                <CartesianGrid opacity={0.1} vertical={false} />
-              </AreaChart>
+              </LineChart>
             </ResponsiveContainer>
           </MainStyled.GraphContainer>
           <MainStyled.ButtonsContainer>

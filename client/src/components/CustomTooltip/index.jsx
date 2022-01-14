@@ -4,10 +4,10 @@ export const CustomTooltip = ({ active, payload, label }) => {
   if (active) {
     return (
       <CustomTooltipStyle.Container>
-        <CustomTooltipStyle.Title> Date: {label}</CustomTooltipStyle.Title>
-        <CustomTooltipStyle.ValueTitle>
+        <CustomTooltipStyle.Title>
           One rep max: {payload[0].value.toFixed(0)}
-        </CustomTooltipStyle.ValueTitle>
+        </CustomTooltipStyle.Title>
+        <CustomTooltipStyle.ValueTitle>{label}</CustomTooltipStyle.ValueTitle>
       </CustomTooltipStyle.Container>
     );
   }

@@ -7,17 +7,26 @@ export const Container = styled.main`
 
   display: flex;
   flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
 `;
 
 export const GraphContainer = styled.div`
-  padding-top: 1rem;
   flex: 1;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const GraphTitle = styled.h2`
+  font-size: var(--font-size-medium);
 `;
 
 export const ButtonsContainer = styled.div`
-  padding: 1rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
 `;
 
 export const Button = styled(motion.button)`
