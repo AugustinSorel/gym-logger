@@ -83,7 +83,7 @@ export const Main = () => {
                 <XAxis dataKey="date" axisLine={false} tick={false} />
                 <YAxis
                   dataKey="oneRepMax"
-                  axisLine={false}
+                  axisLine={true}
                   tick={false}
                   domain={["dataMin", "dataMax"]}
                 />

@@ -9,6 +9,7 @@ export const Container = styled.main`
   flex-direction: column;
   gap: 1rem;
   padding: 1rem;
+  padding-left: 0;
 `;
 
 export const GraphContainer = styled.div`
