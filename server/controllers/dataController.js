@@ -120,8 +120,12 @@ export const getValue = async (req, res) => {
       // console.log("filteredData:", filteredData);
 
       const cleanData = filteredData.map((obj) => {
+        const d = obj.date.toISOString().split("T")[0];
+        var date = d.split("-");
+        var f = new Date(date[0], date[2] - 1, date[1]).toString();
+        const cleanDate = f.split(" ")[2] + " " + f.split(" ")[1] + " ";
         return {
-          date: obj.date.toISOString().split("T")[0],
+          date: cleanDate,
           oneRepMax: obj.oneRepMax,
         };
       });
@@ -144,8 +148,13 @@ export const getValue = async (req, res) => {
       // console.log("filteredData:", filteredData);
 
       const cleanData = filteredData.map((obj) => {
+        const d = obj.date.toISOString().split("T")[0];
+        var date = d.split("-");
+        var f = new Date(date[0], date[2] - 1, date[1]).toString();
+        const cleanDate =
+          f.split(" ")[2] + " " + f.split(" ")[1] + " " + f.split(" ")[3];
         return {
-          date: obj.date.toISOString().split("T")[0],
+          date: cleanDate,
           oneRepMax: obj.oneRepMax,
         };
       });
@@ -157,8 +166,12 @@ export const getValue = async (req, res) => {
 
     if (timeId === "all") {
       const cleanData = data[exerciseId].map((obj) => {
+        const d = obj.date.toISOString().split("T")[0];
+        var date = d.split("-");
+        var f = new Date(date[0], date[2] - 1, date[1]).toString();
+        const cleanDate = f.split(" ")[2] + " " + f.split(" ")[1] + " ";
         return {
-          date: obj.date.toISOString().split("T")[0],
+          date: cleanDate,
           oneRepMax: obj.oneRepMax,
         };
       });

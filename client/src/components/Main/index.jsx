@@ -92,8 +92,7 @@ export const Main = () => {
                 <XAxis
                   dataKey="date"
                   axisLine={false}
-                  tickLine={false}
-                  // tickFormatter={(str) => {}}
+                  // tickLine={false}
                 />
 
                 <YAxis
@@ -104,11 +103,7 @@ export const Main = () => {
                   // tickFormatter={(number) => `${number} kg`}
                 />
 
-                <Tooltip
-                  content={<CustomTooltip />}
-                  position={{ x: 0, y: -100 }}
-                  active={false}
-                />
+                {/* <Tooltip content={<CustomTooltip />} /> */}
 
                 <CartesianGrid opacity={0.1} vertical={false} />
               </AreaChart>
