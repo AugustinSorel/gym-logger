@@ -39,6 +39,13 @@ export const AddValuesModal = () => {
 
     onError: (error) => {
       console.log(error);
+      if (error.response.data.errorField === "numberOfRepetitions") {
+        numberOfRepetitionsAnimation.start("animate");
+      }
+
+      if (error.response.data.errorField === "weight") {
+        weightAnimation.start("animate");
+      }
     },
   });
 
