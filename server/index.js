@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js";
+import dataRoutes from "./routes/dataRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -23,3 +24,4 @@ mongoose
   .catch((err) => console.log(err));
 
 app.use("/api/user", userRoutes);
+app.use("/api/data", dataRoutes);

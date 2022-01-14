@@ -1,11 +1,13 @@
 import UserModel from "../models/UserModel.js";
 import jwt from "jsonwebtoken";
-import getOneRepMax from "../utils/getOneRepMax.js";
+import DataModel from "../models/DataModel.js";
 
 export const userSignUp = async (req, res) => {
   try {
     const { name, email, password } = req.body;
+
     const user = await UserModel.create({ name, email, password });
+    await DataModel.create({ _id: user._id });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
@@ -89,20 +91,6 @@ export const updateUserById = async (req, res) => {
       });
     }
 
-    res.sendStatus(400);
-  }
-};
-
-export const addValue = async (req, res) => {
-  try {
-    const { userId, exerciseId } = req.params;
-    const { numberOfRepetitions, weight } = req.body;
-
-    const oneRepMax = getOneRepMax(weight, numberOfRepetitions);
-
-    res.status(200).json([]);
-  } catch (error) {
-    console.log("ERROR in addValue:", error);
     res.sendStatus(400);
   }
 };

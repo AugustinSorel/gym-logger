@@ -1,6 +1,5 @@
 import express from "express";
 import {
-  addValue,
   deleteUserById,
   getUserById,
   updateUserById,
@@ -20,7 +19,5 @@ Router.post("/login", checkValidEmailAndPassword, userLogin);
 Router.get("/:userId", getUserById);
 Router.patch("/:userId", checkName, checkEmail, checkPassword, updateUserById);
 Router.delete("/:userId", deleteUserById);
-
-Router.post("/:userId/:exerciseId", addValue);
 
 export default Router;

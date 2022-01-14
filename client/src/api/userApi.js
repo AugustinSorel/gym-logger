@@ -36,9 +36,3 @@ export const updateUserById = async ({ userId, userInputs }) => {
 
   return response.data;
 };
-
-export const addValue = async ({ userId, exerciseId, value }) => {
-  const res = await userApi.post(`/${userId}/${exerciseId}`, value);
-
-  return res.data;
-};

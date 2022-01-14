@@ -18,10 +18,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-
-  data: [
-    // add exerciseId and value
-  ],
 });
 
 UserSchema.pre("save", async function (next) {

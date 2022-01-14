@@ -10,7 +10,7 @@ import { useAnimation } from "framer-motion";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useState } from "react";
 import { useMutation } from "react-query";
-import { addValue } from "../../api/userApi";
+import { addValue } from "../../api/dataApi";
 import { PillButton } from "../PillButton";
 import { BackDrop } from "../BackDrop";
 import useUser from "../../store/useUser";
