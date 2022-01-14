@@ -9,7 +9,7 @@ import * as AddValuesModalStyle from "../../styles/AddValuesModal.styled";
 import { useAnimation } from "framer-motion";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useState } from "react";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { addValue } from "../../api/dataApi";
 import { PillButton } from "../PillButton";
 import { BackDrop } from "../BackDrop";
@@ -25,6 +25,8 @@ export const AddValuesModal = () => {
   const user = useUser((state) => state.user);
   const exercise = useExercise((state) => state.exercise);
 
+  const queryClient = useQueryClient();
+
   const numberOfRepetitionsAnimation = useAnimation();
   const weightAnimation = useAnimation();
 
@@ -33,6 +35,7 @@ export const AddValuesModal = () => {
   const { mutate: addValueMutate } = useMutation(addValue, {
     onSuccess: (data) => {
       closeAddValuesModal();
+      queryClient.invalidateQueries(["exerciseData", exercise]);
       console.log("data", data);
       setUserInputs(defaultUserInputs);
     },

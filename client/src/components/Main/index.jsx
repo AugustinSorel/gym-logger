@@ -21,6 +21,10 @@ import {
 } from "recharts";
 import theme from "../../utils/theme";
 import { CustomTooltip } from "../CustomTooltip";
+import {
+  whileHoverScale,
+  whileTapScale,
+} from "../../framer-motion/whileVariants";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
@@ -30,7 +34,7 @@ export const Main = () => {
 
   const exercise = useExercise((state) => state.exercise);
 
-  const { data } = useQuery(
+  const { data, isLoading } = useQuery(
     ["exerciseData", exercise],
     () => getValue({ userId: user._id, exerciseId: exercise }),
     {
@@ -46,10 +50,18 @@ export const Main = () => {
     }
   );
 
-  if (userToken) {
-    return (
-      <MainStyled.Container>
-        {data.length > 0 ? (
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!userToken) {
+    return <Warning text={"Your session has expired"} />;
+  }
+
+  return (
+    <MainStyled.Container>
+      {data?.length > 0 ? (
+        <>
           <MainStyled.GraphContainer>
             <ResponsiveContainer>
               <AreaChart data={data}>
@@ -99,20 +111,50 @@ export const Main = () => {
               </AreaChart>
             </ResponsiveContainer>
           </MainStyled.GraphContainer>
-        ) : (
-          <h1>No Data</h1>
-        )}
+          <MainStyled.ButtonsContainer>
+            <MainStyled.Button
+              whileHover={whileHoverScale}
+              whileTap={whileTapScale}
+            >
+              All
+            </MainStyled.Button>
+            <MainStyled.Button
+              whileHover={whileHoverScale}
+              whileTap={whileTapScale}
+            >
+              1Y
+            </MainStyled.Button>
+            <MainStyled.Button
+              whileHover={whileHoverScale}
+              whileTap={whileTapScale}
+            >
+              6M
+            </MainStyled.Button>
+            <MainStyled.Button
+              whileHover={whileHoverScale}
+              whileTap={whileTapScale}
+            >
+              1M
+            </MainStyled.Button>
+            <MainStyled.Button
+              whileHover={whileHoverScale}
+              whileTap={whileTapScale}
+            >
+              1W
+            </MainStyled.Button>
+          </MainStyled.ButtonsContainer>
+        </>
+      ) : (
+        <h1>No Data</h1>
+      )}
 
-        <AccountIcon />
-        <AddValueButton />
+      <AccountIcon />
+      <AddValueButton />
 
-        <AnimatePresence exitBeforeEnter>
-          {isAddValuesModalOpen && <AddValuesModal />}
-          {isAccountModalOpen && <AccountModal />}
-        </AnimatePresence>
-      </MainStyled.Container>
-    );
-  }
-
-  return <Warning text={"Your session has expired"} />;
+      <AnimatePresence exitBeforeEnter>
+        {isAddValuesModalOpen && <AddValuesModal />}
+        {isAccountModalOpen && <AccountModal />}
+      </AnimatePresence>
+    </MainStyled.Container>
+  );
 };
