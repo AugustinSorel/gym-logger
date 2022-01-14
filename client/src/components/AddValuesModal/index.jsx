@@ -32,7 +32,7 @@ export const AddValuesModal = () => {
 
   const { mutate: addValueMutate } = useMutation(addValue, {
     onSuccess: (data) => {
-      // closeAddValuesModal();
+      closeAddValuesModal();
       console.log("data", data);
       setUserInputs(defaultUserInputs);
     },
