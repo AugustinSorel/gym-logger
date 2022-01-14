@@ -60,31 +60,113 @@ export const addValue = async (req, res) => {
 
 export const getValue = async (req, res) => {
   try {
-    const { userId, exerciseId } = req.params;
+    const { userId, exerciseId, timeId } = req.params;
 
-    var start = new Date(new Date().getTime() - 7 * 60 * 60 * 24 * 1000); // get date of last week
     const data = await DataModel.findById({
       _id: userId,
     });
 
     console.log("data:", data[exerciseId]);
+    console.log("timeId:", timeId);
 
-    const filteredData = data[exerciseId].filter((obj) => {
-      return obj.date >= start.getTime();
-    });
+    if (timeId === "week") {
+      const start = new Date(new Date().getTime() - 7 * 60 * 60 * 24 * 1000); // get date of last week
+      const filteredData = data[exerciseId].filter((obj) => {
+        return obj.date >= start.getTime();
+      });
 
-    // console.log("filteredData:", filteredData);
+      // console.log("filteredData:", filteredData);
 
-    const cleanData = filteredData.map((obj) => {
-      return {
-        date: obj.date.toISOString().split("T")[0].slice(-2),
-        oneRepMax: obj.oneRepMax,
-      };
-    });
+      const cleanData = filteredData.map((obj) => {
+        return {
+          date: obj.date.toISOString().split("T")[0].slice(-2),
+          oneRepMax: obj.oneRepMax,
+        };
+      });
 
-    console.log("cleanData:", cleanData);
+      console.log("cleanData:", cleanData);
 
-    res.status(200).json(cleanData);
+      res.status(200).json(cleanData);
+    }
+
+    if (timeId === "month") {
+      const start = new Date(new Date().getTime() - 30 * 60 * 60 * 24 * 1000); // get date of last week
+      const filteredData = data[exerciseId].filter((obj) => {
+        return obj.date >= start.getTime();
+      });
+
+      // console.log("filteredData:", filteredData);
+
+      const cleanData = filteredData.map((obj) => {
+        return {
+          date: obj.date.toISOString().split("T")[0].slice(-2),
+          oneRepMax: obj.oneRepMax,
+        };
+      });
+
+      console.log("cleanData:", cleanData);
+
+      res.status(200).json(cleanData);
+    }
+
+    if (timeId === "6months") {
+      const start = new Date(
+        new Date().getTime() - 6 * 30 * 60 * 60 * 24 * 1000
+      ); // get date of last week
+      const filteredData = data[exerciseId].filter((obj) => {
+        return obj.date >= start.getTime();
+      });
+
+      // console.log("filteredData:", filteredData);
+
+      const cleanData = filteredData.map((obj) => {
+        return {
+          date: obj.date.toISOString().split("T")[0],
+          oneRepMax: obj.oneRepMax,
+        };
+      });
+
+      console.log("cleanData:", cleanData);
+
+      res.status(200).json(cleanData);
+    }
+
+    if (timeId === "year") {
+      const start = new Date(
+        new Date().getTime() - 12 * 30 * 60 * 60 * 24 * 1000
+      ); // get date of last week
+      const filteredData = data[exerciseId].filter((obj) => {
+        console.log("obj.date:", obj.date);
+        console.log("start.getTime():", start.getTime());
+        return obj.date >= start.getTime();
+      });
+
+      // console.log("filteredData:", filteredData);
+
+      const cleanData = filteredData.map((obj) => {
+        return {
+          date: obj.date.toISOString().split("T")[0],
+          oneRepMax: obj.oneRepMax,
+        };
+      });
+
+      console.log("cleanData:", cleanData);
+
+      res.status(200).json(cleanData);
+    }
+
+    if (timeId === "all") {
+      const cleanData = data[exerciseId].map((obj) => {
+        return {
+          date: obj.date.toISOString().split("T")[0],
+          oneRepMax: obj.oneRepMax,
+        };
+      });
+
+      console.log("cleanData:", cleanData);
+
+      res.status(200).json(cleanData);
+    }
   } catch (error) {
     console.log("ERROR in getValue:", error);
     res.sendStatus(400);

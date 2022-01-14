@@ -7,7 +7,7 @@ import { Warning } from "../Warning";
 import { AccountIcon } from "../AccountIcon";
 import { AddValueButton } from "../AddValueButton";
 import { AccountModal } from "../AccountModal";
-import { useQuery } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "react-query";
 import { getValue } from "../../api/dataApi";
 import useExercise from "../../store/useExercise";
 import {
@@ -25,18 +25,21 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
+import { useEffect, useState } from "react";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
   const isAccountModalOpen = useModal((state) => state.isAccountModalOpen);
   const userToken = useUser((state) => state.userToken);
   const user = useUser((state) => state.user);
+  const setTime = useExercise((state) => state.setTime);
+  const time = useExercise((state) => state.time);
 
   const exercise = useExercise((state) => state.exercise);
 
   const { data, isLoading } = useQuery(
-    ["exerciseData", exercise],
-    () => getValue({ userId: user._id, exerciseId: exercise }),
+    ["exerciseData", exercise, time],
+    () => getValue({ userId: user._id, exerciseId: exercise, timeId: time }),
     {
       enabled: Boolean(user),
 
@@ -51,7 +54,7 @@ export const Main = () => {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div style={{ flex: 1 }}>Loading...</div>;
   }
 
   if (!userToken) {
@@ -101,11 +104,11 @@ export const Main = () => {
                   // tickFormatter={(number) => `${number} kg`}
                 />
 
-                {/* <Tooltip
+                <Tooltip
                   content={<CustomTooltip />}
                   position={{ x: 0, y: -100 }}
                   active={false}
-                /> */}
+                />
 
                 <CartesianGrid opacity={0.1} vertical={false} />
               </AreaChart>
@@ -115,30 +118,39 @@ export const Main = () => {
             <MainStyled.Button
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
+              onClick={() => {
+                setTime("all");
+              }}
             >
               All
             </MainStyled.Button>
             <MainStyled.Button
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
+              onClick={() => {
+                setTime("year");
+              }}
             >
               1Y
             </MainStyled.Button>
             <MainStyled.Button
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
+              onClick={() => setTime("6months")}
             >
               6M
             </MainStyled.Button>
             <MainStyled.Button
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
+              onClick={() => setTime("month")}
             >
               1M
             </MainStyled.Button>
             <MainStyled.Button
               whileHover={whileHoverScale}
               whileTap={whileTapScale}
+              onClick={() => setTime("week")}
             >
               1W
             </MainStyled.Button>

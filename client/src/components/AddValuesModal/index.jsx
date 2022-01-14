@@ -24,6 +24,7 @@ export const AddValuesModal = () => {
   const closeAddValuesModal = useModal((state) => state.closeAddValuesModal);
   const user = useUser((state) => state.user);
   const exercise = useExercise((state) => state.exercise);
+  const time = useExercise((state) => state.time);
 
   const queryClient = useQueryClient();
 
@@ -35,7 +36,7 @@ export const AddValuesModal = () => {
   const { mutate: addValueMutate } = useMutation(addValue, {
     onSuccess: (data) => {
       closeAddValuesModal();
-      queryClient.invalidateQueries(["exerciseData", exercise]);
+      queryClient.invalidateQueries(["exerciseData", exercise, time]);
       console.log("data", data);
       setUserInputs(defaultUserInputs);
     },
