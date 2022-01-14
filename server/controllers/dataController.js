@@ -169,7 +169,8 @@ export const getValue = async (req, res) => {
         const d = obj.date.toISOString().split("T")[0];
         var date = d.split("-");
         var f = new Date(date[0], date[2] - 1, date[1]).toString();
-        const cleanDate = f.split(" ")[2] + " " + f.split(" ")[1] + " ";
+        const cleanDate =
+          f.split(" ")[2] + " " + f.split(" ")[1] + " " + f.split(" ")[3];
         return {
           date: cleanDate,
           oneRepMax: obj.oneRepMax,

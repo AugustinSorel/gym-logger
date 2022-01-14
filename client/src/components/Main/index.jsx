@@ -152,7 +152,7 @@ export const Main = () => {
           </MainStyled.ButtonsContainer>
         </>
       ) : (
-        <h1>No Data</h1>
+        <Warning text={"No data for this exercise"} />
       )}
 
       <AccountIcon />
