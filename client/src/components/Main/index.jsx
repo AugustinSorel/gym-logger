@@ -24,6 +24,7 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
+import { useEffect, useState } from "react";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
@@ -35,33 +36,37 @@ export const Main = () => {
 
   const exercise = useExercise((state) => state.exercise);
 
+  const [graphData, setGraphData] = useState(["0"]);
+
   const { data } = useQuery(
     ["exerciseData", exercise, time],
     () => getValue({ userId: user._id, exerciseId: exercise, timeId: time }),
     {
       enabled: Boolean(user),
-
-      onSuccess: (data) => {
-        console.log(data);
-      },
-
-      onError: (error) => {
-        console.log(error);
-      },
     }
   );
+
+  useEffect(() => {
+    if (data) {
+      setGraphData(data);
+    }
+  }, [data]);
 
   if (!userToken) {
     return <Warning text={"Your session has expired"} />;
   }
 
+  if (!user) {
+    return <div style={{ flex: 1 }} />;
+  }
+
   return (
     <MainStyled.Container>
-      {data?.length > 0 ? (
+      {graphData.length > 0 ? (
         <>
           <MainStyled.GraphContainer>
             <ResponsiveContainer>
-              <LineChart data={data}>
+              <LineChart data={graphData}>
                 <Line
                   type="monotone"
                   dataKey="oneRepMax"

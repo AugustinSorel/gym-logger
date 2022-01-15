@@ -1,7 +1,7 @@
 import * as CustomTooltipStyle from "../../styles/CustomTooltip.styled";
 
 export const CustomTooltip = ({ active, payload, label }) => {
-  if (active) {
+  if (active && payload && payload.length > 0) {
     return (
       <CustomTooltipStyle.Container>
         <CustomTooltipStyle.Title>
