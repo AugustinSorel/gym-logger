@@ -23,7 +23,7 @@ export const Graph = ({ graphData }) => {
             connectNulls={true}
           />
 
-          <XAxis dataKey="date" axisLine={true} tick={true} height={20} />
+          <XAxis dataKey="date" axisLine={false} tick={false} height={20} />
           <YAxis
             dataKey="oneRepMax"
             axisLine={false}
