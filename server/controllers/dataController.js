@@ -58,37 +58,21 @@ export const addValue = async (req, res) => {
   }
 };
 
-const getSubstractionDate = (timeId) => {
+const getStartDate = (timeId, data, oneDay, exerciseId) => {
   switch (timeId) {
     case "1W":
-      return 6;
+      return new Date().getTime() - 6 * oneDay;
     case "1M":
-      return 30;
+      return new Date().getTime() - 30 * oneDay;
     case "6M":
-      return 180;
+      return new Date().getTime() - 180 * oneDay;
     case "1Y":
-      return 365;
+      return new Date().getTime() - 365 * oneDay;
     case "All":
-      break;
+      return data[exerciseId][0].date.getTime();
   }
 
   return "1W";
-};
-
-const getStartDate = (timeId, data, oneDay, exerciseId) => {
-  if (timeId === "All") {
-    return data[exerciseId][0].date.getTime();
-  }
-
-  return new Date().getTime() - getSubstractionDate(timeId) * oneDay;
-};
-
-const getEndDate = (timeId, data, exerciseId) => {
-  if (timeId === "All") {
-    return data[exerciseId][data[exerciseId].length - 1].date.getTime();
-  }
-
-  return new Date().getTime();
 };
 
 // return the date: 2022-01-08T12:36:53.150Z
@@ -107,18 +91,13 @@ export const getValue = async (req, res) => {
       (obj) => obj.date.getTime() >= startDate
     );
 
-    // console.log("finalData", validData);
-
-    // change the date to a string
+    // change the date to miliseconds
     const finalData = validData.map((obj) => {
-      console.log("obj date:", obj.date);
       return {
         date: new Date(obj.date).getTime(),
         oneRepMax: obj.oneRepMax,
       };
     });
-
-    console.log("finalData", finalData);
 
     res.status(200).json(finalData);
   } catch (error) {
