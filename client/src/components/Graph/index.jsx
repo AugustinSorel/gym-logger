@@ -19,10 +19,10 @@ export const Graph = ({ graphData }) => {
             type="monotone"
             dataKey="oneRepMax"
             stroke={theme.colors.textColor}
-            dot={{ r: 2 }}
+            dot={{ r: 0 }}
           />
 
-          <XAxis dataKey="date" axisLine={false} tick={false} />
+          <XAxis dataKey="date" axisLine={false} tick={false} height={0} />
           <YAxis
             dataKey="oneRepMax"
             axisLine={false}

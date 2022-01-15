@@ -66,9 +66,6 @@ export const getValue = async (req, res) => {
       _id: userId,
     });
 
-    console.log("data:", data[exerciseId]);
-    console.log("timeId:", timeId);
-
     if (timeId === "1W") {
       const start = new Date(new Date().getTime() - 7 * 60 * 60 * 24 * 1000); // get date of last week
       const filteredData = data[exerciseId].filter((obj) => {
@@ -84,8 +81,6 @@ export const getValue = async (req, res) => {
         };
       });
 
-      console.log("cleanData:", cleanData);
-
       res.status(200).json(cleanData);
     }
 
@@ -95,8 +90,6 @@ export const getValue = async (req, res) => {
         return obj.date >= start.getTime();
       });
 
-      // console.log("filteredData:", filteredData);
-
       const cleanData = filteredData.map((obj) => {
         return {
           date: obj.date.toISOString().split("T")[0].slice(-2),
@@ -104,7 +97,7 @@ export const getValue = async (req, res) => {
         };
       });
 
-      console.log("cleanData:", cleanData);
+      // console.log("cleanData:", cleanData);
 
       res.status(200).json(cleanData);
     }
@@ -130,7 +123,7 @@ export const getValue = async (req, res) => {
         };
       });
 
-      console.log("cleanData:", cleanData);
+      // console.log("cleanData:", cleanData);
 
       res.status(200).json(cleanData);
     }
@@ -140,12 +133,8 @@ export const getValue = async (req, res) => {
         new Date().getTime() - 12 * 30 * 60 * 60 * 24 * 1000
       ); // get date of last week
       const filteredData = data[exerciseId].filter((obj) => {
-        console.log("obj.date:", obj.date);
-        console.log("start.getTime():", start.getTime());
         return obj.date >= start.getTime();
       });
-
-      // console.log("filteredData:", filteredData);
 
       const cleanData = filteredData.map((obj) => {
         const d = obj.date.toISOString().split("T")[0];
@@ -159,7 +148,7 @@ export const getValue = async (req, res) => {
         };
       });
 
-      console.log("cleanData:", cleanData);
+      // console.log("cleanData:", cleanData);
 
       res.status(200).json(cleanData);
     }
@@ -177,7 +166,7 @@ export const getValue = async (req, res) => {
         };
       });
 
-      console.log("cleanData:", cleanData);
+      // console.log("cleanData:", cleanData);
 
       res.status(200).json(cleanData);
     }
