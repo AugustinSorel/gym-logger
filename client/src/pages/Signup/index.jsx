@@ -105,7 +105,7 @@ export const Signup = () => {
           whileFocus={whileHoverScale}
           autoComplete="no"
           onChange={handleChange}
-          autocapitalize="off"
+          autocapitalize="no"
         />
 
         <SignupStyled.Input
@@ -119,7 +119,7 @@ export const Signup = () => {
           whileFocus={whileHoverScale}
           autoComplete="no"
           onChange={handleChange}
-          autocapitalize="off"
+          autocapitalize="no"
         />
 
         <SignupStyled.Input

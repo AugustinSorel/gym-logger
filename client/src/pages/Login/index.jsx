@@ -99,7 +99,7 @@ export const Login = () => {
           whileFocus={whileHoverScale}
           autoComplete="no"
           onChange={handleChange}
-          autocapitalize="off"
+          autocapitalize="no"
         />
 
         <LoginStyle.Input
