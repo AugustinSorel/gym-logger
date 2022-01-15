@@ -1,6 +1,7 @@
+import Cookies from "js-cookie";
+
 const storeCookie = (key, value) => {
-  const cookie = `${key}=${value};`;
-  document.cookie = cookie;
+  Cookies.set(key, value, { expires: 30 });
 };
 
 export default storeCookie;
