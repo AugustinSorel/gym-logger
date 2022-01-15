@@ -34,10 +34,9 @@ export const AddValuesModal = () => {
   const [userInputs, setUserInputs] = useState(defaultUserInputs);
 
   const { mutate: addValueMutate } = useMutation(addValue, {
-    onSuccess: (data) => {
+    onSuccess: () => {
       closeAddValuesModal();
-      queryClient.invalidateQueries(["exerciseData", exercise, time]);
-      console.log("data", data);
+      queryClient.invalidateQueries([exercise, time]);
       setUserInputs(defaultUserInputs);
     },
 

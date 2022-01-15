@@ -26,7 +26,7 @@ export const Main = () => {
   const [graphData, setGraphData] = useState(["0"]);
 
   const { data } = useQuery(
-    ["exerciseData", exercise, time],
+    [exercise, time],
     () => getValue({ userId: user._id, exerciseId: exercise, timeId: time }),
     {
       enabled: Boolean(user),
