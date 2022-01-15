@@ -10,18 +10,9 @@ import { AccountModal } from "../AccountModal";
 import { useQuery } from "react-query";
 import { getValue } from "../../api/dataApi";
 import useExercise from "../../store/useExercise";
-import {
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-import theme from "../../utils/theme";
-import { CustomTooltip } from "../CustomTooltip";
 import { useEffect, useState } from "react";
 import { TimeButtons } from "../TimeButtons";
+import { Graph } from "../Graph";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
@@ -60,34 +51,7 @@ export const Main = () => {
     <MainStyled.Container>
       {graphData.length > 0 ? (
         <>
-          <MainStyled.GraphContainer>
-            <ResponsiveContainer>
-              <LineChart data={graphData}>
-                <Line
-                  type="monotone"
-                  dataKey="oneRepMax"
-                  stroke={theme.colors.textColor}
-                  dot={{ r: 2 }}
-                />
-
-                <XAxis dataKey="date" axisLine={false} tick={false} />
-                <YAxis
-                  dataKey="oneRepMax"
-                  axisLine={false}
-                  tick={false}
-                  domain={["dataMin", "dataMax"]}
-                  width={10}
-                />
-
-                <Tooltip
-                  isAnimationActive={false}
-                  content={<CustomTooltip />}
-                  position={{ x: 0, y: 0 }}
-                  cursor={{ display: "none" }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
-          </MainStyled.GraphContainer>
+          <Graph graphData={graphData} />
           <TimeButtons />
         </>
       ) : (
