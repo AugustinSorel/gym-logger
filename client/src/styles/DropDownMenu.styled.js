@@ -41,8 +41,6 @@ export const ListContainer = styled(motion.ul)`
   border-radius: 24px;
   list-style: none;
 
-  max-height: 40vh;
-  overflow-y: auto;
   overflow-x: hidden;
 
   gap: 1rem;

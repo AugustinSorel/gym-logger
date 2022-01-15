@@ -75,37 +75,6 @@ const getSubstractionDate = (timeId) => {
   return "1W";
 };
 
-const getCleanDate = (timeId, targetDate) => {
-  switch (timeId) {
-    case "1W":
-      return new Date(targetDate).toISOString().split("T")[0].slice(-2);
-    case "1M":
-      return new Date(targetDate).toISOString().split("T")[0].slice(-2);
-
-    case "6M": {
-      const d = new Date(targetDate).toISOString().split("T")[0];
-      const date = d.split("-");
-      const f = new Date(date[0], date[1] - 1, date[2]).toString();
-      return f.split(" ")[2] + " " + f.split(" ")[1];
-    }
-
-    case "1Y": {
-      const d = new Date(targetDate).toISOString().split("T")[0];
-      const date = d.split("-");
-      const f = new Date(date[0], date[1] - 1, date[2]).toString();
-      return f.split(" ")[2] + " " + f.split(" ")[1] + " " + f.split(" ")[3];
-    }
-
-    case "All":
-      const d = new Date(targetDate).toISOString().split("T")[0];
-      const date = d.split("-");
-      const f = new Date(date[0], date[1] - 1, date[2]).toString();
-      return f.split(" ")[2] + " " + f.split(" ")[1] + " " + f.split(" ")[3];
-  }
-
-  return "1W";
-};
-
 const getStartDate = (timeId, data, oneDay, exerciseId) => {
   if (timeId === "All") {
     return data[exerciseId][0].date.getTime();
@@ -132,52 +101,25 @@ export const getValue = async (req, res) => {
     const oneDay = 1000 * 60 * 60 * 24;
 
     const startDate = getStartDate(timeId, data, oneDay, exerciseId);
-    const endDate = getEndDate(timeId, data, exerciseId);
 
-    const finalData = [];
-    for (
-      let targetDate = startDate;
-      targetDate <= endDate;
-      targetDate += oneDay
-    ) {
-      const obj = {
-        date: getCleanDate(timeId, targetDate),
-        oneRepMax: null,
+    // get all data that are above the startDate
+    const validData = data[exerciseId].filter(
+      (obj) => obj.date.getTime() >= startDate
+    );
+
+    // console.log("finalData", validData);
+
+    // change the date to a string
+    const finalData = validData.map((obj) => {
+      console.log("obj date:", obj.date);
+      return {
+        date: new Date(obj.date).getTime(),
+        oneRepMax: obj.oneRepMax,
       };
+    });
 
-      // get the oneRepMax for this date
-      const dataWhereDateIsToday = data[exerciseId].find(
-        (obj) => obj.date.toDateString() === new Date(targetDate).toDateString()
-      );
+    console.log("finalData", finalData);
 
-      if (dataWhereDateIsToday) {
-        obj.oneRepMax = dataWhereDateIsToday.oneRepMax;
-      }
-
-      finalData.push(obj);
-    }
-
-    // trim end of array
-    let index = 0;
-    for (index; index < finalData.length; index++) {
-      const element = finalData[index];
-
-      if (element.oneRepMax !== null) break;
-    }
-
-    finalData.splice(0, index);
-
-    // trim start of array
-    index = finalData.length - 1;
-    for (index; index >= 0; index--) {
-      const element = finalData[index];
-
-      if (element.oneRepMax !== null) break;
-    }
-
-    finalData.splice(index + 1, finalData.length - index - 1);
-
-    // console.log("finalData", finalData);
     res.status(200).json(finalData);
   } catch (error) {
     console.log("ERROR in getValue:", error);

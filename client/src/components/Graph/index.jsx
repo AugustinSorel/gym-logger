@@ -11,6 +11,8 @@ import theme from "../../utils/theme";
 import { CustomTooltip } from "../CustomTooltip";
 
 export const Graph = ({ graphData }) => {
+  //   const domain = [(dataMin) => dataMin, () => endDate.getTime()];
+
   return (
     <GraphStyle.Container>
       <ResponsiveContainer>
@@ -23,7 +25,15 @@ export const Graph = ({ graphData }) => {
             connectNulls={true}
           />
 
-          <XAxis dataKey="date" axisLine={false} tick={false} height={20} />
+          <XAxis
+            dataKey="date"
+            scale="time"
+            domain={["dataMin", "dataMax"]}
+            type="number"
+            tick={false}
+            axisLine={false}
+            height={10}
+          />
           <YAxis
             dataKey="oneRepMax"
             axisLine={false}

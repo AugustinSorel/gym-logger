@@ -7,7 +7,9 @@ export const CustomTooltip = ({ active, payload, label }) => {
         <CustomTooltipStyle.Title>
           One rep max: {payload[0].value.toFixed(0)}
         </CustomTooltipStyle.Title>
-        <CustomTooltipStyle.ValueTitle>{label}</CustomTooltipStyle.ValueTitle>
+        <CustomTooltipStyle.ValueTitle>
+          {new Date(label).toString().split(" ").slice(0, 4).join(" ")}
+        </CustomTooltipStyle.ValueTitle>
       </CustomTooltipStyle.Container>
     );
   }
