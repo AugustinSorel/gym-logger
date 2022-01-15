@@ -36,7 +36,7 @@ export const Graph = ({ graphData }) => {
             isAnimationActive={false}
             content={<CustomTooltip />}
             position={{ x: 0, y: 0 }}
-            cursor={{ display: "none" }}
+            // cursor={{ display: "none" }}
           />
         </LineChart>
       </ResponsiveContainer>
