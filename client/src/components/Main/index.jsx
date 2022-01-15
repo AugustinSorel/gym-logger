@@ -20,18 +20,14 @@ import {
 } from "recharts";
 import theme from "../../utils/theme";
 import { CustomTooltip } from "../CustomTooltip";
-import {
-  whileHoverScale,
-  whileTapScale,
-} from "../../framer-motion/whileVariants";
 import { useEffect, useState } from "react";
+import { TimeButtons } from "../TimeButtons";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
   const isAccountModalOpen = useModal((state) => state.isAccountModalOpen);
   const userToken = useUser((state) => state.userToken);
   const user = useUser((state) => state.user);
-  const setTime = useExercise((state) => state.setTime);
   const time = useExercise((state) => state.time);
 
   const exercise = useExercise((state) => state.exercise);
@@ -92,47 +88,7 @@ export const Main = () => {
               </LineChart>
             </ResponsiveContainer>
           </MainStyled.GraphContainer>
-          <MainStyled.ButtonsContainer>
-            <MainStyled.Button
-              whileHover={whileHoverScale}
-              whileTap={whileTapScale}
-              onClick={() => {
-                setTime("all");
-              }}
-            >
-              All
-            </MainStyled.Button>
-            <MainStyled.Button
-              whileHover={whileHoverScale}
-              whileTap={whileTapScale}
-              onClick={() => {
-                setTime("year");
-              }}
-            >
-              1Y
-            </MainStyled.Button>
-            <MainStyled.Button
-              whileHover={whileHoverScale}
-              whileTap={whileTapScale}
-              onClick={() => setTime("6months")}
-            >
-              6M
-            </MainStyled.Button>
-            <MainStyled.Button
-              whileHover={whileHoverScale}
-              whileTap={whileTapScale}
-              onClick={() => setTime("month")}
-            >
-              1M
-            </MainStyled.Button>
-            <MainStyled.Button
-              whileHover={whileHoverScale}
-              whileTap={whileTapScale}
-              onClick={() => setTime("week")}
-            >
-              1W
-            </MainStyled.Button>
-          </MainStyled.ButtonsContainer>
+          <TimeButtons />
         </>
       ) : (
         <Warning text={"No data for this exercise"} />

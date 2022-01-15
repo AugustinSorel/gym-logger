@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Container = styled.main`
@@ -21,19 +20,4 @@ export const GraphContainer = styled.div`
 
 export const GraphTitle = styled.h2`
   font-size: var(--font-size-medium);
-`;
-
-export const ButtonsContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 3rem;
-`;
-
-export const Button = styled(motion.button)`
-  font-size: var(--font-size-small);
-  color: inherit;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
 `;

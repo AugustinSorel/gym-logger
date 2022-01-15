@@ -13,7 +13,6 @@ export const addValue = async ({ userId, exerciseId, value }) => {
 };
 
 export const getValue = async ({ userId, exerciseId, timeId }) => {
-  console.log("timeId from axios", timeId);
   const res = await dataApi.get(`/${userId}/${exerciseId}/${timeId}`);
 
   return res.data;

@@ -69,7 +69,7 @@ export const getValue = async (req, res) => {
     console.log("data:", data[exerciseId]);
     console.log("timeId:", timeId);
 
-    if (timeId === "week") {
+    if (timeId === "1W") {
       const start = new Date(new Date().getTime() - 7 * 60 * 60 * 24 * 1000); // get date of last week
       const filteredData = data[exerciseId].filter((obj) => {
         return obj.date >= start.getTime();
@@ -89,7 +89,7 @@ export const getValue = async (req, res) => {
       res.status(200).json(cleanData);
     }
 
-    if (timeId === "month") {
+    if (timeId === "1M") {
       const start = new Date(new Date().getTime() - 30 * 60 * 60 * 24 * 1000); // get date of last week
       const filteredData = data[exerciseId].filter((obj) => {
         return obj.date >= start.getTime();
@@ -109,7 +109,7 @@ export const getValue = async (req, res) => {
       res.status(200).json(cleanData);
     }
 
-    if (timeId === "6months") {
+    if (timeId === "6M") {
       const start = new Date(
         new Date().getTime() - 6 * 30 * 60 * 60 * 24 * 1000
       ); // get date of last week
@@ -135,7 +135,7 @@ export const getValue = async (req, res) => {
       res.status(200).json(cleanData);
     }
 
-    if (timeId === "year") {
+    if (timeId === "1Y") {
       const start = new Date(
         new Date().getTime() - 12 * 30 * 60 * 60 * 24 * 1000
       ); // get date of last week
@@ -164,7 +164,7 @@ export const getValue = async (req, res) => {
       res.status(200).json(cleanData);
     }
 
-    if (timeId === "all") {
+    if (timeId === "All") {
       const cleanData = data[exerciseId].map((obj) => {
         const d = obj.date.toISOString().split("T")[0];
         var date = d.split("-");
