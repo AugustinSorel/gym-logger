@@ -17,13 +17,29 @@
 ## Images
 
 ### Home Page
-![alt text](https://raw.githubusercontent.com/AugustinSorel/messaging-app/master/images/ChatPage.png)
+![alt text](https://raw.githubusercontent.com/AugustinSorel/gym-logger/master/Images/HomePage.png)
+
+### List of exercises
+![alt text](https://raw.githubusercontent.com/AugustinSorel/gym-logger/master/Images/ListOfExercises.png)
+
+### Add Value Page
+![alt text](https://raw.githubusercontent.com/AugustinSorel/gym-logger/master/Images/AddValuePage.png)
+
 
 ### Account Page
-![alt text](https://raw.githubusercontent.com/AugustinSorel/messaging-app/master/images/AccountPage.png)
+![alt text](https://raw.githubusercontent.com/AugustinSorel/gym-logger/master/Images/AccountPage.png)
+
 
 ### Login Page
-![alt text](https://raw.githubusercontent.com/AugustinSorel/messaging-app/master/images/LoginPage.png)
+![alt text](https://raw.githubusercontent.com/AugustinSorel/gym-logger/master/Images/LoginPage.png)
 
 ### Sign Up Page
-![alt text](https://raw.githubusercontent.com/AugustinSorel/messaging-app/master/images/SignUpPage.png)
+![alt text](https://raw.githubusercontent.com/AugustinSorel/gym-logger/master/Images/SignUpPage.png)
+
+
+### Mobile Home Page
+![alt text](https://raw.githubusercontent.com/AugustinSorel/gym-logger/master/Images/MobileHomePage.png)
+
+### Mobile Add Value Page
+![alt text](https://raw.githubusercontent.com/AugustinSorel/gym-logger/master/Images/MobileAddValuePage.png)
+
