@@ -21,7 +21,7 @@ export const Graph = ({ graphData }) => {
             type="monotone"
             dataKey="oneRepMax"
             stroke={theme.colors.textColor}
-            dot={{ r: 2 }}
+            dot={{ r: 0 }}
             connectNulls={true}
           />
 

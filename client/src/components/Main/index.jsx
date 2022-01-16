@@ -44,7 +44,11 @@ export const Main = () => {
   }
 
   if (!user) {
-    return <div style={{ flex: 1 }} />;
+    return (
+      <div style={{ flex: 1 }}>
+        <h1>Loading...</h1>
+      </div>
+    );
   }
 
   return (
