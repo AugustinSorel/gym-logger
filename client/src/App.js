@@ -12,6 +12,7 @@ import useUser from "./store/useUser";
 import loadCookie from "./utils/loadCookie";
 import verifyToken from "./utils/verifyToken";
 import { getUserById } from "./api/userApi";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   const location = useLocation();
@@ -35,6 +36,7 @@ function App() {
       <AnimatePresence exitBeforeEnter initial={false}>
         <Routes location={location} key={location.pathname}>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<Signup />} />
         </Routes>
