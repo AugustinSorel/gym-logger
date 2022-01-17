@@ -1,9 +1,17 @@
-const Dashboard = () => {
+import { Footer } from "../../components/Footer";
+import { Main } from "../../components/Main";
+import fadeTransition from "../../framer-motion/transition";
+import * as DashboardStyle from "../../styles/Dashboard.styled";
+
+export const Dashboard = () => {
   return (
-    <div>
-      <h1>this is the dash board</h1>
-    </div>
+    <DashboardStyle.Container
+      initial={fadeTransition.initial}
+      animate={fadeTransition.animate}
+      exit={fadeTransition.exit}
+    >
+      <Main />
+      <Footer />
+    </DashboardStyle.Container>
   );
 };
-
-export default Dashboard;
