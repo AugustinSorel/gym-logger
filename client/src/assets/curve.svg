@@ -1,0 +1,7 @@
+<svg id="visual" opacity='1' backdropFilter='blur(10px)' viewBox="0 0 900 400" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"> 
+    <defs>
+      <filter id="blurry">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+      </filter>
+    </defs>
+   <path filter="url(#blurry)" stroke="#b3b3b3" stroke-width="2" fill="none" points="[object Object],[object Object],[object Object],[object Object]" width="840" height="426" class="recharts-curve recharts-line-curve" type="monotone" d="M15,5C69.8144013432329,112.56482961342826,124.62880268646578,220.12965922685652,179.44320402969868,256.9354838709679C352.26444159141727,372.97849462365593,525.085679153136,431,697.9069167148546,431C750.271277809903,431,802.6356389049515,243.19354838709683,855,55.387096774193694"></path></svg>
