@@ -8,22 +8,29 @@ import { AccountModal } from "../AccountModal";
 import GraphContainer from "../GraphContainer";
 import { useQuery } from "react-query";
 import { getUser } from "../../api/authApi";
+import { Navigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
   const isAccountModalOpen = useModal((state) => state.isAccountModalOpen);
 
-  const { isError } = useQuery("user", getUser, {
+  const { isLoading, isError } = useQuery("user", getUser, {
     onSuccess: (user) => {
       console.log(user);
     },
 
     onError: (error) => {
-      console.log(error);
+      console.log("error:", error);
     },
   });
 
   if (isError) {
+    Cookies.remove("jwt");
+    return <Navigate to={"/welcome"} />;
+  }
+
+  if (isLoading) {
     return (
       <div style={{ flex: 1 }}>
         <h1>Loading...</h1>
