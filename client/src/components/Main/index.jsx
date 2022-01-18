@@ -13,12 +13,15 @@ import useExercise from "../../store/useExercise";
 import { useEffect, useState } from "react";
 import { TimeButtons } from "../TimeButtons";
 import { Graph } from "../Graph";
+import axios from "axios";
+import Cookies from "js-cookie";
 
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
   const isAccountModalOpen = useModal((state) => state.isAccountModalOpen);
   const user = useUser((state) => state.user);
   const time = useExercise((state) => state.time);
+  const setUser = useUser((state) => state.setUser);
 
   const exercise = useExercise((state) => state.exercise);
 
@@ -31,6 +34,20 @@ export const Main = () => {
       enabled: Boolean(user),
     }
   );
+
+  useEffect(() => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${Cookies.get("jwt")}`,
+      },
+    };
+
+    axios
+      .get("http://localhost:5000/api/auth/get-user", config)
+      .then((res) => setUser(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     if (data) {
@@ -48,7 +65,7 @@ export const Main = () => {
 
   return (
     <MainStyled.Container>
-      {graphData.length > 0 ? (
+      {graphData.length > 1 ? (
         <>
           <Graph graphData={graphData} />
           <TimeButtons />

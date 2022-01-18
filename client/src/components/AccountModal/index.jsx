@@ -90,7 +90,7 @@ export const AccountModal = () => {
   const handleLogout = () => {
     Cookies.remove("jwt");
     navigate("/welcome");
-    setUser(null);
+    // setUser(null);
   };
 
   const handleChange = (e) => {

@@ -1,9 +1,10 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 import userRoutes from "./routes/userRoutes.js";
 import dataRoutes from "./routes/dataRoutes.js";
-import cors from "cors";
+import authRouter from "./routes/authRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -25,3 +26,4 @@ mongoose
 
 app.use("/api/user", userRoutes);
 app.use("/api/data", dataRoutes);
+app.use("/api/auth", authRouter);
