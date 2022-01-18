@@ -4,4 +4,4 @@
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
       </filter>
     </defs>
-   <path filter="url(#blurry)" stroke="#b3b3b3" stroke-width="2" fill="none" points="[object Object],[object Object],[object Object],[object Object]" width="840" height="426" class="recharts-curve recharts-line-curve" type="monotone" d="M15,5C69.8144013432329,112.56482961342826,124.62880268646578,220.12965922685652,179.44320402969868,256.9354838709679C352.26444159141727,372.97849462365593,525.085679153136,431,697.9069167148546,431C750.271277809903,431,802.6356389049515,243.19354838709683,855,55.387096774193694"></path></svg>
+   <path filter="url(#blurry)" stroke="#b3b3b3" stroke-width="2" fill="none" points="[object Object],[object Object],[object Object],[object Object]" width="840" height="426" class="recharts-curve recharts-line-curve" type="monotone" d="M 15 289 C 103.2222 218 191.4444 147 279.6667 147 C 367.8889 147 461 294 546 294 C 610 299 720.7778 218 809 5"></path></svg>
