@@ -1,4 +1,5 @@
 import axios from "axios";
+import getHeader from "../utils/getHeader";
 
 const API_URI = process.env.REACT_APP_BACKEND_URI || "http://localhost:5000";
 
@@ -19,20 +20,24 @@ export const userLogin = async ({ email, password }) => {
 };
 
 export const getUserById = async (userId) => {
-  const response = await userApi.get(`/${userId}`);
+  const response = await userApi.get(`/${userId}`, getHeader());
 
   return response.data;
 };
 
 export const deleteUserById = async (userId) => {
-  const response = await userApi.delete(`/${userId}`);
+  const response = await userApi.delete(`/${userId}`, getHeader());
 
   return response.data;
 };
 
 export const updateUserById = async ({ userId, userInputs }) => {
   const { name, email, password } = userInputs;
-  const response = await userApi.patch(`/${userId}`, { name, email, password });
+  const response = await userApi.patch(
+    `/${userId}`,
+    { name, email, password },
+    getHeader()
+  );
 
   return response.data;
 };

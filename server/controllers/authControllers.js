@@ -1,36 +1,11 @@
 import UserModel from "../models/UserModel.js";
-import jwt from "jsonwebtoken";
 
 export const getUser = async (req, res) => {
   try {
-    let token;
-
-    if (
-      req.headers.authorization &&
-      req.headers.authorization.startsWith("Bearer")
-    ) {
-      token = req.headers.authorization.split(" ")[1];
-    }
-
-    let userId = null;
-
-    if (token) {
-      jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
-        if (!err) {
-          const { id } = decodedToken;
-          userId = id;
-        } else {
-          throw "invalid token";
-        }
-      });
-    } else {
-      throw "no token";
-    }
-
+    const userId = res.locals.userId;
     const user = await UserModel.findById(userId);
 
     console.log("USER FOUND", user);
-
     res.status(200).json(user);
   } catch (error) {
     console.log("ERROR in getUser route:", error);

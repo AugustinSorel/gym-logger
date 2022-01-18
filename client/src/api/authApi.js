@@ -1,5 +1,5 @@
 import axios from "axios";
-import Cookies from "js-cookie";
+import getHeader from "../utils/getHeader";
 
 const API_URI = process.env.REACT_APP_BACKEND_URI || "http://localhost:5000";
 
@@ -8,12 +8,7 @@ const userApi = axios.create({
 });
 
 export const getUser = async () => {
-  const config = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${Cookies.get("jwt")}`,
-    },
-  };
+  const config = getHeader();
 
   const res = await userApi.get("/get-user", config);
 
