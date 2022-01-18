@@ -17,7 +17,6 @@ import { Graph } from "../Graph";
 export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
   const isAccountModalOpen = useModal((state) => state.isAccountModalOpen);
-  const userToken = useUser((state) => state.userToken);
   const user = useUser((state) => state.user);
   const time = useExercise((state) => state.time);
 
@@ -38,10 +37,6 @@ export const Main = () => {
       setGraphData(data);
     }
   }, [data]);
-
-  if (!userToken) {
-    return <Warning text={"Your session has expired"} />;
-  }
 
   if (!user) {
     return (

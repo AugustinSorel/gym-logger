@@ -13,6 +13,8 @@ import { useAnimation } from "framer-motion";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { deleteUserById, updateUserById } from "../../api/userApi";
 import { useMutation } from "react-query";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 export const AccountModal = () => {
   const closeAccountModal = useModal((state) => state.closeAccountModal);
@@ -23,10 +25,11 @@ export const AccountModal = () => {
 
   const user = useUser((state) => state.user);
   const setUser = useUser((state) => state.setUser);
-  const setUserToken = useUser((state) => state.setUserToken);
 
   const [userInputs, setUserInputs] = useState(user);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setUserInputs(user);
@@ -85,9 +88,9 @@ export const AccountModal = () => {
   };
 
   const handleLogout = () => {
-    setUserToken(null);
-    setUser({});
-    closeAccountModal();
+    Cookies.remove("jwt");
+    navigate("/welcome");
+    setUser(null);
   };
 
   const handleChange = (e) => {
