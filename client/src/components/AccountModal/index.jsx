@@ -7,12 +7,11 @@ import {
   whileHoverScale,
   whileTapScale,
 } from "../../framer-motion/whileVariants";
-import useUser from "../../store/useUser";
 import { useEffect, useState } from "react";
 import { useAnimation } from "framer-motion";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { deleteUserById, updateUserById } from "../../api/userApi";
-import { useMutation } from "react-query";
+import { useMutation, useQueryClient } from "react-query";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 
@@ -23,8 +22,8 @@ export const AccountModal = () => {
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
 
-  const user = useUser((state) => state.user);
-  const setUser = useUser((state) => state.setUser);
+  const queryClient = useQueryClient();
+  const user = queryClient.getQueryData("user");
 
   const [userInputs, setUserInputs] = useState(user);
   const [errorMessage, setErrorMessage] = useState("");
@@ -49,8 +48,8 @@ export const AccountModal = () => {
     isError,
     isLoading,
   } = useMutation(updateUserById, {
-    onSuccess: (updatedUser) => {
-      setUser(updatedUser);
+    onSuccess: () => {
+      queryClient.invalidateQueries("user");
       closeAccountModal();
     },
 

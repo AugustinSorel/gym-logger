@@ -82,6 +82,10 @@ export const getValue = async (req, res) => {
     const { userId, exerciseId, timeId } = req.params;
     const data = await DataModel.findById({ _id: userId });
 
+    if (!data[exerciseId][0]) {
+      return res.status(200).json([]);
+    }
+
     const oneDay = 1000 * 60 * 60 * 24;
 
     const startDate = getStartDate(timeId, data, oneDay, exerciseId);

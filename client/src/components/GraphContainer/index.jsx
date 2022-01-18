@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { getValue } from "../../api/dataApi";
 import useExercise from "../../store/useExercise";
-import useUser from "../../store/useUser";
 import { Graph } from "../Graph";
 import { TimeButtons } from "../TimeButtons";
 import { Warning } from "../Warning";
@@ -12,7 +11,9 @@ const GraphContainer = () => {
 
   const exercise = useExercise((state) => state.exercise);
   const time = useExercise((state) => state.time);
-  const user = useUser((state) => state.user);
+
+  const queryClient = useQueryClient();
+  const user = queryClient.getQueryData("user");
 
   const { data } = useQuery(
     [exercise, time],

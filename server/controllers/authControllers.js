@@ -29,6 +29,8 @@ export const getUser = async (req, res) => {
 
     const user = await UserModel.findById(userId);
 
+    console.log("USER FOUND", user);
+
     res.status(200).json(user);
   } catch (error) {
     console.log("ERROR in getUser route:", error);

@@ -13,7 +13,6 @@ import { useMutation, useQueryClient } from "react-query";
 import { addValue } from "../../api/dataApi";
 import { PillButton } from "../PillButton";
 import { BackDrop } from "../BackDrop";
-import useUser from "../../store/useUser";
 
 const defaultUserInputs = {
   numberOfRepetitions: "",
@@ -22,11 +21,11 @@ const defaultUserInputs = {
 
 export const AddValuesModal = () => {
   const closeAddValuesModal = useModal((state) => state.closeAddValuesModal);
-  const user = useUser((state) => state.user);
   const exercise = useExercise((state) => state.exercise);
   const time = useExercise((state) => state.time);
 
   const queryClient = useQueryClient();
+  const user = queryClient.getQueryData("user");
 
   const numberOfRepetitionsAnimation = useAnimation();
   const weightAnimation = useAnimation();
