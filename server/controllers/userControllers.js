@@ -11,7 +11,7 @@ export const userSignUp = async (req, res) => {
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
 
-    res.status(200).json({ token: token, user: user });
+    res.status(200).json(token);
   } catch (error) {
     if (error.code === 11000) {
       const errorField = Object.keys(error.keyValue)[0];
@@ -31,7 +31,7 @@ export const userLogin = async (req, res) => {
   try {
     const user = res.locals.user;
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    res.status(200).json({ token: token, user: user });
+    res.status(200).json(token);
   } catch (error) {
     console.log("ERROR in userLogin:", error);
     res.sendStatus(400);

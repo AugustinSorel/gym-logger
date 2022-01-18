@@ -47,7 +47,7 @@ export const Main = () => {
       .get("http://localhost:5000/api/auth/get-user", config)
       .then((res) => setUser(res.data))
       .catch((err) => console.log(err));
-  }, []);
+  }, [setUser]);
 
   useEffect(() => {
     if (data) {

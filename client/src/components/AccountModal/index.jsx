@@ -89,8 +89,8 @@ export const AccountModal = () => {
 
   const handleLogout = () => {
     Cookies.remove("jwt");
+    closeAccountModal();
     navigate("/welcome");
-    // setUser(null);
   };
 
   const handleChange = (e) => {

@@ -3,7 +3,6 @@ import jwt from "jsonwebtoken";
 
 export const getUser = async (req, res) => {
   try {
-    // get cookie from request
     let token;
 
     if (

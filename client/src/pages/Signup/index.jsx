@@ -30,16 +30,14 @@ export const Signup = () => {
   const navigate = useNavigate();
 
   const setUserToken = useUser((state) => state.setUserToken);
-  const setUser = useUser((state) => state.setUser);
 
   const {
     mutate: signUpMutate,
     isLoading,
     isError,
   } = useMutation(userSignUp, {
-    onSuccess: ({ token, user }) => {
+    onSuccess: (token) => {
       setUserToken(token);
-      setUser(user);
 
       navigate("/");
       setUserInputs(defaultUserInputs);
