@@ -5,7 +5,7 @@ const useExercise = create((set) => ({
   exercise: exercisesList[0],
   setExercise: (exercise) => set(() => ({ exercise: exercise })),
 
-  time: "1W",
+  time: "All",
   setTime: (time) => set(() => ({ time: time })),
 }));
 
