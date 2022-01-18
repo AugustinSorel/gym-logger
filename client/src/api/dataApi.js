@@ -18,6 +18,7 @@ export const addValue = async ({ userId, exerciseId, value }) => {
 };
 
 export const getValue = async ({ userId, exerciseId, timeId }) => {
+  console.log("userId", userId);
   const res = await dataApi.get(
     `/${userId}/${exerciseId}/${timeId}`,
     getHeader()

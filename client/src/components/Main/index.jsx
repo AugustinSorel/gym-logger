@@ -15,13 +15,13 @@ export const Main = () => {
   const isAddValuesModalOpen = useModal((state) => state.isAddValuesModalOpen);
   const isAccountModalOpen = useModal((state) => state.isAccountModalOpen);
 
-  const { isLoading, isError } = useQuery("user", getUser, {
+  const { isLoading, isError, isFetching } = useQuery("user", getUser, {
     onSuccess: (user) => {
       console.log(user);
     },
 
     onError: (error) => {
-      console.log("error:", error);
+      console.log("ERROR in Main:", error);
     },
   });
 
@@ -30,7 +30,7 @@ export const Main = () => {
     return <Navigate to={"/welcome"} />;
   }
 
-  if (isLoading) {
+  if (isLoading || isFetching) {
     return (
       <div style={{ flex: 1 }}>
         <h1>Loading...</h1>

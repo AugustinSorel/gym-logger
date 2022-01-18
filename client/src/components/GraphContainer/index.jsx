@@ -19,6 +19,9 @@ const GraphContainer = () => {
     [exercise, time],
     () => getValue({ userId: user._id, exerciseId: exercise, timeId: time }),
     {
+      onError: (error) => {
+        console.log("ERROR in GraphContainer: ", error);
+      },
       enabled: Boolean(user),
     }
   );

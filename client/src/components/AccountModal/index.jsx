@@ -39,6 +39,7 @@ export const AccountModal = () => {
       handleLogout();
     },
     onError: (error) => {
+      console.log("ERROR in AccountModal: ", error);
       console.log(error);
     },
   });
