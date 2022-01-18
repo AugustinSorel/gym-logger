@@ -16,13 +16,12 @@ const GraphContainer = () => {
   const user = queryClient.getQueryData("user");
 
   const { data } = useQuery(
-    [exercise, time],
+    [exercise, time, user._id],
     () => getValue({ userId: user._id, exerciseId: exercise, timeId: time }),
     {
       onError: (error) => {
         console.log("ERROR in GraphContainer: ", error);
       },
-      enabled: Boolean(user),
     }
   );
 
