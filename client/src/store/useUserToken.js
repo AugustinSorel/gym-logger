@@ -2,7 +2,7 @@ import Cookies from "js-cookie";
 import create from "zustand";
 import storeCookie from "../utils/storeCookie";
 
-const useUser = create((set) => ({
+const useUserToken = create((set) => ({
   userToken: Cookies.get("jwt"),
   setUserToken: (userToken) => {
     set(() => ({ userToken: userToken }));
@@ -10,4 +10,4 @@ const useUser = create((set) => ({
   },
 }));
 
-export default useUser;
+export default useUserToken;

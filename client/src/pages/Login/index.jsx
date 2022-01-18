@@ -8,7 +8,7 @@ import {
 import { useState } from "react";
 import invalidInputVariants from "../../framer-motion/invalidInputVariants";
 import { useAnimation } from "framer-motion";
-import useUser from "../../store/useUser";
+import useUserToken from "../../store/useUserToken";
 import { useMutation } from "react-query";
 import { userLogin } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +27,7 @@ export const Login = () => {
   const emailAnimation = useAnimation();
   const passwordAnimation = useAnimation();
 
-  const setUserToken = useUser((state) => state.setUserToken);
+  const setUserToken = useUserToken((state) => state.setUserToken);
 
   const {
     mutate: loginMutate,

@@ -11,7 +11,7 @@ import { PillButton } from "../../components/PillButton";
 import { useMutation } from "react-query";
 import { userSignUp } from "../../api/userApi";
 import { useNavigate } from "react-router-dom";
-import useUser from "../../store/useUser";
+import useUserToken from "../../store/useUserToken";
 
 const defaultUserInputs = {
   name: "",
@@ -29,7 +29,7 @@ export const Signup = () => {
 
   const navigate = useNavigate();
 
-  const setUserToken = useUser((state) => state.setUserToken);
+  const setUserToken = useUserToken((state) => state.setUserToken);
 
   const {
     mutate: signUpMutate,
