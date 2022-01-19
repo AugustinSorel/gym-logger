@@ -12,7 +12,7 @@ export const Header = () => {
         whileHover={whileHoverScale}
         whileTap={whileTapScale}
       >
-        Gym Logger Update test
+        Gym Logger
       </HeaderStyles.Title>
     </HeaderStyles.Container>
   );
