@@ -1,9 +1,9 @@
 import { useQueryClient } from "react-query";
 import useModal from "../../store/useModal";
-import * as AccountIconStyle from "../../styles/AccountIcon.styled";
+import * as AccountButtonStyle from "../../styles/AccountButton.styled";
 import { RoundedButton } from "../RoundedButton";
 
-export const AccountIcon = () => {
+export const AccountButton = () => {
   const queryClient = useQueryClient();
   const user = queryClient.getQueryData("user");
   const openAccountModal = useModal((state) => state.openAccountModal);
@@ -13,8 +13,8 @@ export const AccountIcon = () => {
   }
 
   return (
-    <AccountIconStyle.Container>
+    <AccountButtonStyle.Container>
       <RoundedButton text={user.name[0]} onClick={openAccountModal} />
-    </AccountIconStyle.Container>
+    </AccountButtonStyle.Container>
   );
 };

@@ -2,7 +2,7 @@ import useModal from "../../store/useModal";
 import * as MainStyled from "../../styles/Main.styled";
 import { AddValuesModal } from "../AddValuesModal";
 import { AnimatePresence } from "framer-motion";
-import { AccountIcon } from "../AccountIcon";
+import { AccountButton } from "../AccountButton";
 import { AddValueButton } from "../AddValueButton";
 import { AccountModal } from "../AccountModal";
 import GraphContainer from "../GraphContainer";
@@ -38,7 +38,7 @@ export const Main = () => {
     <MainStyled.Container>
       <GraphContainer />
 
-      <AccountIcon />
+      <AccountButton />
       <AddValueButton />
 
       <AnimatePresence exitBeforeEnter>
