@@ -1,17 +1,17 @@
 export const backdropVariants = {
   initial: {
     opacity: 0,
-    backdropFilter: "blur(0px)",
+    // backdropFilter: "blur(0px)",
   },
 
   animate: {
     opacity: 1,
-    backdropFilter: "blur(4px)",
+    // backdropFilter: "blur(4px)",
   },
 
   exit: {
     opacity: 0,
-    backdropFilter: "blur(0px)",
+    // backdropFilter: "blur(0px)",
   },
 };
 

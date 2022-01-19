@@ -3,14 +3,14 @@ export const listContainerVariants = {
     y: 0,
     opacity: 1,
     display: "flex",
-    backdropFilter: "blur(4px)",
+    // backdropFilter: "blur(4px)",
     transition: { staggerChildren: 0.07, delayChildren: 0.1 },
   },
 
   hoverEnd: {
     y: "100%",
     opacity: 0,
-    backdropFilter: "blur(0px)",
+    // backdropFilter: "blur(0px)",
     transitionEnd: {
       display: "none",
     },

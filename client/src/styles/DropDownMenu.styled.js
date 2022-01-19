@@ -29,6 +29,7 @@ export const Title = styled.h2`
 `;
 
 export const ListContainer = styled(motion.ul)`
+  backdrop-filter: blur(4px);
   position: absolute;
   z-index: 100;
   bottom: 100%;
