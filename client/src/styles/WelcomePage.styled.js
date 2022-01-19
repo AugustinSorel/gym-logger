@@ -48,6 +48,7 @@ export const Icon = styled.div`
 
 export const IconLabel = styled.h3`
   font-size: var(--font-size-medium);
+  user-select: none;
 `;
 
 export const ButtonsContainer = styled.section`
