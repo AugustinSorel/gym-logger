@@ -72,13 +72,15 @@ export const deleteUserById = async (req, res) => {
 export const updateUserById = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { name, email } = req.body;
+    const { name, email, password } = req.body;
 
-    const user = await UserModel.findByIdAndUpdate(
-      userId,
-      { name, email },
-      { new: true }
-    );
+    const user = await UserModel.findOne({ _id: userId });
+
+    user.name = name;
+    user.email = email;
+    user.password = password;
+
+    await user.save();
 
     console.log("USER UPDATED", user);
     res.status(200).json(user);

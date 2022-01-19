@@ -21,12 +21,15 @@ const UserSchema = new mongoose.Schema({
 });
 
 UserSchema.pre("save", async function (next) {
-  const password = this.password;
+  if (!this.isModified("password")) {
+    console.log("password not modified");
+    return next();
+  }
 
+  console.log("password modified");
   const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  this.password = await bcrypt.hash(this.password, salt);
 
-  this.password = hashedPassword;
   next();
 });
 
