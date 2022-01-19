@@ -9,6 +9,7 @@ import GraphContainer from "../GraphContainer";
 import { useQuery } from "react-query";
 import { getUser } from "../../api/authApi";
 import { Navigate } from "react-router-dom";
+import { Loader } from "../Loader";
 import Cookies from "js-cookie";
 
 export const Main = () => {
@@ -27,11 +28,7 @@ export const Main = () => {
   }
 
   if (isLoading) {
-    return (
-      <div style={{ flex: 1 }}>
-        <h1>Loading...</h1>
-      </div>
-    );
+    return <Loader />;
   }
 
   return (
