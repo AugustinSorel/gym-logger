@@ -7,7 +7,7 @@ import { TimeButtons } from "../TimeButtons";
 import { Warning } from "../Warning";
 
 const GraphContainer = () => {
-  const [graphData, setGraphData] = useState(["0"]);
+  const [graphData, setGraphData] = useState([]);
 
   const exercise = useExercise((state) => state.exercise);
   const time = useExercise((state) => state.time);
@@ -31,7 +31,7 @@ const GraphContainer = () => {
     }
   }, [data]);
 
-  if (!isError && graphData.length > 0 && graphData[0].oneRepMax !== "0") {
+  if (!isError && graphData.length > 0) {
     return (
       <>
         <Graph graphData={graphData} />
