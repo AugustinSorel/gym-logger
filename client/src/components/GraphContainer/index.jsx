@@ -15,7 +15,7 @@ const GraphContainer = () => {
   const queryClient = useQueryClient();
   const user = queryClient.getQueryData("user");
 
-  const { data } = useQuery(
+  const { data, isError } = useQuery(
     [exercise, time, user._id],
     () => getValue({ userId: user._id, exerciseId: exercise, timeId: time }),
     {
@@ -31,7 +31,7 @@ const GraphContainer = () => {
     }
   }, [data]);
 
-  if (graphData.length > 0 && graphData[0].oneRepMax !== "0") {
+  if (!isError && graphData.length > 0 && graphData[0].oneRepMax !== "0") {
     return (
       <>
         <Graph graphData={graphData} />

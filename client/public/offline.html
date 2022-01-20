@@ -5,40 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
     <style type="text/css">
+      :root {
+        --primary: #121212;
+        --text-color: #b3b3b3;
+      }
+
       html {
         height: 100%;
       }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
       body {
         height: 100%;
         margin: 0;
-        background: #0a1f44;
+        background: var(--primary);
         display: flex;
-        align-items: center;
-        text-align: center;
-        justify-content: center;
-      }
-
-      .city {
-        align-items: center;
-        width: 80%;
-        display: flex;
-        justify-content: center;
         flex-direction: column;
-        padding: 40px 8%;
-        border-radius: 20px;
-        background: #fff;
+        align-items: center;
+        justify-content: space-evenly;
       }
 
-      .city-name {
-        font-size: 2em;
+      svg {
+        width: 200px;
+        fill: var(--text-color);
+      }
+
+      h1 {
+        color: var(--text-color);
       }
     </style>
   </head>
   <body>
-    <div class="city">
-      <h2 class="city-name">
-        <span>Please go online to check the current weather.</span>
-      </h2>
-    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <path
+        d="M16.142 2l5.858 5.858v8.284l-5.858 5.858h-8.284l-5.858-5.858v-8.284l5.858-5.858h8.284zm.829-2h-9.942l-7.029 7.029v9.941l7.029 7.03h9.941l7.03-7.029v-9.942l-7.029-7.029zm-8.482 16.992l3.518-3.568 3.554 3.521 1.431-1.43-3.566-3.523 3.535-3.568-1.431-1.432-3.539 3.583-3.581-3.457-1.418 1.418 3.585 3.473-3.507 3.566 1.419 1.417z"
+      />
+    </svg>
+
+    <h1>Please check your internet connection</h1>
   </body>
 </html>
