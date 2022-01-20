@@ -17,11 +17,13 @@ export const DropDownMenu = () => {
       onHoverStart={() => setIsHover(true)}
       onHoverEnd={() => setIsHover(false)}
       onTap={() => setIsHover(!isHover)}
+      onBlur={() => console.log("lost focus")}
     >
       <DropDownMenuStyle.ListContainer
         variants={listContainerVariants}
         animate={isHover ? "hoverStart" : "hoverEnd"}
         initial="hoverEnd"
+        onBlur={() => console.log("lost focus")}
       >
         {exercisesList.map((item, index) => (
           <DropDownItem key={index} children={item} isHover={isHover} />

@@ -8,7 +8,7 @@ export const AccountButton = () => {
   const user = queryClient.getQueryData("user");
   const openAccountModal = useModal((state) => state.openAccountModal);
 
-  if (!user) {
+  if (!user || !user.name) {
     return null;
   }
 

@@ -2,6 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: absolute;
-  bottom: 50px;
+  bottom: 20px;
   right: 20px;
 `;
