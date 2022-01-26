@@ -7,6 +7,10 @@ const exercisesList = [
   "Squat",
   "Leg Curl",
   "Leg Press",
+  "Lateral Raise",
+  "Lat Pull Down",
+  "Calves Raise",
+  "Chest Fly",
 ];
 
 export default exercisesList;

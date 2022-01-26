@@ -16,6 +16,10 @@ const dataSchema = new mongoose.Schema({
   "Shoulder Press": arr,
   "Leg Curl": arr,
   "Leg Press": arr,
+  "Lateral Raise": arr,
+  "Lat Pull Down": arr,
+  "Calves Raise": arr,
+  "Chest Fly": arr,
   Squat: arr,
 });
 
